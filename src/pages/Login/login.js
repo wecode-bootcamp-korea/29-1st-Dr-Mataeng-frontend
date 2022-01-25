@@ -1,13 +1,39 @@
-import React from 'react';
-import './Login.scss';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import '../Login/Login.scss';
 
 const Login = () => {
+  const [id, setId] = useState(' ');
+  const [pw, setPw] = useState(' ');
+
+  const handleIdInput = event => {
+    setId(event.target.value);
+  };
+
+  const handlePwInput = event => {
+    setPw(event.target.value);
+  };
+
+  const idValidation = () => {
+    return id.length > 0;
+  };
+
+  const pwValidation = () => {
+    return pw.length > 0;
+  };
+
+  const navigate = useNavigate();
+  const goToMain = event => {
+    navigate('/Main');
+    console.log('please move');
+  };
+
   return (
     <>
       <div className="loginHeaderWrapper">
         <div className="loginHead">
           <div className="loginHeadTop">
-            <button className="loginHeadTop backButton">
+            <button className="loginHeadTop backButton" onClick={goToMain}>
               <img src="images/backBotton.png" alt="뒤로가기"></img>
             </button>
           </div>
@@ -27,26 +53,36 @@ const Login = () => {
           <div className="loginBody">
             <div className="loginBody loginColumn">
               <h3 className="formTitle">로그인</h3>
-              <from className="loginFrom">
+              <form className="loginFrom">
                 <div className="loginInput">
-                  <div className="loginInput container">
+                  <div className={idValidation() ? 'container' : 'redBorder'}>
                     <input
                       name="userid"
                       type="text"
-                      placeholder="아이디"
+                      placeholder={
+                        idValidation() ? '아이디' : '아이디는 필수 사항입니다.'
+                      }
+                      onChange={handleIdInput}
+                      onInput={idValidation}
                     ></input>
                   </div>
                 </div>
                 <div className="loginInput">
-                  <div className="loginInput container">
+                  <div className={pwValidation() ? 'container' : 'redBorder'}>
                     <input
                       name="userpw"
                       type="password"
-                      placeholder="비밀번호"
+                      placeholder={
+                        pwValidation()
+                          ? '비밀번호'
+                          : '비밀번호는 필수 사항입니다.'
+                      }
+                      onChange={handlePwInput}
+                      onInput={pwValidation}
                     ></input>
                   </div>
                 </div>
-              </from>
+              </form>
               <div className="utilContainer">
                 <div className="saveId">
                   <input type="checkbox"></input>
@@ -60,7 +96,9 @@ const Login = () => {
                 <button>로그인</button>
               </div>
               <div className="signUpButton">
-                <span>회원가입</span>
+                <button onClick={goToMain}>
+                  <span>회원가입</span>
+                </button>
               </div>
             </div>
           </div>

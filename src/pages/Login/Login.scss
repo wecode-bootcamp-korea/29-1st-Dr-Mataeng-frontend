@@ -7,7 +7,7 @@
   margin: auto;
 }
 
-.loginHeaderWapper {
+.loginHeaderWrapper {
   @include baseWrapper;
   .loginHead {
     @include containerWrapper();
@@ -31,6 +31,8 @@
     height: 73px;
     padding-bottom: 20px;
     .title {
+      font-size: 32px;
+      font-weight: 700;
       height: 56px;
       padding: 37px 0 0;
       margin: 0px;
@@ -38,9 +40,9 @@
   }
 }
 
-.loginBodyWapper {
+.loginBodyWrapper {
   @include baseWrapper;
-  .loginWapper {
+  .loginWrapper {
     @include containerWrapper();
     .header {
       .title {
@@ -58,7 +60,6 @@
           font-size: 18px;
           margin-top: 18px;
           color: #666;
-          font-weight: lighter;
         }
       }
     }
@@ -74,6 +75,7 @@
       display: flex;
       justify-content: center;
       font-size: 24px;
+      font-weight: 700;
       margin: 0 0 60px;
     }
     .loginInput {
@@ -82,21 +84,39 @@
       align-items: center;
       width: 100%;
       margin-top: 15px;
-
-      .container {
-        border: 1px solid #666;
-        height: 59px;
-        input {
-          padding: 20px 24px;
-          width: 388px;
-          height: 19px;
-          border-style: none;
-        }
-        input:focus {
-          outline: none;
-        }
+    }
+    .container {
+      border: 1px solid #666;
+      height: 60px;
+      input {
+        padding: 20px 24px;
+        width: 434px;
+        font-size: 16px;
+        border-style: none;
+      }
+      input:focus {
+        outline: none;
       }
     }
+
+    .redBorder {
+      border: 1px solid red;
+      height: 60px;
+      input {
+        padding: 20px 24px;
+        width: 434px;
+        font-size: 16px;
+        border-style: none;
+        &::placeholder {
+          color: red;
+          font-weight: 400;
+        }
+      }
+      input:focus {
+        outline: none;
+      }
+    }
+
     .utilContainer {
       display: flex;
       padding-top: 20px;
@@ -134,6 +154,12 @@
 
     .signUpButton {
       margin-top: 20px;
+      display: flex;
+      justify-content: end;
+      button {
+        background-color: transparent;
+        border-color: transparent;
+      }
       span {
         font-size: 16px;
         font-weight: bold;
