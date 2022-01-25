@@ -1,16 +1,16 @@
-@mixin baseWapper {
+@mixin baseWrapper {
   width: 100%;
 }
 
-@mixin containerWapper {
+@mixin containerWrapper {
   width: 1140px;
   margin: auto;
 }
 
 .loginHeaderWapper {
-  @include baseWapper;
+  @include baseWrapper;
   .loginHead {
-    @include containerWapper();
+    @include containerWrapper();
     height: 155px;
   }
   .loginHeadTop {
@@ -27,7 +27,7 @@
     }
   }
   .loginHeadBottom {
-    @include baseWapper();
+    @include baseWrapper();
     height: 73px;
     padding-bottom: 20px;
     .title {
@@ -39,9 +39,9 @@
 }
 
 .loginBodyWapper {
-  @include baseWapper;
+  @include baseWrapper;
   .loginWapper {
-    @include containerWapper();
+    @include containerWrapper();
     .header {
       .title {
         display: flex;

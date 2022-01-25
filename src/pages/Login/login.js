@@ -4,7 +4,7 @@ import './Login.scss';
 const Login = () => {
   return (
     <>
-      <div className="loginHeaderWapper">
+      <div className="loginHeaderWrapper">
         <div className="loginHead">
           <div className="loginHeadTop">
             <button className="loginHeadTop backButton">
@@ -16,10 +16,10 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <div className="loginBodyWapper">
-        <div className="loginBodyWapper loginWapper">
-          <header className="loginBodyWapper loginWapper header">
-            <h2 className="loginBodyWapper loginWapper header title">
+      <div className="loginBodyWrapper">
+        <div className="loginBodyWrapper loginWrapper">
+          <header className="loginBodyWrapper loginWrapper header">
+            <h2 className="loginBodyWrapper loginWrapper header title">
               <strong>어서오세요</strong>
               <span>닥터마틴에 오신걸 환영합니다.</span>
             </h2>
