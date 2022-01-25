@@ -1,0 +1,20 @@
+$fontSmall: 16px;
+$fontMedium: 20px;
+$fontLarge: 28px;
+$fontTitle: 36px;
+
+$fontGray: #666;
+$fontBlack: #111;
+
+$fontBold: 700;
+
+@mixin elementPosition($display, $flexDirection, $justifyContent) {
+  display: $display;
+  flex-direction: $flexDirection;
+  justify-content: $justifyContent;
+}
+
+@mixin backgroundImgSetting() {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
