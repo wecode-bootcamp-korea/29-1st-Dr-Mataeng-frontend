@@ -1,4 +1,5 @@
 import React from 'react';
+import './Login.scss';
 
 const Login = () => {
   return (
@@ -6,11 +7,9 @@ const Login = () => {
       <div className="loginHeaderWapper">
         <div className="loginHead">
           <div className="loginHeadTop">
-            <img
-              className="loginHeadTop backButton"
-              src="images/backBotton.png"
-              alt="뒤로가기"
-            ></img>
+            <button className="loginHeadTop backButton">
+              <img src="images/backBotton.png" alt="뒤로가기"></img>
+            </button>
           </div>
           <div className="loginHeadBottom">
             <h1 className="loginHeadBottom title">로그인</h1>
@@ -30,18 +29,39 @@ const Login = () => {
               <h3 className="formTitle">로그인</h3>
               <from className="loginFrom">
                 <div className="loginInput">
-                  <label>아이디</label>
-                  <div className="inputContainer">
-                    <input name="userid" type="text"></input>
+                  <div className="loginInput container">
+                    <input
+                      name="userid"
+                      type="text"
+                      placeholder="아이디"
+                    ></input>
                   </div>
                 </div>
                 <div className="loginInput">
-                  <label>비밀번호</label>
-                  <div className="inputContainer">
-                    <input name="userpw" type="password"></input>
+                  <div className="loginInput container">
+                    <input
+                      name="userpw"
+                      type="password"
+                      placeholder="비밀번호"
+                    ></input>
                   </div>
                 </div>
               </from>
+              <div className="utilContainer">
+                <div className="saveId">
+                  <input type="checkbox"></input>
+                  <span>아이디 자동저장</span>
+                </div>
+                <div className="findId">
+                  <span>아이디/비밀번호 찾기</span>
+                </div>
+              </div>
+              <div className="loginButton">
+                <button>로그인</button>
+              </div>
+              <div className="signUpButton">
+                <span>회원가입</span>
+              </div>
             </div>
           </div>
         </div>
