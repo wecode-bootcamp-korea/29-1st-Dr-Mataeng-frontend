@@ -1,0 +1,92 @@
+@mixin baseWapper {
+  width: 100%;
+}
+
+@mixin containerWapper {
+  width: 1140px;
+  margin: auto;
+}
+
+.loginHeaderWapper {
+  @include baseWapper;
+  .loginHead {
+    @include containerWapper();
+    height: 155px;
+  }
+  .loginHeadTop {
+    height: 62px;
+    .backButton {
+      background-color: transparent;
+      border-color: transparent;
+      width: 34px;
+      height: 22px;
+      padding-top: 40px;
+    }
+  }
+  .loginHeadBottom {
+    height: 73px;
+    padding-bottom: 20px;
+    .title {
+      padding-top: 37px;
+      margin: 0px;
+    }
+  }
+}
+
+.loginBodyWapper {
+  @include baseWapper;
+  .loginWapper {
+    @include containerWapper();
+    .header {
+      .title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 72px;
+        strong {
+          height: 36px;
+          font-size: 36px;
+          font-weight: 700;
+        }
+        span {
+          height: 36px;
+          font-size: 18px;
+          margin-top: 18px;
+          color: #666;
+          font-weight: lighter;
+        }
+      }
+    }
+  }
+  .loginBody {
+    margin: 60px auto 0 auto;
+    .loginColumn {
+      width: 436px;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .formTitle {
+      display: flex;
+      justify-content: center;
+      font-size: 24px;
+      margin: 0 0 60px;
+    }
+    .loginInput {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    .inputContainer {
+      width: 100%;
+      label {
+        position: absolute;
+      }
+      input {
+        padding: 20px 24px;
+        border: 1px solid #666;
+        width: 100%;
+      }
+    }
+  }
+}
