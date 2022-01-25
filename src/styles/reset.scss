@@ -92,7 +92,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: "";
+  content: '';
   content: none;
 }
 
@@ -102,6 +102,6 @@ table {
 }
 
 input {
-  -webkit-appearance: none;
+  -webkit-appearance: auto;
   border-radius: 0;
 }
