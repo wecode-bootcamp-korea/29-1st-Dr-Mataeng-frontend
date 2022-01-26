@@ -25,12 +25,7 @@
         margin-bottom: 20px;
         padding: 10px;
       }
-      .nameInput,
-      .idInput,
-      .pwInput,
-      .pwValidInput,
-      .birthInput,
-      .phoneInput {
+      .commonInput {
         width: 436px;
         height: 60px;
         border: 1px solid black;
@@ -66,6 +61,13 @@
         border: 1px solid black;
         font-size: 18px;
       }
+      h5 {
+        margin: 5px;
+        padding-left: 10px;
+        width: 436px;
+        display: flex;
+        justify-content: start;
+      }
     }
 
     .signUpBt {
@@ -75,13 +77,6 @@
       color: white;
       font-size: 24px;
       font-weight: 700;
-    }
-    h5 {
-      margin: 5px;
-      padding-left: 10px;
-      width: 436px;
-      display: flex;
-      justify-content: start;
     }
   }
 }
