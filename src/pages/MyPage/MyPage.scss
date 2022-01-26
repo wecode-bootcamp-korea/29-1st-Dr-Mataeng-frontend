@@ -1,6 +1,6 @@
 @import '/src/styles/variables.scss';
 
-.MypageWrap {
+.Mypage {
   @include elementPosition(flex, row, center);
   padding: 90px 0 140px 0;
 
@@ -9,7 +9,7 @@
     margin-right: 84px;
     position: relative;
 
-    .imgUploadDefault {
+    .defaultImg {
       width: 483px;
       height: 100%;
       object-fit: cover;
@@ -26,18 +26,18 @@
       right: 44px;
       bottom: -42px;
 
-      .imgUploadBtnImg {
+      .uploadBtnImg {
         width: 100%;
         height: 100%;
       }
     }
   }
 
-  .myPageInfoWrap {
+  .infoWrap {
     width: 413px;
     padding: 40px 0;
 
-    .myPageInfoWelcome {
+    .infoGreetingsWrap {
       padding-bottom: 28px;
       line-height: 29px;
       font-size: $fontLarge;
@@ -60,13 +60,13 @@
         }
       }
 
-      .myPageUserName {
+      .userName {
         font-weight: $fontBold;
         color: $fontBlack;
         margin-right: 10px;
       }
 
-      .myPageGreetings {
+      .greetings {
         padding-top: 80px;
         padding-bottom: 28px;
         line-height: 29px;
@@ -76,7 +76,7 @@
       }
     }
 
-    .MypageInformationLevel {
+    .userRankWrap {
       line-height: 21px;
       font-size: $fontLarge;
       color: $fontBlack;
@@ -86,23 +86,23 @@
       border-bottom: 8px solid #ddd;
     }
 
-    .MypageSummaryItems {
+    .userPoingWrap {
       @include elementPosition(flex, row, space-between);
       align-items: center;
       margin-top: 50px;
 
-      .SummaryItemsWrap {
+      .userPoingHistoryWrap {
         @include elementPosition(flex, column, center);
         text-align: center;
         align-items: center;
         width: 33%;
 
-        .summaryIcons {
+        .pointIcon {
           width: 37px;
           height: 37px;
         }
 
-        .summaryIconName {
+        .pointIconName {
           color: $fontGray;
           font-size: $fontMedium;
           line-height: 20px;
