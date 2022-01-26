@@ -1,6 +1,6 @@
 @import '/src/styles/variables.scss';
 
-.footerWrap {
+.Footer {
   @include elementPosition(flex, row, center);
   width: 100%;
   height: 77px;
@@ -12,20 +12,20 @@
     align-items: center;
     width: 1140px;
 
-    .footerMenuListWrap {
+    .menuListWrap {
       display: flex;
 
-      .footerMenuList {
+      .menuList {
         font-size: $fontSmall;
         font-weight: $fontBold;
         margin-right: 22px;
 
-        .footerMenu {
+        .menu {
           color: #fff;
         }
       }
 
-      .footerMenuList:last-child {
+      .menuList:last-child {
         margin-right: 0;
       }
     }

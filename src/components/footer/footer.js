@@ -3,31 +3,31 @@ import './footer.scss';
 
 const Footer = () => {
   return (
-    <div className="footerWrap">
+    <footer className="Footer">
       <div className="footerPositionWrap">
-        <ul className="footerMenuListWrap">
-          {footerMenuList.map(el => (
-            <li className="footerMenuList" key={el.id}>
-              <a href="#" className="footerMenu">
-                {el.name}
+        <ul className="menuListWrap">
+          {MENU_LIST.map(({ id, name }) => (
+            <li className="menuList" key={id}>
+              <a href="#" className="menu">
+                {name}
               </a>
             </li>
           ))}
         </ul>
         <div className="socialIconListWrap">
-          {socialIconList.map(el => (
-            <button key={el.id} className="socialIconWrap">
-              <img alt="socialIcon" className="socialIcon" src={el.url} />
+          {SOCIAL_ICON_LIST.map(({ id, url }) => (
+            <button key={id} className="socialIconWrap">
+              <img alt="social icon" className="socialIcon" src={url} />
             </button>
           ))}
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 
 // 상수 데이터 1 : 푸터 메뉴 리스트
-const footerMenuList = [
+const MENU_LIST = [
   {
     id: 1,
     name: '이용약관',
@@ -51,7 +51,7 @@ const footerMenuList = [
 ];
 
 // 상수 데이터 2 : 소셜 아이콘 리스트
-const socialIconList = [
+const SOCIAL_ICON_LIST = [
   {
     id: 1,
     url: '/images/footer/social-twitter.png',
