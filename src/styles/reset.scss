@@ -1,9 +1,6 @@
 *,
 *:before,
-*:after {
-  box-sizing: border-box;
-}
-
+*:after,
 html,
 body,
 div,
@@ -102,6 +99,6 @@ table {
 }
 
 input {
-  -webkit-appearance: none;
+  -webkit-appearance: auto;
   border-radius: 0;
 }
