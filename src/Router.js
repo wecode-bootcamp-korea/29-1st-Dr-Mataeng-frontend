@@ -14,15 +14,15 @@ function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/Login" element={<Login />} />
-        <Route path="/Main" element={<Main />} />
-        <Route path="/MyPage" element={<MyPage />} />
-        <Route path="/Payment" element={<Payment />} />
-        <Route path="/ProductDetail" element={<ProductDetail />} />
-        <Route path="/ProductList" element={<ProductList />} />
-        <Route path="/Search" element={<Search />} />
-        <Route path="/SignUp" element={<SignUp />} />
-        <Route path="/WishList" element={<WishList />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/main" element={<Main />} />
+        <Route path="/myPage" element={<MyPage />} />
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/productDetail" element={<ProductDetail />} />
+        <Route path="/productList" element={<ProductList />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/signUp" element={<SignUp />} />
+        <Route path="/wishList" element={<WishList />} />
       </Routes>
     </BrowserRouter>
   );
