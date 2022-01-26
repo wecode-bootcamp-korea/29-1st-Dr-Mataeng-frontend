@@ -25,7 +25,6 @@ const Login = () => {
   const navigate = useNavigate();
   const goToMain = event => {
     navigate('/Main');
-    console.log('please move');
   };
 
   return (
@@ -34,7 +33,7 @@ const Login = () => {
         <div className="loginHead">
           <div className="loginHeadTop">
             <button className="loginHeadTop backButton" onClick={goToMain}>
-              <img src="images/backBotton.png" alt="뒤로가기"></img>
+              <img src="images/backBotton.png" alt="뒤로가기" />
             </button>
           </div>
           <div className="loginHeadBottom">
@@ -64,7 +63,7 @@ const Login = () => {
                       }
                       onChange={handleIdInput}
                       onInput={idValidation}
-                    ></input>
+                    />
                   </div>
                 </div>
                 <div className="loginInput">
@@ -79,13 +78,13 @@ const Login = () => {
                       }
                       onChange={handlePwInput}
                       onInput={pwValidation}
-                    ></input>
+                    />
                   </div>
                 </div>
               </form>
               <div className="utilContainer">
                 <div className="saveId">
-                  <input type="checkbox"></input>
+                  <input type="checkbox" />
                   <span>아이디 자동저장</span>
                 </div>
                 <div className="findId">
