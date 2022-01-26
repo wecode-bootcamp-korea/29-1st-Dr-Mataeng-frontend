@@ -1,0 +1,51 @@
+@mixin fullPage {
+  width: 100%;
+  height: 800px;
+}
+
+.container {
+  @include fullPage();
+  margin: 0 auto;
+}
+
+.albums {
+  @include fullPage();
+  overflow: hidden;
+}
+
+.images {
+  width: 400%;
+  height: 800px;
+  display: flex;
+  position: relative;
+}
+
+.img1 {
+  @include fullPage();
+  background-color: mediumvioletred;
+}
+
+.img2 {
+  @include fullPage();
+  background-color: olive;
+}
+
+.img3 {
+  @include fullPage();
+  background-color: orange;
+}
+
+.img4 {
+  @include fullPage();
+  background-color: paleturquoise;
+}
+
+.nextButton {
+  display: flex;
+  justify-content: space-between;
+  button {
+    width: 80px;
+    height: 80px;
+    background-color: pink;
+  }
+}
