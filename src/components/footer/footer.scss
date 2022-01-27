@@ -1,0 +1,60 @@
+@import '/src/styles/variables.scss';
+
+.Footer {
+  @include elementPosition(flex, row, center);
+  width: 100%;
+  height: 77px;
+  background: #191919;
+  align-items: center;
+
+  .footerPositionWrap {
+    @include elementPosition(flex, row, space-between);
+    align-items: center;
+    width: 1140px;
+
+    .menuListWrap {
+      display: flex;
+
+      .menuList {
+        font-size: $fontSmall;
+        font-weight: $fontBold;
+        margin-right: 22px;
+
+        .menu {
+          color: #fff;
+        }
+      }
+
+      .menuList:last-child {
+        margin-right: 0;
+      }
+    }
+
+    .socialIconListWrap {
+      display: flex;
+
+      .socialIconWrap {
+        @include elementPosition(flex, row, center);
+        border: none;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        margin-left: 20px;
+        background: #191919;
+        border: 1px solid #fff;
+        border-radius: 50%;
+        align-items: center;
+
+        .socialIcon {
+          width: 22px;
+          height: 22px;
+          display: block;
+        }
+      }
+
+      .socialIconWrap:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+}
