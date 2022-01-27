@@ -5,19 +5,19 @@ const Main = () => {
   const [count, setCount] = useState(0);
   const showPrevImage = () => {
     let num = count;
-    if (num < 0 && num > -400) {
-      num = num + 100;
+    if (num < 0 && num > -4) {
+      num = num + 1;
     } else if (num === 0) {
-      num = -300;
+      num = -3;
     }
     return setCount(num);
   };
 
   const showNextImage = () => {
     let num = count;
-    if (num > -300 && num < 100) {
-      num = num - 100;
-    } else if (num === -300) {
+    if (num > -3 && num < 1) {
+      num = num - 1;
+    } else if (num === -3) {
       num = 0;
     }
     return setCount(num);
@@ -27,7 +27,7 @@ const Main = () => {
     <>
       <div className="container">
         <div className="albums">
-          <div className="images" style={{ left: count + '%' }}>
+          <div className="images" style={{ left: count * 100 + '%' }}>
             <img src="images/main/main0.jpg" alt="shoes" />
             <img src="images/main/main1.jpg" alt="shoes" />
             <img src="images/main/main2.jpg" alt="shoes" />
