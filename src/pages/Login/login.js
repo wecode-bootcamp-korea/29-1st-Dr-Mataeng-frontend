@@ -18,7 +18,6 @@ const Login = () => {
     };
     setLoginInput(nextInput);
   };
-  console.log(loginInput);
 
   const idValidation = () => {
     return id.length > 0;
