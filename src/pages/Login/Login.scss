@@ -10,7 +10,7 @@
 .loginHeaderWrapper {
   @include baseWrapper;
   .loginHead {
-    @include containerWrapper();
+    @include containerWrapper;
     height: 155px;
   }
   .loginHeadTop {
@@ -27,7 +27,7 @@
     }
   }
   .loginHeadBottom {
-    @include baseWrapper();
+    @include baseWrapper;
     height: 73px;
     padding-bottom: 20px;
     .title {
@@ -43,7 +43,7 @@
 .loginBodyWrapper {
   @include baseWrapper;
   .loginWrapper {
-    @include containerWrapper();
+    @include containerWrapper;
     .header {
       .title {
         display: flex;
@@ -94,7 +94,7 @@
         font-size: 15px;
         border-style: none;
       }
-      input:focus {
+      &:focus {
         outline: none;
       }
     }

@@ -3,16 +3,22 @@ import { useNavigate } from 'react-router-dom';
 import '../Login/Login.scss';
 
 const Login = () => {
-  const [id, setId] = useState(' ');
-  const [pw, setPw] = useState(' ');
+  const [loginInput, setLoginInput] = useState({
+    id: '',
+    pw: '',
+  });
 
-  const handleIdInput = event => {
-    setId(event.target.value);
-  };
+  const { id, pw } = loginInput;
 
-  const handlePwInput = event => {
-    setPw(event.target.value);
+  const handleInput = event => {
+    const { name, value } = event.target;
+    const nextInput = {
+      ...loginInput,
+      [name]: value,
+    };
+    setLoginInput(nextInput);
   };
+  console.log(loginInput);
 
   const idValidation = () => {
     return id.length > 0;
@@ -23,7 +29,7 @@ const Login = () => {
   };
 
   const navigate = useNavigate();
-  const goToMain = event => {
+  const goToMain = () => {
     navigate('/Main');
   };
 
@@ -56,28 +62,28 @@ const Login = () => {
                 <div className="loginInput">
                   <div className={idValidation() ? 'container' : 'redBorder'}>
                     <input
-                      name="userid"
+                      name="id"
+                      valus={id}
                       type="text"
                       placeholder={
                         idValidation() ? '아이디' : '아이디는 필수 사항입니다.'
                       }
-                      onChange={handleIdInput}
-                      onInput={idValidation}
+                      onChange={handleInput}
                     />
                   </div>
                 </div>
                 <div className="loginInput">
                   <div className={pwValidation() ? 'container' : 'redBorder'}>
                     <input
-                      name="userpw"
+                      name="pw"
+                      value={pw}
                       type="password"
                       placeholder={
                         pwValidation()
                           ? '비밀번호'
                           : '비밀번호는 필수 사항입니다.'
                       }
-                      onChange={handlePwInput}
-                      onInput={pwValidation}
+                      onChange={handleInput}
                     />
                   </div>
                 </div>
