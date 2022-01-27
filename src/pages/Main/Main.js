@@ -1,26 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Main.scss';
 
 const Main = () => {
-  let count = 0;
+  const [count, setCount] = useState(0);
   const showPrevImage = () => {
-    if (count < 0 && count > -400) {
-      count = count + 100;
-    } else if (count === 0) {
-      count = -300;
+    let num = count;
+    if (num < 0 && num > -400) {
+      num = num + 100;
+    } else if (num === 0) {
+      num = -300;
     }
-    return count;
+    return setCount(num);
   };
 
   const showNextImage = () => {
-    //console.log(count);
-    if (count > -300 && count < 100) {
-      count = count - 100;
-      return count;
-    } else if (count === -300) {
-      count = 0;
-      return count;
+    let num = count;
+    if (num > -300 && num < 100) {
+      num = num - 100;
+    } else if (num === -300) {
+      num = 0;
     }
+    return setCount(num);
   };
 
   console.log(count);
@@ -29,17 +29,21 @@ const Main = () => {
     <>
       <div className="container">
         <div className="albums">
-          <div className="images">
-            <div className="img1"></div>
-            <div className="img2"></div>
-            <div className="img3"></div>
-            <div className="img4"></div>
+          <div className="images" style={{ left: count + '%' }}>
+            <img src="images/main/main0.jpg" />
+            <img src="images/main/main1.jpg" />
+            <img src="images/main/main2.jpg" />
+            <img src="images/main/main3.jpg" />
           </div>
         </div>
       </div>
       <div className="nextButton">
-        <button onClick={showPrevImage}>뒤로</button>
-        <button onClick={showNextImage}>다음</button>
+        <button onClick={showPrevImage}>
+          <img src="images/icon/prev.png" />
+        </button>
+        <button onClick={showNextImage}>
+          <img src="images/icon/next.png" />
+        </button>
       </div>
     </>
   );

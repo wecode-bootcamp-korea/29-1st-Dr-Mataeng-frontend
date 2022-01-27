@@ -18,34 +18,29 @@
   height: 800px;
   display: flex;
   position: relative;
-}
-
-.img1 {
-  @include fullPage();
-  background-color: mediumvioletred;
-}
-
-.img2 {
-  @include fullPage();
-  background-color: olive;
-}
-
-.img3 {
-  @include fullPage();
-  background-color: orange;
-}
-
-.img4 {
-  @include fullPage();
-  background-color: paleturquoise;
+  img {
+    @include fullPage();
+  }
 }
 
 .nextButton {
   display: flex;
   justify-content: space-between;
+  padding: 0 200px;
   button {
-    width: 80px;
-    height: 80px;
-    background-color: pink;
+    width: 70px;
+    height: 70px;
+    background-color: #111;
+    position: relative;
+    top: -470px;
+    img {
+      width: 100%;
+    }
+  }
+
+  .details {
+    width: 100px;
+    height: 40px;
+    background-color: rgb(255, 229, 18);
   }
 }
