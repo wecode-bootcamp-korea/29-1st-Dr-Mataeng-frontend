@@ -23,26 +23,24 @@ const Main = () => {
     return setCount(num);
   };
 
-  console.log(count);
-
   return (
     <>
       <div className="container">
         <div className="albums">
           <div className="images" style={{ left: count + '%' }}>
-            <img src="images/main/main0.jpg" />
-            <img src="images/main/main1.jpg" />
-            <img src="images/main/main2.jpg" />
-            <img src="images/main/main3.jpg" />
+            <img src="images/main/main0.jpg" alt="shoes" />
+            <img src="images/main/main1.jpg" alt="shoes" />
+            <img src="images/main/main2.jpg" alt="shoes" />
+            <img src="images/main/main3.jpg" alt="shoes" />
           </div>
         </div>
       </div>
       <div className="nextButton">
         <button onClick={showPrevImage}>
-          <img src="images/icon/prev.png" />
+          <img src="images/icon/prev.png" alt="previous button" />
         </button>
         <button onClick={showNextImage}>
-          <img src="images/icon/next.png" />
+          <img src="images/icon/next.png" alt="next button" />
         </button>
       </div>
     </>
