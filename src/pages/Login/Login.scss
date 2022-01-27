@@ -9,27 +9,33 @@
 
 .loginHeaderWrapper {
   @include baseWrapper;
+
   .loginHead {
     @include containerWrapper;
     height: 155px;
   }
+
   .loginHeadTop {
     display: flex;
     height: 62px;
+
     .backButton {
       background-color: transparent;
       border-color: transparent;
       padding: 40px 0 0;
+
       img {
         width: 34px;
         height: 22px;
       }
     }
   }
+
   .loginHeadBottom {
     @include baseWrapper;
     height: 73px;
     padding-bottom: 20px;
+
     .title {
       font-size: 32px;
       font-weight: 700;
@@ -42,19 +48,23 @@
 
 .loginBodyWrapper {
   @include baseWrapper;
+
   .loginWrapper {
     @include containerWrapper;
+
     .header {
       .title {
         display: flex;
         flex-direction: column;
         align-items: center;
         height: 72px;
+
         strong {
           height: 36px;
           font-size: 36px;
           font-weight: 700;
         }
+
         span {
           height: 36px;
           font-size: 18px;
@@ -64,13 +74,16 @@
       }
     }
   }
+
   .loginBody {
     margin: 60px auto 0 auto;
+
     .loginColumn {
       width: 436px;
       justify-content: space-between;
       align-items: center;
     }
+
     .formTitle {
       display: flex;
       justify-content: center;
@@ -78,6 +91,7 @@
       font-weight: 700;
       margin: 0 0 60px;
     }
+
     .loginInput {
       display: flex;
       flex-direction: column;
@@ -85,23 +99,27 @@
       width: 100%;
       margin-top: 15px;
     }
+
     .container {
       border: 1px solid #666;
       height: 60px;
+
       input {
         padding: 19px 24px;
         width: 434px;
         font-size: 15px;
         border-style: none;
-      }
-      &:focus {
-        outline: none;
+
+        &:focus {
+          outline: none;
+        }
       }
     }
 
     .redBorder {
       border: 1px solid red;
       height: 60px;
+
       input {
         padding: 19px 24px;
         width: 434px;
@@ -111,9 +129,10 @@
           color: red;
           font-weight: 400;
         }
-      }
-      input:focus {
-        outline: none;
+
+        &:focus {
+          outline: none;
+        }
       }
     }
 
@@ -132,14 +151,17 @@
 
     .findId {
       border-bottom: solid 2px black;
+
       span {
         font-size: 16px;
         font-weight: bold;
       }
     }
+
     .loginButton {
       height: 62px;
       margin-top: 40px;
+
       button {
         background-color: black;
         color: white;
@@ -156,10 +178,12 @@
       margin-top: 20px;
       display: flex;
       justify-content: end;
+
       button {
         background-color: transparent;
         border-color: transparent;
       }
+
       span {
         font-size: 16px;
         font-weight: bold;
