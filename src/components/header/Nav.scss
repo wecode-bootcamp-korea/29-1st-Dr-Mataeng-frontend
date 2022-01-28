@@ -9,7 +9,6 @@
   overflow-y: hidden;
   background: #fff;
   top: 0;
-  display: none;
 
   .cartAndCloseBtnPosition {
     @include elementPosition(flex, row, center);
@@ -96,14 +95,15 @@
     }
 
     .menuWrap {
-      width: 280px;
+      width: 300px;
       height: 540px;
-      margin-right: 50px;
+      margin-right: 30px;
+      padding-right: 20px;
       overflow-y: scroll;
       display: flex;
       flex-direction: column;
 
-      .menuMappingWrap:nth-child(12) {
+      .NavMenu:nth-child(12) {
         margin-top: 30px;
       }
 
@@ -138,13 +138,22 @@
         }
       }
 
-      // 이벤트 실행 : 토글 버튼 클릭 시 하위 메뉴 노출
       .menuListWrap {
         padding: 0 20px;
-        height: auto; // before 0
         overflow: hidden;
-        display: none; // before none
         margin-bottom: 30px;
+        display: block;
+
+        .menuList {
+          font-size: $fontLarge;
+          font-weight: $fontBold;
+          color: $fontBlack;
+          margin: 10px 0;
+        }
+      }
+
+      .menuListWrapHide {
+        display: none;
 
         .menuList {
           font-size: $fontLarge;
@@ -152,15 +161,11 @@
           color: $fontBlack;
           margin: 7px 0;
         }
-
-        .menuList:first-child {
-          margin-top: 30px;
-        }
       }
     }
 
     .rightContentBoundary {
-      width: calc(100% - 280px);
+      width: calc(100% - 300px);
       overflow-x: scroll;
 
       .rightContentWrap {

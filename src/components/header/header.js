@@ -1,20 +1,44 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Nav from './Nav';
 
 import './Header.scss';
 
 const Header = () => {
-  const [navCloseBtn, setNavCloseBtn] = useState(true);
+  const [navHandler, setnavHandler] = useState(false);
+  const [inputValue, setInputValue] = useState('');
+  const [searchData, setSearchData] = useState([]);
 
-  const navCloseBtnHandler = () => {
-    if (navCloseBtn) setNavCloseBtn(!navCloseBtn);
+  const navDisplayHandler = () => {
+    setnavHandler(!navHandler);
   };
+
+  const inputValueRecord = event => {
+    setInputValue(event.target.value);
+  };
+
+  useEffect(() => {
+    fetch('/data/comment.json', {
+      method: 'POST',
+      body: JSON.stringify({
+        name: inputValue,
+      }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        setSearchData(...data);
+      });
+  }, [inputValue]);
 
   return (
     <header className="Header">
-      <Nav />
+      {navHandler && (
+        <Nav
+          navDisplayHandler={navDisplayHandler}
+          inputValueRecord={inputValueRecord}
+        />
+      )}
       <div className="topMenuListWrap">
         <ul className="topMenuList">
           {TOP_BAR_MENU_LIST.map(({ id, url, buttonName }) => (
@@ -27,7 +51,7 @@ const Header = () => {
         </ul>
       </div>
       <div className="headerWrap">
-        <button className="navigationBtn">
+        <button className="navigationBtn" onClick={navDisplayHandler}>
           <img
             alt="three line icon"
             className="navigationBtnIcon"
@@ -40,11 +64,15 @@ const Header = () => {
           src="/images/header/header-logo.svg"
         />
         <div className="searchAndIconWrap">
-          <input className="searchInput" placeholder="검색어를 입력해주세요." />
+          <input
+            className="searchInput"
+            placeholder="검색어를 입력해주세요."
+            onChange={inputValueRecord}
+          />
           <div className="iconListWrap">
             {HEADER_ICON_LIST.map(({ id, btnClass, iconClass, url }) => (
               <button className={btnClass} key={id}>
-                <img src={url} className={iconClass} />
+                <img alt="cart close icon" src={url} className={iconClass} />
               </button>
             ))}
           </div>

@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 import './Nav.scss';
 
-const Nav = () => {
+import NavMenu from './NavMenu';
+
+const Nav = props => {
   return (
     <div className="Nav">
       <div className="cartAndCloseBtnPosition">
@@ -17,7 +18,10 @@ const Nav = () => {
               />
             </Link>
           </button>
-          <button className="cartAndCloseBtn closeBtn">
+          <button
+            className="cartAndCloseBtn closeBtn"
+            onClick={props.navDisplayHandler}
+          >
             <img
               alt="close icon"
               className="buttonIcon closeIcon"
@@ -32,6 +36,7 @@ const Nav = () => {
             type="text"
             className="searchInput"
             placeholder="검색어를 입력해주세요."
+            onChange={props.inputValueRecord}
           />
           <button className="searchBtn">
             <img
@@ -45,64 +50,28 @@ const Nav = () => {
       <div className="contentWrap">
         <div className="contentPositionWrap">
           <div className="menuWrap">
-            {NAV_MENU_LIST.map(
-              ({
-                id,
-                name,
-                icon,
-                arrowClass,
-                listMan,
-                listFemale,
-                listAll,
-              }) => (
-                <div className="menuMappingWrap" key={id}>
-                  <div className="menuTitleWrap">
-                    <span className="menuName">{name}</span>
-                    <button className="downArrowBtn">
-                      <img
-                        alt="down arrow icon"
-                        className={arrowClass}
-                        src={icon}
-                      />
-                    </button>
-                  </div>
-                  <ul className="menuListWrap">
-                    <li className="menuList">
-                      <a href="#" className="menu">
-                        남성
-                      </a>
-                    </li>
-                    <li className="menuList">
-                      <a href="#" className="menu">
-                        여성
-                      </a>
-                    </li>
-                    <li className="menuList">
-                      <a href="#" className="menu">
-                        전체보기
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              )
-            )}
-            {/* {NAV_MENU_CUSTOMER.map(({ id, name }) => (
-              <div className="menuMappingWrap customerMappingWrap" key={id}>
-                <div className="menuTitleWrap">
-                  <span className="menuName">{name}</span>
-                </div>
-              </div>
-            ))} */}
+            {NAV_MENU_LIST.map(navMenu => (
+              <NavMenu
+                key={navMenu.id}
+                id={navMenu.id}
+                name={navMenu.name}
+                arrowIcon={navMenu.arrowIcon}
+                arrowClass={navMenu.arrowClass}
+                listMan={navMenu.listMan}
+                listFemale={navMenu.listFemale}
+                listAll={navMenu.listAll}
+              />
+            ))}
           </div>
           <div className="rightContentBoundary">
             <div className="rightContentWrap">
-              {RIGHT_CONTENTS_LIST.map(el => (
-                <div className="categoryWrap" key={el.id}>
-                  <p className="categoryTitle">{el.name}</p>
+              {RIGHT_CONTENTS_LIST.map(({ id, name, url }) => (
+                <div className="categoryWrap" key={id}>
+                  <p className="categoryTitle">{name}</p>
                   <img
                     className="categorySummaryImg"
                     alt="dr martin shoes"
-                    src={el.url}
+                    src={url}
                   />
                   <button className="detailBtn">
                     <span className="detailBtnTxt">자세히 보기</span>
@@ -127,7 +96,7 @@ const NAV_MENU_LIST = [
   {
     id: 1,
     name: 'NEW',
-    icon: '/images/header/icon-down-arrow.png',
+    arrowIcon: '/images/header/icon-down-arrow.png',
     arrowClass: 'downArrowIcon',
     listMan: '남성',
     listFemale: '여성',
@@ -136,7 +105,7 @@ const NAV_MENU_LIST = [
   {
     id: 2,
     name: 'BEST',
-    icon: '/images/header/icon-down-arrow.png',
+    arrowIcon: '/images/header/icon-down-arrow.png',
     arrowClass: 'downArrowIcon',
     listMan: '남성',
     listFemale: '여성',
@@ -145,7 +114,7 @@ const NAV_MENU_LIST = [
   {
     id: 3,
     name: 'EXCLUSIVE',
-    icon: '/images/header/icon-down-arrow.png',
+    arrowIcon: '/images/header/icon-down-arrow.png',
     arrowClass: 'downArrowIcon',
     listMan: '콜라보레이션',
     listFemale: 'MIE',
@@ -154,7 +123,7 @@ const NAV_MENU_LIST = [
   {
     id: 4,
     name: '여성',
-    icon: '/images/header/icon-down-arrow.png',
+    arrowIcon: '/images/header/icon-down-arrow.png',
     arrowClass: 'downArrowIcon',
     listMan: '슈즈',
     listFemale: '부츠',
@@ -163,7 +132,7 @@ const NAV_MENU_LIST = [
   {
     id: 5,
     name: '남성',
-    icon: '/images/header/icon-down-arrow.png',
+    arrowIcon: '/images/header/icon-down-arrow.png',
     arrowClass: 'downArrowIcon',
     listMan: '슈즈',
     listFemale: '부츠',
@@ -172,7 +141,7 @@ const NAV_MENU_LIST = [
   {
     id: 6,
     name: '키즈',
-    icon: '/images/header/icon-down-arrow.png',
+    arrowIcon: '/images/header/icon-down-arrow.png',
     arrowClass: 'downArrowIcon',
     listMan: '토들러',
     listFemale: '주니어',
@@ -181,7 +150,7 @@ const NAV_MENU_LIST = [
   {
     id: 7,
     name: '액세서리',
-    icon: '/images/header/icon-down-arrow.png',
+    arrowIcon: '/images/header/icon-down-arrow.png',
     arrowClass: 'downArrowIcon',
     listMan: '가방',
     listFemale: '슈케어',
@@ -190,7 +159,7 @@ const NAV_MENU_LIST = [
   {
     id: 8,
     name: 'ORIGINALS',
-    icon: '/images/header/icon-down-arrow.png',
+    arrowIcon: '/images/header/icon-down-arrow.png',
     arrowClass: 'downArrowIcon',
     listMan: '슈즈',
     listFemale: '부츠',
@@ -199,7 +168,7 @@ const NAV_MENU_LIST = [
   {
     id: 9,
     name: '세일',
-    icon: '/images/header/icon-down-arrow.png',
+    arrowIcon: '/images/header/icon-down-arrow.png',
     arrowClass: 'downArrowIcon',
     listMan: '남성세일',
     listFemale: '여성세일',
@@ -208,7 +177,7 @@ const NAV_MENU_LIST = [
   {
     id: 10,
     name: 'EXPLORE',
-    icon: '/images/header/icon-down-arrow.png',
+    arrowIcon: '/images/header/icon-down-arrow.png',
     arrowClass: 'downArrowIcon',
     listMan: 'HOW TO CARE',
     listFemale: 'HOW TO LACE',
@@ -217,7 +186,7 @@ const NAV_MENU_LIST = [
   {
     id: 11,
     name: '브랜드',
-    icon: '/images/header/icon-down-arrow.png',
+    arrowIcon: '/images/header/icon-down-arrow.png',
     arrowClass: 'downArrowIcon',
     listMan: 'HERITAGE',
     listFemale: 'ABOUT DM',
@@ -226,30 +195,18 @@ const NAV_MENU_LIST = [
   {
     id: 12,
     name: '/고객센터',
-    icon: '/images/header/icon-right-arrow.png',
+    arrowIcon: '/images/header/icon-right-arrow.png',
     arrowClass: 'rightArrowIcon',
   },
   {
     id: 13,
     name: '/매장찾기',
-    icon: '/images/header/icon-right-arrow.png',
+    arrowIcon: '/images/header/icon-right-arrow.png',
     arrowClass: 'rightArrowIcon',
   },
 ];
 
-// 상수 데이터 2 : 네비게이션 메뉴 하단
-// const NAV_MENU_CUSTOMER = [
-//   {
-//     id: 1,
-//     name: '/고객센터',
-//   },
-//   {
-//     id: 2,
-//     name: '/매장찾기',
-//   },
-// ];
-
-// 상수 데이터 3 : 네비게이션 우측 컨텐츠
+// 상수 데이터 2 : 네비게이션 우측 컨텐츠
 const RIGHT_CONTENTS_LIST = [
   {
     id: 1,
