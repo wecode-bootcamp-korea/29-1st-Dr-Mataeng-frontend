@@ -43,9 +43,9 @@ const Login = () => {
     })
       .then(response => response.json())
       .then(result => {
-        if (result.message === 'INVALID_USER(PASSWORD') {
+        if (result.message === 'INVALID_USER(PASSWORD)') {
           alert('비밀번호가 틀렸습니다.');
-        } else if (result.message === 'INVALID_PASSWORD(USER)') {
+        } else if (result.message === 'INVALID_USER(USERNAME)') {
           alert('존재하지 않는 아이디입니다.');
         } else {
           goToMain();
