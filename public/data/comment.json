@@ -1,1 +1,7 @@
-[]
+[
+  {
+    "first": "abc",
+    "second": "def",
+    "third": "ghi"
+  }
+]
