@@ -51,6 +51,7 @@
 
   .loginWrapper {
     @include containerWrapper;
+    margin-bottom: 144px;
 
     .header {
       .title {

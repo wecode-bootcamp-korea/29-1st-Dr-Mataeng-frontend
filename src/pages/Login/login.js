@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../Login/Login.scss';
+import Footer from '../../components/footer/footer';
 
 const Login = () => {
   const [loginInput, setLoginInput] = useState({
@@ -121,6 +122,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };
