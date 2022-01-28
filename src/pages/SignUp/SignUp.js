@@ -13,12 +13,14 @@ function SignUp() {
     phone: '',
     gender: '',
     email: '',
+    emailSelect: '',
     recommend: '',
   });
 
   function handleChangeState(e) {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
   }
+
   const navigate = useNavigate();
 
   const { name, id, pw, pwCheack, birth, phone, email } = inputs;
@@ -26,15 +28,14 @@ function SignUp() {
   const pwReg =
     /(?=.*[A-Za-z])(?=.*\d)(?=.*[~!@#$^&*()+|=])[A-Za-z\d~!@#$%^&*()+|=]{8,}/g;
   const specialPattern = /[~!@#$%^&*()_+|<>?:{}]/;
-  const emailReg =
-    /[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/g;
+
   const isPwRegValid = pwReg.test(pw);
   const nameValid = name.length > 0;
   const isIdSpecilaPattern = !specialPattern.test(id);
   const idValid = id.length > 0;
   const pwCheackValid = pw === pwCheack;
   const birthValid = birth.length > 0;
-  const isEmailRegValid = emailReg.test(email);
+  const isEmailSpecilaPattern = !specialPattern.test(email);
   const phoneValid = phone.length > 0;
   const emailValid = email.length > 0;
 
@@ -46,7 +47,7 @@ function SignUp() {
     pwCheackValid &&
     birthValid &&
     phoneValid &&
-    isEmailRegValid &&
+    isEmailSpecilaPattern &&
     emailValid;
 
   const checkInputValid = () => {
@@ -60,7 +61,7 @@ function SignUp() {
           birthday: inputs.birth,
           phone_number: inputs.phone,
           gender: inputs.gender,
-          email: inputs.email,
+          email: inputs.email + inputs.emailSelect,
           recommender: inputs.recommend,
         }),
       })
@@ -68,7 +69,7 @@ function SignUp() {
         .then(result =>
           result.message === 'SUCCESS'
             ? navigate('/main')
-            : console.log('결과: ', result)
+            : console.info('결과: ', result)
         );
     } else if (!submitValid) {
       alert('형식에 맞춰서 입력해주세요.');
@@ -123,16 +124,24 @@ function SignUp() {
                 onChange={handleChangeState}
               />
               <span>@</span>
-              <select className="emailSelect">
-                <option value="gmial">gmail.com</option>
-                <option value="naver">naver.com</option>
+              <select
+                className="emailSelect"
+                name="emailSelect"
+                onChange={handleChangeState}
+              >
+                <option name="emailSelect" value="@gmail.com">
+                  gmail.com
+                </option>
+                <option name="emailSelect" value="@naver.com">
+                  naver.com
+                </option>
               </select>
             </div>
 
             <div>
               <input
                 className="recommend"
-                name="recommned"
+                name="recommend"
                 type="text"
                 placeholder="추천인(선택)"
                 onChange={handleChangeState}
