@@ -211,25 +211,21 @@ const RIGHT_CONTENTS_LIST = [
   {
     id: 1,
     name: '공식몰 혜택',
-    img: 'a',
     url: '/images/header/content-img01.jpeg',
   },
   {
     id: 2,
     name: '콜라보레이션',
-    img: 'a',
     url: '/images/header/content-img02.jpeg',
   },
   {
     id: 3,
     name: '지속 가능성',
-    img: 'a',
     url: '/images/header/content-img03.jpeg',
   },
   {
     id: 4,
     name: '브랜드 헤리티지',
-    img: 'a',
     url: '/images/header/content-img04.png',
   },
 ];
