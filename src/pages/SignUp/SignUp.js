@@ -18,7 +18,6 @@ function SignUp() {
 
   function handleChangeState(e) {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
-    console.log(inputs);
   }
   const navigate = useNavigate();
 
