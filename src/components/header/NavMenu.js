@@ -17,7 +17,6 @@ const NavMenu = ({
     setbtnHandler(!btnHandler);
   };
 
-  //sa
   return (
     <div className="NavMenu" key={id}>
       <div className="menuTitleWrap">

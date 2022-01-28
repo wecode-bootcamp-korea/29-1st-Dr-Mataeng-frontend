@@ -7,24 +7,14 @@ import './Header.scss';
 
 const Header = () => {
   const [navHandler, setnavHandler] = useState(false);
-  const [inputValue, setInputValue] = useState('');
 
   const navDisplayHandler = () => {
     setnavHandler(!navHandler);
   };
 
-  const inputValueRecord = event => {
-    setInputValue(event.target.value);
-  };
-
   return (
     <header className="Header">
-      {navHandler && (
-        <Nav
-          navDisplayHandler={navDisplayHandler}
-          inputValueRecord={inputValueRecord}
-        />
-      )}
+      {navHandler && <Nav navDisplayHandler={navDisplayHandler} />}
       <div className="topMenuListWrap">
         <ul className="topMenuList">
           {TOP_BAR_MENU_LIST.map(({ id, url, buttonName }) => (
@@ -50,12 +40,7 @@ const Header = () => {
           src="/images/header/header-logo.svg"
         />
         <div className="searchAndIconWrap">
-          <input
-            className="searchInput"
-            placeholder="검색어를 입력해주세요."
-            onChange={inputValueRecord}
-            value={inputValue}
-          />
+          <input className="searchInput" placeholder="검색어를 입력해주세요." />
           <div className="iconListWrap">
             {HEADER_ICON_LIST.map(({ id, btnClass, iconClass, url }) => (
               <button className={btnClass} key={id}>
