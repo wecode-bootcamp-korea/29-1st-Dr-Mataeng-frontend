@@ -2,14 +2,12 @@ import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Nav from './Nav';
-// import { useEffect } from 'react';
 
 import './Header.scss';
 
 const Header = () => {
   const [navHandler, setnavHandler] = useState(false);
   const [inputValue, setInputValue] = useState('');
-  const [searchData, setSearchData] = useState([]);
 
   const navDisplayHandler = () => {
     setnavHandler(!navHandler);
@@ -18,19 +16,6 @@ const Header = () => {
   const inputValueRecord = event => {
     setInputValue(event.target.value);
   };
-
-  // useEffect(() => {
-  //   fetch('/data/comment.json', {
-  //     method: 'POST',
-  //     body: JSON.stringify({
-  //       name: inputValue,
-  //     }),
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       setSearchData(...data);
-  //     });
-  // }, [inputValue]);
 
   return (
     <header className="Header">
@@ -69,6 +54,7 @@ const Header = () => {
             className="searchInput"
             placeholder="검색어를 입력해주세요."
             onChange={inputValueRecord}
+            value={inputValue}
           />
           <div className="iconListWrap">
             {HEADER_ICON_LIST.map(({ id, btnClass, iconClass, url }) => (
