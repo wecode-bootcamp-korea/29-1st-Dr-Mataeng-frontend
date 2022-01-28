@@ -4,7 +4,7 @@ import './Nav.scss';
 
 import NavMenu from './NavMenu';
 
-const Nav = props => {
+const Nav = ({ navDisplayHandler, inputValueRecord }) => {
   return (
     <div className="Nav">
       <div className="cartAndCloseBtnPosition">
@@ -20,7 +20,7 @@ const Nav = props => {
           </button>
           <button
             className="cartAndCloseBtn closeBtn"
-            onClick={props.navDisplayHandler}
+            onClick={navDisplayHandler}
           >
             <img
               alt="close icon"
@@ -36,7 +36,7 @@ const Nav = props => {
             type="text"
             className="searchInput"
             placeholder="검색어를 입력해주세요."
-            onChange={props.inputValueRecord}
+            onChange={inputValueRecord}
           />
           <button className="searchBtn">
             <img

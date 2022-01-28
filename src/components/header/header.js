@@ -1,7 +1,8 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Nav from './Nav';
+// import { useEffect } from 'react';
 
 import './Header.scss';
 
@@ -18,18 +19,18 @@ const Header = () => {
     setInputValue(event.target.value);
   };
 
-  useEffect(() => {
-    fetch('/data/comment.json', {
-      method: 'POST',
-      body: JSON.stringify({
-        name: inputValue,
-      }),
-    })
-      .then(res => res.json())
-      .then(data => {
-        setSearchData(...data);
-      });
-  }, [inputValue]);
+  // useEffect(() => {
+  //   fetch('/data/comment.json', {
+  //     method: 'POST',
+  //     body: JSON.stringify({
+  //       name: inputValue,
+  //     }),
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       setSearchData(...data);
+  //     });
+  // }, [inputValue]);
 
   return (
     <header className="Header">

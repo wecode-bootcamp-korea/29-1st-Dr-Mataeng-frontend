@@ -2,47 +2,55 @@ import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const NavMenu = props => {
+const NavMenu = ({
+  id,
+  name,
+  arrowClass,
+  arrowIcon,
+  listMan,
+  listFemale,
+  listAll,
+}) => {
   const [btnHandler, setbtnHandler] = useState(false);
 
   const btnDisplayHandler = () => {
     setbtnHandler(!btnHandler);
   };
 
-  // ㅎㅎ
+  //sa
   return (
-    <div className="NavMenu" key={props.id}>
+    <div className="NavMenu" key={id}>
       <div className="menuTitleWrap">
-        <span className="menuName">{props.name}</span>
+        <span className="menuName">{name}</span>
         <button className="downArrowBtn" onClick={btnDisplayHandler}>
           <img
             alt="down arrow icon"
-            className={props.arrowClass}
+            className={arrowClass}
             src={
-              props.id > 11
-                ? props.arrowIcon
+              id > 11
+                ? arrowIcon
                 : btnHandler
                 ? '/images/header/icon-up-arrow.png'
-                : props.arrowIcon
+                : arrowIcon
             }
           />
         </button>
       </div>
-      {props.id < 12 && (
+      {id < 12 && (
         <ul className={btnHandler ? 'menuListWrap' : 'menuListWrapHide'}>
           <li className="menuList">
             <Link to="/ProductList" className="menu">
-              {props.listMan}
+              {listMan}
             </Link>
           </li>
           <li className="menuList">
             <Link to="/ProductList" className="menu">
-              {props.listFemale}
+              {listFemale}
             </Link>
           </li>
           <li className="menuList">
             <Link to="/ProductList" className="menu">
-              {props.listAll}
+              {listAll}
             </Link>
           </li>
         </ul>
