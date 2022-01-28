@@ -63,7 +63,7 @@ const Login = () => {
         <div className="loginBodyWrapper loginWrapper">
           <header className="loginBodyWrapper loginWrapper header">
             <h2 className="loginBodyWrapper loginWrapper header title">
-              <strong>어서오세요</strong>₩
+              <strong>어서오세요</strong>
               <span>닥터마틴에 오신걸 환영합니다.</span>
             </h2>
           </header>
