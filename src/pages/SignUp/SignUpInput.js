@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './SignUp.scss';
 
-function SignUpInput({ id, name, type, placeholder }) {
+function SignUpInput({ id, name, className, type, placeholder, change }) {
   return (
     <div>
-      <input className={name} type={type} placeholder={placeholder} />
+      <input
+        className={className}
+        name={name}
+        type={type}
+        placeholder={placeholder}
+        onChange={change}
+      />
     </div>
   );
 }

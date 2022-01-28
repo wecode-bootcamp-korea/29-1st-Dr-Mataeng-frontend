@@ -1,8 +1,80 @@
-import React from 'react';
-import inputList from './InputList';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import INPUT_LIST from './InputList';
 import SignUpInput from './SignUpInput';
+import './SignUp.scss';
 
 function SignUp() {
+  const [inputs, setInputs] = useState({
+    name: '',
+    id: '',
+    pw: '',
+    birth: '',
+    phone: '',
+    gender: '',
+    email: '',
+    recommend: '',
+  });
+
+  function handleChangeState(e) {
+    setInputs({ ...inputs, [e.target.name]: e.target.value });
+    console.log(inputs);
+  }
+  const navigate = useNavigate();
+
+  const { name, id, pw, pwCheack, birth, phone, email } = inputs;
+
+  const pwReg =
+    /(?=.*[A-Za-z])(?=.*\d)(?=.*[~!@#$^&*()+|=])[A-Za-z\d~!@#$%^&*()+|=]{8,}/g;
+  const specialPattern = /[~!@#$%^&*()_+|<>?:{}]/;
+  const emailReg =
+    /[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/g;
+  const isPwRegValid = pwReg.test(pw);
+  const nameValid = name.length > 0;
+  const isIdSpecilaPattern = !specialPattern.test(id);
+  const idValid = id.length > 0;
+  const pwCheackValid = pw === pwCheack;
+  const birthValid = birth.length > 0;
+  const isEmailRegValid = emailReg.test(email);
+  const phoneValid = phone.length > 0;
+  const emailValid = email.length > 0;
+
+  const submitValid =
+    isPwRegValid &&
+    nameValid &&
+    isIdSpecilaPattern &&
+    idValid &&
+    pwCheackValid &&
+    birthValid &&
+    phoneValid &&
+    isEmailRegValid &&
+    emailValid;
+
+  const checkInputValid = () => {
+    if (submitValid) {
+      fetch('http://10.58.2.127:8000/users/user', {
+        method: 'POST',
+        body: JSON.stringify({
+          name: inputs.name,
+          username: inputs.id,
+          password: inputs.pw,
+          birthday: inputs.birth,
+          phone_number: inputs.phone,
+          gender: inputs.gender,
+          email: inputs.email,
+          recommender: inputs.recommend,
+        }),
+      })
+        .then(response => response.json())
+        .then(result =>
+          result.message === 'SUCCESS'
+            ? navigate('/main')
+            : console.log('결과: ', result)
+        );
+    } else if (!submitValid) {
+      alert('형식에 맞춰서 입력해주세요.');
+    }
+  };
   return (
     <div className="signUp">
       <div className="baseWrapper">
@@ -10,13 +82,15 @@ function SignUp() {
           <h1>환영합니다.</h1>
           <h4>지금 바로 다양한 해택을 만나보세요.</h4>
           <form>
-            {inputList.map(list => {
+            {INPUT_LIST.map(list => {
               return (
                 <SignUpInput
                   key={list.id}
+                  className={list.className}
                   name={list.name}
                   type={list.type}
                   placeholder={list.placeholder}
+                  change={handleChangeState}
                 />
               );
             })}
@@ -24,15 +98,31 @@ function SignUp() {
             <div className="gender">
               <label>
                 성별: 여자
-                <input type="radio" name="woman" />
+                <input
+                  type="radio"
+                  name="gender"
+                  value="female"
+                  onChange={handleChangeState}
+                />
               </label>
               <label>
                 남자
-                <input type="radio" name="man" />
+                <input
+                  type="radio"
+                  name="gender"
+                  value="male"
+                  onChange={handleChangeState}
+                />
               </label>
             </div>
             <div>
-              <input className="email" type="text" placeholder="이메일" />
+              <input
+                className="email"
+                name="email"
+                type="text"
+                placeholder="이메일"
+                onChange={handleChangeState}
+              />
               <span>@</span>
               <select className="emailSelect">
                 <option value="gmial">gmail.com</option>
@@ -43,15 +133,19 @@ function SignUp() {
             <div>
               <input
                 className="recommend"
+                name="recommned"
                 type="text"
                 placeholder="추천인(선택)"
+                onChange={handleChangeState}
               />
               <button className="recommendBt">확인</button>
             </div>
-            <h5>신규 가입 시 -마일리지 10,000원 추가 지급</h5>
+            <h5>신규 가입 시 - 마일리지 10,000원 추가 지급</h5>
             <h5>추천인 ID 입력 시 - 마일리지 5,000원 추가 지급</h5>
           </form>
-          <button className="signUpBt">회원가입</button>
+          <button className="signUpBt" onClick={checkInputValid}>
+            회원가입
+          </button>
         </div>
       </div>
     </div>

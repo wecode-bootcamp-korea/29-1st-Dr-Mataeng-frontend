@@ -1,82 +1,93 @@
-.baseWrapper {
-  margin: 100px;
-  width: 1140px;
-  .signUpWrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+@import './../../styles/variables.scss';
+.signUp {
+  display: flex;
+  justify-content: center;
 
-    h1 {
-      font-size: 36px;
-      font-weight: bold;
-    }
-    h4 {
-      padding: 15px 0 25px;
-      font-size: 18px;
-      font-weight: bold;
-      color: gray;
-    }
-    form {
+  .baseWrapper {
+    margin: 100px;
+    width: 1140px;
+
+    .signUpWrap {
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px;
-      input {
-        margin-bottom: 20px;
-        padding: 10px;
-      }
-      .commonInput {
-        width: 436px;
-        height: 60px;
-        border: 1px solid black;
-      }
-      .gender {
-        width: 436px;
-        height: 30px;
-        display: flex;
-        justify-content: start;
-      }
-      .email {
-        width: 255px;
-        height: 60px;
-        margin-right: 10px;
-        border: 1px solid black;
-      }
-      .emailSelect {
-        width: 145px;
-        height: 60px;
-        margin-left: 10px;
-      }
-      .recommend {
-        width: 285px;
-        height: 60px;
-        margin-right: 10px;
-        border: 1px solid black;
-      }
-      .recommendBt {
-        width: 140px;
-        height: 60px;
-        padding: 10px;
-        background-color: white;
-        border: 1px solid black;
-        font-size: 18px;
-      }
-      h5 {
-        margin: 5px;
-        padding-left: 10px;
-        width: 436px;
-        display: flex;
-        justify-content: start;
-      }
-    }
 
-    .signUpBt {
-      width: 436px;
-      height: 60px;
-      background-color: black;
-      color: white;
-      font-size: 24px;
-      font-weight: 700;
+      h1 {
+        font-size: $fontTitle;
+        font-weight: $fontBold;
+      }
+      h4 {
+        padding: 15px 0 25px;
+        font-size: $fontSmall;
+        font-weight: bold;
+        color: gray;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        input {
+          margin-bottom: 20px;
+          padding: 10px;
+        }
+        .commonInput {
+          width: 436px;
+          height: 60px;
+          border: 1px solid black;
+        }
+
+        .gender {
+          width: 436px;
+          height: 30px;
+          display: flex;
+          justify-content: start;
+          label {
+            margin-right: 10px;
+          }
+        }
+        .email {
+          width: 255px;
+          height: 60px;
+          margin-right: 10px;
+          border: 1px solid black;
+        }
+        .emailSelect {
+          width: 145px;
+          height: 60px;
+          margin-left: 10px;
+        }
+        .recommend {
+          width: 285px;
+          height: 60px;
+          margin-right: 10px;
+          border: 1px solid black;
+        }
+        .recommendBt {
+          width: 140px;
+          height: 60px;
+          padding: 10px;
+          background-color: white;
+          border: 1px solid black;
+          font-size: $fontMedium;
+        }
+        h5 {
+          margin: 5px;
+          padding-left: 10px;
+          width: 436px;
+          display: flex;
+          justify-content: start;
+        }
+      }
+
+      .signUpBt {
+        width: 436px;
+        height: 60px;
+        background-color: black;
+        color: white;
+        font-size: $fontLarge;
+        font-weight: 700;
+      }
     }
   }
 }
