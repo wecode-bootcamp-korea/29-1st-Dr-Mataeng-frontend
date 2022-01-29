@@ -17,6 +17,21 @@ const WishList = () => {
           </div>
         </div>
       </div>
+      <div className="cartBaseContainer">
+        <div className="cartContainer">
+          <div className="cartContainer empty">
+            <div className="emptyCartImage">
+              <img src="images/icon/shopping-cart.png" />
+            </div>
+            <div className="emptyCartComment">
+              <span>장바구니가 비었습니다.</span>
+            </div>
+            <button>
+              <span>쇼핑 계속하기</span>
+            </button>
+          </div>
+        </div>
+      </div>
       <Footer />
     </>
   );
