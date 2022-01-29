@@ -1,0 +1,189 @@
+@import '/src/styles/variables.scss';
+
+.Search {
+  @include elementPosition(flex, column, center);
+  align-items: center;
+
+  .titleWrap {
+    @include elementPosition(flex, column, center);
+    width: 1140px;
+
+    .goBackBtn {
+      width: 42px;
+      height: 24px;
+      margin: 40px 0;
+
+      .leftArrowIcon {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .mainTitle {
+      font-size: $fontTitle;
+      color: $fontBlack;
+      font-weight: $fontBold;
+    }
+
+    .mediumTitle {
+      margin: 20px 0 30px 0;
+      font-size: $fontMedium;
+      color: $fontGray;
+    }
+
+    .productIntroduction {
+      font-size: $fontMedium;
+      line-height: 25px;
+      color: $fontBlack;
+      display: none;
+    }
+
+    .filterBtnWrap {
+      @include elementPosition(flex, row, flex-end);
+      align-items: center;
+      margin-top: 20px;
+      display: none;
+
+      .filterIcon {
+        width: 25px;
+        height: 25px;
+        background: url('../../../public/images/search/icon-filter.png');
+        @include backgroundImgSetting;
+        cursor: pointer;
+      }
+
+      .btnName {
+        font-size: $fontMedium;
+        font-weight: $fontBold;
+        color: $fontBlack;
+        margin: 0 10px 0 5px;
+      }
+
+      .arrowIcon {
+        width: 13px;
+        height: 13px;
+        background: url('../../../public/images/search/icon-down-chevron.png');
+        @include backgroundImgSetting;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .borderLine {
+    width: 100%;
+    height: 1px;
+    background: #ddd;
+    margin: 20px 0 80px 0;
+  }
+
+  .productListWrap {
+    @include elementPosition(flex, column, center);
+    width: 1140px;
+
+    .productCount {
+      margin-bottom: 18px;
+      padding: 0 8px;
+      font-size: $fontLarge;
+      font-weight: $fontBold;
+      color: $fontBlack;
+    }
+
+    .productList {
+      @include elementPosition(flex, row, space-between);
+      width: 100%;
+      flex-wrap: wrap;
+
+      .product {
+        width: 364px;
+
+        .productImgWrap {
+          width: 100%;
+          height: 455px;
+          background: #e5e5e5;
+          display: inline-block;
+
+          .productImg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        .contentWrap {
+          @include elementPosition(flex, row, space-between);
+          width: 100%;
+          padding: 15px 20px;
+          margin-bottom: 80px;
+
+          .contentLeft {
+            @include elementPosition(flex, column, flex-start);
+
+            .name {
+              font-size: $fontMedium;
+              font-weight: $fontBold;
+              color: $fontBlack;
+            }
+
+            .color {
+              font-size: $fontSmall;
+              font-weight: $fontBold;
+              color: $fontGray;
+              margin: 17px 0;
+            }
+
+            .likeConutWrap {
+              @include elementPosition(flex, row, flex-start);
+              cursor: pointer;
+              background: transparent;
+              align-items: center;
+
+              .heartIcon {
+                width: 22px;
+                height: 22px;
+                margin-right: 7px;
+              }
+
+              .likeConut {
+                font-weight: $fontBold;
+                line-height: 20px;
+                font-size: $fontMedium;
+                padding-top: 3px;
+                font-family: 'Roboto';
+              }
+            }
+          }
+
+          .contentRight {
+            @include elementPosition(flex, column, flex-start);
+            align-items: end;
+
+            .price {
+              margin-bottom: 25px;
+              font-weight: $fontBold;
+              color: $fontBlack;
+              font-size: $fontMedium;
+            }
+
+            .price:before {
+              content: '₩ ';
+              font-family: 돋움, Dotum, sans-serif;
+              font-weight: 400;
+              font-size: 16px;
+            }
+
+            .cartBtn {
+              width: 140px;
+              height: 50px;
+              background: transparent;
+              cursor: pointer;
+              border: 1px solid $fontBlack;
+              font-size: $fontSmall;
+              color: $fontBlack;
+            }
+          }
+        }
+      }
+    }
+  }
+}
