@@ -59,9 +59,7 @@ const Login = () => {
         } else {
           goToMain();
         }
-        console.log('결과 : ', result);
       });
-    console.log('clicked');
   };
 
   return (
