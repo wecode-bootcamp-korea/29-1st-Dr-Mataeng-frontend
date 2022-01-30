@@ -1,6 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Empty = () => {
+  const navigate = useNavigate();
+  const goToMain = () => {
+    navigate('/Main');
+  };
+
   return (
     <>
       <div className="loginHeaderWrapper">
@@ -24,7 +30,7 @@ const Empty = () => {
             <div className="emptyCartComment">
               <span>장바구니가 비었습니다.</span>
             </div>
-            <button>
+            <button onClick={goToMain}>
               <span>쇼핑 계속하기</span>
             </button>
           </div>
