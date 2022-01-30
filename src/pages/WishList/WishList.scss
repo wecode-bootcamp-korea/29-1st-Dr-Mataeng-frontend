@@ -37,8 +37,8 @@
     padding-bottom: 20px;
 
     .title {
-      font-size: $fontTitle;
-      font-weight: $fontBold;
+      font-size: 36px;
+      font-weight: 700;
       height: 56px;
       padding: 37px 0 0;
       margin: 0px;
@@ -90,6 +90,67 @@
       span {
         font-size: 20px;
         font-weight: 700;
+      }
+    }
+  }
+}
+
+.cart {
+  @include baseWrapper;
+
+  .container {
+    @include containerWrapper;
+    height: 101px;
+  }
+
+  .containerRow {
+    width: 100%;
+    height: 100%;
+    padding-top: 55px;
+  }
+
+  .controlCheckbox {
+    width: 680px;
+    height: 37px;
+    padding-left: 33px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .checkbox {
+    display: flex;
+    align-items: center;
+    width: 97px;
+    height: 100%;
+
+    input {
+    }
+
+    span {
+      font-size: 18px;
+      padding-left: 10px;
+    }
+  }
+
+  .deleteButton {
+    width: 157px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    button {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid black;
+      background-color: transparent;
+
+      img {
+        width: 19px;
+        height: 19px;
       }
     }
   }
