@@ -8,6 +8,10 @@ const Login = () => {
     id: '',
     pw: '',
   });
+  const [checkbox, setCheckbox] = useState(false);
+  const handleCheckbox = event => {
+    setCheckbox(event.target.checked);
+  };
 
   const { id, pw } = loginInput;
 
@@ -34,32 +38,44 @@ const Login = () => {
   };
 
   const inputReset = () => {
-    setLoginInput({
-      id: '',
-      pw: '',
-    });
+    console.log('체크됐냐?' + checkbox);
+    if (checkbox) {
+      setLoginInput({
+        id: loginInput.id,
+        pw: '',
+      });
+    } else {
+      setLoginInput({
+        id: '',
+        pw: '',
+      });
+    }
+
+    console.log(loginInput);
   };
 
   const loginValidation = () => {
-    fetch('http://10.58.2.127:8000/users/signin', {
-      method: 'POST',
-      body: JSON.stringify({
-        username: loginInput.id,
-        password: loginInput.pw,
-      }),
-    })
-      .then(response => response.json())
-      .then(result => {
-        if (result.message === 'INVALID_USER(PASSWORD)') {
-          alert('비밀번호가 틀렸습니다.');
-          inputReset();
-        } else if (result.message === 'INVALID_USER(USERNAME)') {
-          alert('존재하지 않는 아이디입니다.');
-          inputReset();
-        } else {
-          goToMain();
-        }
-      });
+    inputReset();
+    // fetch('http://10.58.2.127:8000/users/signin', {
+    //   method: 'POST',
+    //   body: JSON.stringify({
+    //     username: loginInput.id,
+    //     password: loginInput.pw,
+    //   }),
+    // })
+    //   .then(response => response.json())
+    //   .then(result => {
+    //     if (result.message === 'INVALID_USER(PASSWORD)') {
+    //       alert('비밀번호가 틀렸습니다.');
+    //       inputReset();
+    //     } else if (result.message === 'INVALID_USER(USERNAME)') {
+    //       alert('존재하지 않는 아이디입니다.');
+    //       inputReset();
+    //     } else {
+    //       inputReset();
+    //       goToMain();
+    //     }
+    //   });
   };
 
   return (
@@ -119,8 +135,8 @@ const Login = () => {
               </form>
               <div className="utilContainer">
                 <div className="saveId">
-                  <input type="checkbox" />
-                  <span>아이디 자동저장</span>
+                  <input type="checkbox" onClick={handleCheckbox} />
+                  아이디 자동저장
                 </div>
                 <div className="findId">
                   <span>아이디/비밀번호 찾기</span>
