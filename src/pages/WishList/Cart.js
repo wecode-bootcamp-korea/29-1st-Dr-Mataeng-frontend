@@ -1,6 +1,6 @@
 import React from 'react';
-import OrderProduct from './OrderProduct';
 import OrderPrice from './OrderPrice';
+import OrderProduct from './OrderProduct';
 
 const Cart = () => {
   return (
@@ -14,14 +14,14 @@ const Cart = () => {
             </div>
             <div className="deleteButton">
               <button>
-                <img src="images/icon/shopping-cart.png" />
-                <span>선택삭제</span>
+                <img src="images/icon/trash-can.png" />
+                <span>선택 삭제</span>
               </button>
             </div>
           </div>
         </div>
       </div>
-      <div className="cart container">
+      <div className="cartBox">
         <OrderProduct />
         <OrderPrice />
       </div>
