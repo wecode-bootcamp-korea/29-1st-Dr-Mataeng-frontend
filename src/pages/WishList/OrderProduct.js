@@ -8,14 +8,20 @@ const OrderProduct = () => {
           <div className="productContainer">
             <div className="productBox">
               <img src="images/main/main0.jpg" alt="productimage" />
-              <div className="productInfo">
-                <h2>제품명</h2>
-                <ul className="productDetail">
-                  <li>컬러</li>
-                  <li>사이즈</li>
-                  <li>수량</li>
-                  <li className="point">포인트 사용 불가</li>
-                </ul>
+              <div className="productInfoBox">
+                <div className="productInfo">
+                  <h2>제품명</h2>
+                  <ul className="productDetail">
+                    <li>컬러 : </li>
+                    <li>사이즈 : </li>
+                    <li>수량 : </li>
+                    <li className="point">포인트 사용 불가</li>
+                  </ul>
+                </div>
+                <div className="productPrice">
+                  <span className="mark">₩</span>
+                  <span className="price">300000</span>
+                </div>
               </div>
             </div>
           </div>
