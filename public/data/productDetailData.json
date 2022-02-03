@@ -1,0 +1,79 @@
+{
+  "result": {
+    "id": 38,
+    "product_name": "제이든",
+    "images": [
+      {
+        "image_id": 41,
+        "image_url": "https://media.istockphoto.com/photos/woman-tying-shoelaces-on-white-warm-shoes-closeup-picture-id1322089123?b=1&k=20&m=1322089123&s=170667a&w=0&h=QdFmjLSq4yaeFGQP26YF9DHfH_q1_HpCWYFjjj9i8Do="
+      },
+      {
+        "image_id": 42,
+        "image_url": "https://cdn.pixabay.com/photo/2021/04/16/16/19/boots-6183972__480.jpg"
+      },
+      {
+        "image_id": 43,
+        "image_url": "https://media.istockphoto.com/photos/blank-white-soccer-boots-pair-mockup-top-view-picture-id1218613995?b=1&k=20&m=1218613995&s=170667a&w=0&h=w_cG6zkYSCDdXlfFRq0fAIPpb0lcADG5j4imjToKE_M="
+      },
+      {
+        "image_id": 44,
+        "image_url": "https://media.istockphoto.com/photos/leather-warm-boot-on-white-background-picture-id1283302983?b=1&k=20&m=1283302983&s=170667a&w=0&h=bzKVYBXNo6dKeqsVa0VPzuJgseKqGxI_RH2OpIBmxgE="
+      }
+    ],
+    "sizes": [
+      {
+        "size_id": 1,
+        "size": "220",
+        "stock": 1
+      },
+      {
+        "size_id": 2,
+        "size": "230",
+        "stock": 2
+      },
+      {
+        "size_id": 3,
+        "size": "240",
+        "stock": 0
+      },
+      {
+        "size_id": 4,
+        "size": "250",
+        "stock": 4
+      },
+      {
+        "size_id": 5,
+        "size": "260",
+        "stock": 5
+      },
+      {
+        "size_id": 6,
+        "size": "270",
+        "stock": 6
+      },
+      {
+        "size_id": 7,
+        "size": "280",
+        "stock": 7
+      }
+    ],
+    "price": 280000,
+    "colors": [
+      {
+        "product_id": 13,
+        "color_id": 1,
+        "color": "블랙",
+        "color_img": "https://dbscthumb-phinf.pstatic.net/2765_000_332/20190219022715024_WRSM0066I.jpg/9414329.jpg?type=m250&wm=N"
+      },
+      {
+        "product_id": 38,
+        "color_id": 5,
+        "color": "화이트",
+        "color_img": "https://www.analogouscolors.com/image/1080x1920/ffffff.gif"
+      }
+    ],
+    "product_number": "15265100",
+    "country": "중국 외 기타국가 (택 참조)",
+    "material": "POLISHED SMOOTH"
+  }
+}
