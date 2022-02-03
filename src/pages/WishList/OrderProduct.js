@@ -1,40 +1,24 @@
-import react from 'react';
+//import react from 'react';
+import WISHLIST_DATA from './WishListData';
+import ProductList from './ProductList';
 
 const OrderProduct = () => {
   return (
     <div className="cartBoxContainer">
       <ul className="orderProductList">
-        <li className="itemList">
-          <div className="productContainer">
-            <div className="productBox">
-              <img src="images/main/main0.jpg" alt="productimage" />
-              <div className="productInfoBox">
-                <div className="productInfo">
-                  <h2>제품명</h2>
-                  <ul className="productDetail">
-                    <li>컬러 : </li>
-                    <li>사이즈 : </li>
-                    <li>수량 : </li>
-                    <li className="point">포인트 사용 불가</li>
-                  </ul>
-                </div>
-                <div className="productPrice">
-                  <span className="mark">₩</span>
-                  <span className="price">300000</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="productFooter">
-            <div className="wishButton">
-              <img alt="heartbutton" src="images/header/icon-heart.png" />
-              <span>200</span>
-            </div>
-            <div className="wishListButton">
-              <button>위시리스트 담기</button>
-            </div>
-          </div>
-        </li>
+        {WISHLIST_DATA.map(product => {
+          return (
+            <ProductList
+              key={product.id}
+              name={product.product_name}
+              img={product.thumbnail_img}
+              price={product.price}
+              color={product.color}
+              size={product.size}
+              option={product.option}
+            />
+          );
+        })}
       </ul>
     </div>
   );
