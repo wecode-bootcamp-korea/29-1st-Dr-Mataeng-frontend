@@ -1,4 +1,6 @@
 import React from 'react';
+import OrderProduct from './OrderProduct';
+import OrderPrice from './OrderPrice';
 
 const Cart = () => {
   return (
@@ -19,7 +21,10 @@ const Cart = () => {
           </div>
         </div>
       </div>
-      <div className="cart container"></div>
+      <div className="cart container">
+        <OrderProduct />
+        <OrderPrice />
+      </div>
     </div>
   );
 };
