@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "modelName": "1461 모노",
+    "modelImage": "/images/search/product.png",
+    "price": "190,000",
+    "color": "블랙",
+    "yearOfManufacture": "제품라벨 표기",
+    "countryOfManufacture": "태국",
+    "material": "SMOOTH/천연가죽(소가죽)"
+  },
+  {
+    "id": 2,
+    "modelName": "1461 모노",
+    "modelImage": "/images/search/product.png",
+    "price": "190,000",
+    "color": "블랙",
+    "yearOfManufacture": "제품라벨 표기",
+    "countryOfManufacture": "태국",
+    "material": "SMOOTH/천연가죽(소가죽)"
+  },
+  {
+    "id": 3,
+    "modelName": "1461 모노",
+    "modelImage": "/images/search/product.png",
+    "price": "190,000",
+    "color": "블랙",
+    "yearOfManufacture": "제품라벨 표기",
+    "countryOfManufacture": "태국",
+    "material": "SMOOTH/천연가죽(소가죽)"
+  },
+  {
+    "id": 4,
+    "modelName": "1461 모노",
+    "modelImage": "/images/search/product.png",
+    "price": "190,000",
+    "color": "블랙",
+    "yearOfManufacture": "제품라벨 표기",
+    "countryOfManufacture": "태국",
+    "material": "SMOOTH/천연가죽(소가죽)"
+  }
+]
