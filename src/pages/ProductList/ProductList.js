@@ -6,9 +6,11 @@ import Filter from './Filter';
 
 const ProductList = () => {
   const [itemList, setItemList] = useState([]);
-  const [filterShow, setFilterShow] = useState('');
+  const [filterShow, setFilterShow] = useState(false);
 
-  const handleFilter = e => {};
+  const filterHandler = () => {
+    setFilterShow(!filterShow);
+  };
 
   useEffect(() => {
     fetch('/data/productList.json', { method: 'GET' })
@@ -19,7 +21,7 @@ const ProductList = () => {
   }, []);
 
   return (
-    <section className="Search">
+    <section className="ProductList">
       <div className="titleWrap">
         <Link to="/Main" className="goBackBtn">
           <img
@@ -40,9 +42,9 @@ const ProductList = () => {
         <div className="filterBtnWrap">
           <button className="filterIcon" />
           <span className="btnName">필터</span>
-          <button className="arrowIcon" />
+          <button className="arrowIcon" onClick={filterHandler} />
         </div>
-        <div>
+        <div className={filterShow ? 'filterActive' : 'filterHide'}>
           <Filter />
         </div>
       </div>

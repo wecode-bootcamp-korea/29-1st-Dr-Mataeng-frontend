@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "modelName": "1461 모노",
+    "modelName": "1461 모노1",
     "modelImage": "/images/search/product.png",
     "price": "190,000",
     "color": "블랙",
@@ -11,9 +11,9 @@
   },
   {
     "id": 2,
-    "modelName": "1461 모노",
+    "modelName": "1461 모노2",
     "modelImage": "/images/search/product.png",
-    "price": "190,000",
+    "price": "180,000",
     "color": "블랙",
     "yearOfManufacture": "제품라벨 표기",
     "countryOfManufacture": "태국",
@@ -21,9 +21,9 @@
   },
   {
     "id": 3,
-    "modelName": "1461 모노",
+    "modelName": "1461 모노3",
     "modelImage": "/images/search/product.png",
-    "price": "190,000",
+    "price": "170,000",
     "color": "블랙",
     "yearOfManufacture": "제품라벨 표기",
     "countryOfManufacture": "태국",
@@ -31,9 +31,9 @@
   },
   {
     "id": 4,
-    "modelName": "1461 모노",
+    "modelName": "1461 모노4",
     "modelImage": "/images/search/product.png",
-    "price": "190,000",
+    "price": "160,000",
     "color": "블랙",
     "yearOfManufacture": "제품라벨 표기",
     "countryOfManufacture": "태국",
