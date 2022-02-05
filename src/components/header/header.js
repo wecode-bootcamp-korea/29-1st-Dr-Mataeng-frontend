@@ -85,14 +85,11 @@ const Header = () => {
                 return (
                   <Link
                     className={btnName}
-                    // to={linkUrl}
-                    to={{
-                      // pathname: `${linkUrl}`,
-                      pathname: `/main`,
-                      state: {
-                        data1: '1',
-                        data2: '2',
-                      },
+                    to={linkUrl}
+                    state={{
+                      inputValue: inputValue,
+                      productFilter:
+                        '여기에 백에서 전달받은 data를 집어넣어야 한닷!!!',
                     }}
                     key={id}
                     onClick={event => preventLinkHandler({ id, event })}
