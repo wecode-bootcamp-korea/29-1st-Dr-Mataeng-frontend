@@ -2,6 +2,7 @@ import React from 'react';
 import './Search.scss';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router';
 
 const Search = () => {
   const [itemList, setItemList] = useState([]);
@@ -14,6 +15,10 @@ const Search = () => {
       });
   }, []);
 
+  // useLocation hook으로 props 받아오기
+  const location = useLocation();
+  console.log(location.state.inputValue);
+
   return (
     <section className="Search">
       <div className="titleWrap">
@@ -24,7 +29,7 @@ const Search = () => {
             src="/images/search/icon-left-arrow.png"
           />
         </Link>
-        <h1 className="mainTitle">"검색어 props"</h1>
+        <h1 className="mainTitle">{location.state.inputValue}</h1>
         <span className="mediumTitle">검색결과를 확인하세요</span>
         <span className="productIntroduction">
           여성 슈즈 컬렉션은 노동자 계층과 서브컬처에서 출발해 대중과
