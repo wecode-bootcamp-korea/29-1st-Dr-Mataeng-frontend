@@ -1,6 +1,7 @@
 import React from 'react';
 import OrderPrice from './OrderPrice';
-import OrderProduct from './OrderProduct';
+import WISHLIST_DATA from './WishListData';
+import ProductList from './ProductList';
 
 const Cart = () => {
   return (
@@ -22,7 +23,23 @@ const Cart = () => {
         </div>
       </div>
       <div className="cartBox">
-        <OrderProduct />
+        <div className="cartBoxContainer">
+          <ul className="orderProductList">
+            {WISHLIST_DATA.map(product => {
+              return (
+                <ProductList
+                  key={product.id}
+                  name={product.product_name}
+                  img={product.thumbnail_img}
+                  price={product.price}
+                  color={product.color}
+                  size={product.size}
+                  option={product.option}
+                />
+              );
+            })}
+          </ul>
+        </div>
         <OrderPrice />
       </div>
     </div>
