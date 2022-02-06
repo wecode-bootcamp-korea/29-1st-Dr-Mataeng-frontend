@@ -15,6 +15,8 @@ const Search = () => {
       });
   }, []);
 
+  console.log(itemList.length);
+
   // useLocation hook으로 props 받아오기
   const location = useLocation();
   console.log(location.state.inputValue);
@@ -30,7 +32,11 @@ const Search = () => {
           />
         </Link>
         <h1 className="mainTitle">{location.state.inputValue}</h1>
-        <span className="mediumTitle">검색결과를 확인하세요</span>
+        {itemList.length > 0 ? (
+          <span className="mediumTitle">검색결과를 확인하세요</span>
+        ) : (
+          <span className="mediumTitle">검색어를 다시 한 번 확인하세요</span>
+        )}
         <span className="productIntroduction">
           여성 슈즈 컬렉션은 노동자 계층과 서브컬처에서 출발해 대중과
           셀러브리티에게 사랑받고 있습니다. 매해 새롭게 등장하는 슈즈 컬렉션은
