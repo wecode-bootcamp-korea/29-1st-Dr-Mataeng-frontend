@@ -2,24 +2,43 @@ import React from 'react';
 import './ProductDetail.scss';
 import { useState, useEffect } from 'react';
 import ProductStock from './ProductStock';
+import { useNavigate } from 'react-router';
 
 const ProductDetail = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [contentRight, secContentRight] = useState('');
   const [quantityValue, setquantityValue] = useState(1);
   const [productData, setProductData] = useState([]);
+  const [sizeChoiceValue, setSizeChoiceValue] = useState('');
 
-  // 데이터 받아오기
+  // mock 데이터 받아오기
   // error : 객체안의 객체 접근 시 에러 발생 (ex productData.result.id) 하므로 data를 받아올 때 result를 받아와야 함
+  // useEffect(() => {
+  //   fetch('/data/productDetailData.json', {
+  //     method: 'GET',
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => setProductData(data.result));
+  // }, []);
+
+  // const a = productData.sizes[0].stock;
+  const b = productData.sizes;
+  const c = b;
+  // console.log(c[0]);
+
+  // 백엔드 데이터 연동
   useEffect(() => {
-    fetch('/data/productDetailData.json', {
+    fetch('http://10.58.4.82:8000/products/38', {
       method: 'GET',
     })
       .then(res => res.json())
-      .then(data => setProductData(data.result));
+      .then(data => {
+        setProductData(data.result);
+        setSizeChoiceValue(data.result.sizes[0].size);
+      });
   }, []);
 
-  // // 우측 엘리먼트 고정
+  // 우측 엘리먼트 고정
   const handleFollow = () => {
     setScrollPosition(window.pageYOffset);
     if (scrollPosition >= 125) {
@@ -41,42 +60,85 @@ const ProductDetail = () => {
 
   // 수량 조절 (error : 고정되지 않는 value)
   const quantityCountHandler = event => {
-    if (quantityValue > 0 && event.target.className === 'quantityPlus')
+    // 사이즈 체크에 따른 stock값 불러오기
+    const sizeDataFilter = productData.sizes?.filter(
+      el => el.size === sizeChoiceValue
+    );
+    const sizeDataStock = sizeDataFilter[0].stock;
+
+    if (
+      quantityValue > 0 &&
+      event.target.className === 'quantityPlus' &&
+      quantityValue < sizeDataStock
+    ) {
       setquantityValue(quantityValue + 1);
-    else if (quantityValue > 1 && event.target.className === 'quantityMinus')
+    } else if (
+      quantityValue > 1 &&
+      event.target.className === 'quantityMinus'
+    ) {
       setquantityValue(quantityValue - 1);
+    } else if (quantityValue === sizeDataStock) {
+      alert(`해당 옵션의 최대 구매 가능 수량은 ${sizeDataStock}개 입니다.`);
+    }
   };
 
   // 수량 조절 (타겟 벨류가 넘버타입으로 들어가야 위 +,-버튼 클릭 시 넘버타입으로 인식함)
   // onChange(input값이 바뀌는 경우), onKeyup(0을 입력한 순간을 캐치) 중복 들어감. onChage를 빼면 고정되지 않은 value 오류
   const quantityValueHandler = event => {
+    // 사이즈 체크에 따른 stock값 불러오기
+    const sizeDataFilter = productData.sizes?.filter(
+      el => el.size === sizeChoiceValue
+    );
+    const sizeDataStock = sizeDataFilter[0].stock;
+
     setquantityValue(Number(event.target.value));
 
     if (quantityValue === 0) {
       alert('수량은 최소 1개 이상 선택하셔야 합니다.');
       setquantityValue(1);
+    } else if (quantityValue > sizeDataStock) {
+      alert(`해당 옵션의 최대 구매 가능 수량은 ${sizeDataStock}개 입니다.`);
+      setquantityValue(sizeDataStock);
     }
+  };
+
+  // size데이터 받아오는 이벤트
+  const sizeDataGetHandler = event => {
+    setSizeChoiceValue(event.target.value);
+  };
+
+  // 남은 작업 내용 1 : 장바구니 버튼 클릭 시 데이터 전송
+  // 남은 작업 내용 2 : 백엔드님과 키 값 맞추기 or 데이터 연동하기
+  const CartBtnClickHandler = () => {
+    fetch('http://10.58.4.82:8000/products/38', {
+      method: 'POST',
+      body: JSON.stringify({
+        size: sizeChoiceValue,
+        stock: quantityValue,
+      }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        setProductData(data.result);
+        console.log('하이');
+      });
+
+    // 남은 작업 내용 3 : 페이지 이동 이벤트 걸기
+    const navigate = useNavigate();
   };
 
   return (
     <section className="ProductDetail">
       <div className="ProductDetailContainer">
         <div className="productImgWrap">
-          <img
-            alt="detail img"
-            className="detailImg"
-            src="/images/productDetail/productDetail.jpeg"
-          />
-          <img
-            alt="detail img"
-            className="detailImg"
-            src="/images/productDetail/productDetail.jpeg"
-          />
-          <img
-            alt="detail img"
-            className="detailImg"
-            src="/images/productDetail/productDetail.jpeg"
-          />
+          {productData.images?.map(({ image_id, image_url }) => (
+            <img
+              key={image_id}
+              alt="detail img"
+              className="detailImg"
+              src={image_url}
+            />
+          ))}
         </div>
         <div className="contentWrap">
           <div className={contentRight}>
@@ -97,7 +159,7 @@ const ProductDetail = () => {
                       src="/images/productDetail/icon-love.png"
                     />
                   </button>
-                  <span className="wishConut">0</span>
+                  <span className="wishConut">{productData.like}</span>
                 </div>
               </div>
               <div className="gradeStarWrap">
@@ -116,7 +178,7 @@ const ProductDetail = () => {
             <div className="memberBenefitsWrap">
               <button className="memberBenefits">회원 혜택 보기</button>
             </div>
-            <ul className="productDetailOptions">
+            {/* <ul className="productDetailOptions">
               {productData.sizes &&
                 productData.sizes.map(({ size_id, size, stock }) => (
                   <ProductStock
@@ -126,7 +188,24 @@ const ProductDetail = () => {
                     stock={stock}
                   />
                 ))}
-            </ul>
+            </ul> */}
+            <div className="sizeChoiceWrap">
+              <span className="sizeTitle">사이즈 선택</span>
+              <select className="sizeOptions" onChange={sizeDataGetHandler}>
+                {productData.sizes?.map(({ size_id, size, stock }) => (
+                  <option
+                    value={size}
+                    className="size"
+                    key={size_id}
+                    disabled={stock === 0}
+                  >
+                    {size}
+                    {stock < 5 && ' - 재고 5개 미만'}
+                    {stock <= 0 && ' - 일시품절'}
+                  </option>
+                ))}
+              </select>
+            </div>
             <div className="productThumbnailWrap">
               <div className="productThumbnailContainer">
                 <img
@@ -165,7 +244,11 @@ const ProductDetail = () => {
               </span>
             </div>
             <div className="cartAndBuyBtn">
-              <button type="button" className="cartBtn">
+              <button
+                type="button"
+                className="cartBtn"
+                onClick={CartBtnClickHandler}
+              >
                 장바구니
               </button>
               <button type="button" className="buyBtn">
