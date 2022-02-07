@@ -1,7 +1,13 @@
 import React from 'react';
+import './Main.scss';
+import ImageSlide from '../Main/ImageSlide';
 
 const Main = () => {
-  return <h1>hi</h1>;
+  return (
+    <>
+      <ImageSlide />
+    </>
+  );
 };
 
 export default Main;
