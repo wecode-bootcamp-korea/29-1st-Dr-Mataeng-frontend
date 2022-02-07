@@ -98,7 +98,7 @@ const Login = () => {
               </form>
               <div className="utilContainer">
                 <div className="saveId">
-                  <input type="checkbox" onClick={handleCheckbox} />
+                  <input type="checkbox" />
                   아이디 자동저장
                 </div>
                 <div className="findId">
