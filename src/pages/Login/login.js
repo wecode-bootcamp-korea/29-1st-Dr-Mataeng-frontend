@@ -53,7 +53,7 @@ const Login = () => {
         <div className="loginHead">
           <div className="loginHeadTop">
             <button className="loginHeadTop backButton" onClick={goToMain}>
-              <img src="images/backBotton.png" alt="뒤로가기" />
+              <img src="/images/backBotton.png" alt="뒤로가기" />
             </button>
           </div>
           <div className="loginHeadBottom">
