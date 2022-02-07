@@ -55,27 +55,26 @@ const Login = () => {
   };
 
   const loginValidation = () => {
-    inputReset();
-    // fetch('http://10.58.2.127:8000/users/signin', {
-    //   method: 'POST',
-    //   body: JSON.stringify({
-    //     username: loginInput.id,
-    //     password: loginInput.pw,
-    //   }),
-    // })
-    //   .then(response => response.json())
-    //   .then(result => {
-    //     if (result.message === 'INVALID_USER(PASSWORD)') {
-    //       alert('비밀번호가 틀렸습니다.');
-    //       inputReset();
-    //     } else if (result.message === 'INVALID_USER(USERNAME)') {
-    //       alert('존재하지 않는 아이디입니다.');
-    //       inputReset();
-    //     } else {
-    //       inputReset();
-    //       goToMain();
-    //     }
-    //   });
+    fetch('http://10.58.2.127:8000/users/signin', {
+      method: 'POST',
+      body: JSON.stringify({
+        username: loginInput.id,
+        password: loginInput.pw,
+      }),
+    })
+      .then(response => response.json())
+      .then(result => {
+        if (result.message === 'INVALID_USER(PASSWORD)') {
+          alert('비밀번호가 틀렸습니다.');
+          inputReset();
+        } else if (result.message === 'INVALID_USER(USERNAME)') {
+          alert('존재하지 않는 아이디입니다.');
+          inputReset();
+        } else {
+          inputReset();
+          goToMain();
+        }
+      });
   };
 
   return (
