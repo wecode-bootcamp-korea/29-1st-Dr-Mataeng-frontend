@@ -1,6 +1,6 @@
 import React from 'react';
 import './ProductList.scss';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Filter from './Filter';
 
@@ -13,10 +13,12 @@ const ProductList = () => {
   };
 
   useEffect(() => {
-    fetch('/data/productList.json', { method: 'GET' })
+    fetch('http://10.58.4.82:8000/products?category=부츠&gender=여성,공용', {
+      method: 'GET',
+    })
       .then(res => res.json())
       .then(data => {
-        setItemList(data);
+        setItemList(data.result);
       });
   }, []);
 
@@ -52,39 +54,52 @@ const ProductList = () => {
       <div className="productListWrap">
         <h1 className="productCount">제품 &#40;{itemList.length}&#41;</h1>
         <ul className="productList">
-          {itemList.map(({ id, modelName, modelImage, price, color }) => (
-            <li className="product" key={id}>
-              <Link
-                to="/search/result?dm_search_text={동적 라우팅}"
-                className="productImgWrap"
-              >
-                <img alt="product" className="productImg" src={modelImage} />
-              </Link>
-              <div className="contentWrap">
-                <div className="contentLeft">
-                  <Link
-                    to="/search/result?dm_search_text={동적 라우팅}"
-                    className="name"
-                  >
-                    {modelName}
-                  </Link>
-                  <span className="color">{color}</span>
-                  <button className="likeConutWrap">
-                    <img
-                      alt="heart icon"
-                      className="heartIcon"
-                      src="/images/productList/icon-heart.png"
-                    />
-                    <span className="likeConut">0</span>
-                  </button>
+          {itemList.map(
+            ({
+              product_id,
+              product_name,
+              thumbnail_img,
+              price,
+              product_color,
+              total_stock,
+            }) => (
+              <li className="product" key={product_id}>
+                <Link
+                  to="/search/result?dm_search_text={동적 라우팅}"
+                  className="productImgWrap"
+                >
+                  <img
+                    alt="product"
+                    className="productImg"
+                    src={thumbnail_img}
+                  />
+                </Link>
+                <div className="contentWrap">
+                  <div className="contentLeft">
+                    <Link
+                      to="/search/result?dm_search_text={동적 라우팅}"
+                      className="name"
+                    >
+                      {product_name}
+                    </Link>
+                    <span className="color">{product_color}</span>
+                    <button className="likeConutWrap">
+                      <img
+                        alt="heart icon"
+                        className="heartIcon"
+                        src="/images/productList/icon-heart.png"
+                      />
+                      <span className="likeConut">0</span>
+                    </button>
+                  </div>
+                  <div className="contentRight">
+                    <span className="price">{price}</span>
+                    <button className="cartBtn">장바구니 담기</button>
+                  </div>
                 </div>
-                <div className="contentRight">
-                  <span className="price">{price}</span>
-                  <button className="cartBtn">장바구니 담기</button>
-                </div>
-              </div>
-            </li>
-          ))}
+              </li>
+            )
+          )}
         </ul>
       </div>
     </section>
