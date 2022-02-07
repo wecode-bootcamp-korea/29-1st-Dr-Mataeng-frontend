@@ -35,7 +35,7 @@
 
   .infoWrap {
     width: 413px;
-    padding: 40px 0;
+    padding: 40px 0 20px 0;
 
     .infoGreetingsWrap {
       padding-bottom: 28px;
@@ -120,6 +120,18 @@
           border-bottom: 2px solid #111;
           display: inline-block;
         }
+      }
+    }
+
+    .userLogout {
+      margin-top: 40px;
+      display: flex;
+      justify-content: flex-end;
+
+      .logout {
+        font-size: $fontSmall;
+        background-color: transparent;
+        color: $fontGray;
       }
     }
   }

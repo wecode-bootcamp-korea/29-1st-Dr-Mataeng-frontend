@@ -46,6 +46,9 @@ const Mypage = () => {
             />
           ))}
         </div>
+        <div className="userLogout">
+          <button className="logout">로그아웃</button>
+        </div>
       </section>
     </main>
   );
