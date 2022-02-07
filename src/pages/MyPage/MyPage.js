@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import MypagePoints from './MypagePoints';
 import './MyPage.scss';
 
@@ -6,6 +7,7 @@ const Mypage = () => {
   const handleLogout = () => {
     localStorage.removeItem('token');
     alert('로그아웃 되었습니다.');
+    document.location.href = 'main';
   };
 
   return (
