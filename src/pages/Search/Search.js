@@ -2,11 +2,12 @@ import React from 'react';
 import './Search.scss';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router';
+// import { useLocation } from 'react-router';
 
 const Search = () => {
   const [itemList, setItemList] = useState([]);
 
+  // Connect : mock 데이터 연결
   useEffect(() => {
     fetch('/data/search.json', { method: 'GET' })
       .then(res => res.json())
@@ -15,16 +16,14 @@ const Search = () => {
       });
   }, []);
 
-  console.log(itemList.length);
+  // Event : 페이지 전환 시 전달 받았던 props를 useLocation hook으로 받아오기
+  // const location = useLocation();
+  // console.log(location.state.inputValue);
 
-  // useLocation hook으로 props 받아오기
-  const location = useLocation();
-  console.log(location.state.inputValue);
-
-  // 데이터 연동 후 데이터 받아오기
+  // Connect : 백엔드와 연동하여 필터 로직 받아오기
   // useEffect(() => {
   //   fetch('/data/search.json', {
-  //     method: 'GET',
+  //     method: 'POST',
   //     body: JSON.stringify({
   //       name: {location.state.inputValue},
   //     }),
@@ -46,7 +45,7 @@ const Search = () => {
           />
         </Link>
         <h1 className="mainTitle">
-          "{location.state.inputValue}"
+          {/* "{location.state.inputValue}" */}
           {itemList.length <= 0 && <span>검색결과가 존재하지 않습니다.</span>}
         </h1>
         {itemList.length > 0 ? (
@@ -54,17 +53,6 @@ const Search = () => {
         ) : (
           <span className="mediumTitle">검색어를 다시 한 번 확인하세요</span>
         )}
-        <span className="productIntroduction">
-          여성 슈즈 컬렉션은 노동자 계층과 서브컬처에서 출발해 대중과
-          셀러브리티에게 사랑받고 있습니다. 매해 새롭게 등장하는 슈즈 컬렉션은
-          오리지널 실루엣 뿐만 아니라 트렌드에 걸맞는 컨템포러리한 디자인을 통해
-          우리의 헤리티지를 이어오고 있습니다.
-        </span>
-        <div className="filterBtnWrap">
-          <button className="filterIcon" />
-          <span className="btnName">필터</span>
-          <button className="arrowIcon" />
-        </div>
       </div>
       <div className="borderLine" />
       <div className="productListWrap">

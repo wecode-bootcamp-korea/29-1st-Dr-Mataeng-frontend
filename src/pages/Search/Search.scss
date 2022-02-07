@@ -31,43 +31,6 @@
       font-size: $fontMedium;
       color: $fontGray;
     }
-
-    .productIntroduction {
-      font-size: $fontMedium;
-      line-height: 25px;
-      color: $fontBlack;
-      display: none;
-    }
-
-    .filterBtnWrap {
-      @include elementPosition(flex, row, flex-end);
-      align-items: center;
-      margin-top: 20px;
-      display: none;
-
-      .filterIcon {
-        width: 25px;
-        height: 25px;
-        background: url('../../../public/images/search/icon-filter.png');
-        @include backgroundImgSetting;
-        cursor: pointer;
-      }
-
-      .btnName {
-        font-size: $fontMedium;
-        font-weight: $fontBold;
-        color: $fontBlack;
-        margin: 0 10px 0 5px;
-      }
-
-      .arrowIcon {
-        width: 13px;
-        height: 13px;
-        background: url('../../../public/images/search/icon-down-chevron.png');
-        @include backgroundImgSetting;
-        cursor: pointer;
-      }
-    }
   }
 
   .borderLine {
