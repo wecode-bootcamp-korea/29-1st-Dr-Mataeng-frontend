@@ -3,6 +3,10 @@ import MypagePoints from './MypagePoints';
 import './MyPage.scss';
 
 const Mypage = () => {
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+  };
+
   return (
     <main className="Mypage">
       <section className="imgUploadWrap">
@@ -47,7 +51,9 @@ const Mypage = () => {
           ))}
         </div>
         <div className="userLogout">
-          <button className="logout">로그아웃</button>
+          <button className="logout" onClick={handleLogout}>
+            로그아웃
+          </button>
         </div>
       </section>
     </main>
