@@ -51,6 +51,7 @@
 
   .loginWrapper {
     @include containerWrapper;
+    margin-bottom: 144px;
 
     .header {
       .title {
@@ -143,10 +144,8 @@
     }
 
     .saveId {
-      span {
-        font-size: 18px;
-        color: #666;
-      }
+      font-size: 18px;
+      color: #666;
     }
 
     .findId {
