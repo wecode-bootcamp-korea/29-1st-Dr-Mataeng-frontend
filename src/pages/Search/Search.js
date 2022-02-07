@@ -21,6 +21,20 @@ const Search = () => {
   const location = useLocation();
   console.log(location.state.inputValue);
 
+  // 데이터 연동 후 데이터 받아오기
+  // useEffect(() => {
+  //   fetch('/data/search.json', {
+  //     method: 'GET',
+  //     body: JSON.stringify({
+  //       name: {location.state.inputValue},
+  //     }),
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       setSearchData(...data);
+  //     });
+  // }, []);
+
   return (
     <section className="Search">
       <div className="titleWrap">
@@ -31,7 +45,10 @@ const Search = () => {
             src="/images/search/icon-left-arrow.png"
           />
         </Link>
-        <h1 className="mainTitle">{location.state.inputValue}</h1>
+        <h1 className="mainTitle">
+          "{location.state.inputValue}"
+          {itemList.length <= 0 && <span>검색결과가 존재하지 않습니다.</span>}
+        </h1>
         {itemList.length > 0 ? (
           <span className="mediumTitle">검색결과를 확인하세요</span>
         ) : (

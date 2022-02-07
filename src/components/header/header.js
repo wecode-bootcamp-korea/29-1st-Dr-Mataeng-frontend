@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Nav from './Nav';
+import { useNavigate } from 'react-router';
 
 import './header.scss';
 
@@ -27,19 +28,19 @@ const Header = () => {
     }
   };
 
-  // 1. 데이터 필터 처리하여 받아오는 로직
-  // useEffect(() => {
-  //   fetch('/data/comment.json', {
-  //     method: 'POST',
-  //     body: JSON.stringify({
-  //       name: inputValue,
-  //     }),
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       setSearchData(...data);
-  //     });
-  // }, [inputValue]);
+  // event4 : 엔터 키 누르면 페이지 이동
+  const navigate = useNavigate();
+
+  const handleClick = event => {
+    if (event.key === 'Enter' && inputValue.length > 0) {
+      navigate('/Search', {
+        state: {
+          inputValue: inputValue,
+          productFilter: '여기에 백에서 전달받은 data를 집어넣어야 한닷!!!',
+        },
+      });
+    }
+  };
 
   return (
     <header className="Header">
@@ -78,6 +79,7 @@ const Header = () => {
             className="searchInput"
             placeholder="검색어를 입력해주세요."
             onChange={inputValueRecord}
+            onKeyPress={handleClick}
           />
           <div className="iconListWrap">
             {HEADER_ICON_LIST.map(
