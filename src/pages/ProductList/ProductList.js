@@ -61,11 +61,14 @@ const ProductList = () => {
               thumbnail_img,
               price,
               product_color,
-              total_stock,
+              product_like,
             }) => (
               <li className="product" key={product_id}>
                 <Link
-                  to="/search/result?dm_search_text={동적 라우팅}"
+                  to={{
+                    pathname: '/search/result?dm_search_text={동적 라우팅}',
+                    state: { product_id },
+                  }}
                   className="productImgWrap"
                 >
                   <img
@@ -89,7 +92,7 @@ const ProductList = () => {
                         className="heartIcon"
                         src="/images/productList/icon-heart.png"
                       />
-                      <span className="likeConut">0</span>
+                      <span className="likeConut">{product_like}</span>
                     </button>
                   </div>
                   <div className="contentRight">
