@@ -1,6 +1,10 @@
+import React from 'react';
+import { useState } from 'react';
 import './Filter.scss';
 
 function Filter() {
+  const [checked, setCheked] = useState();
+
   return (
     <div className="filter">
       <div className="filterWrap">
@@ -29,31 +33,31 @@ function Filter() {
             </li>
             <li className="filterInputItem" name="size">
               230
-              <input type="checkbox" />
+              <input type="checkbox" value="230" />
             </li>
             <li className="filterInputItem" name="size">
               240
-              <input type="checkbox" />
+              <input type="checkbox" value="240" />
             </li>
             <li className="filterInputItem" name="size">
               250
-              <input type="checkbox" />
+              <input type="checkbox" value="250" />
             </li>
             <li className="filterInputItem" name="size">
               260
-              <input type="checkbox" />
+              <input type="checkbox" value="260" />
             </li>
             <li className="filterInputItem" name="size">
               270
-              <input type="checkbox" />
+              <input type="checkbox" value="270" />
             </li>
             <li className="filterInputItem" name="size">
               280
-              <input type="checkbox" />
+              <input type="checkbox" value="280" />
             </li>
             <li className="filterInputItem" name="size">
               290
-              <input type="checkbox" />
+              <input type="checkbox" value="290" />
             </li>
           </ul>
           <ul className="filterSort">
