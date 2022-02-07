@@ -2,7 +2,6 @@ import React from 'react';
 import './ProductDetail.scss';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
-// import ProductStock from './ProductStock'; // 레이아웃 변경으로 인한 삭제
 
 const ProductDetail = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -98,26 +97,26 @@ const ProductDetail = () => {
     setSizeChoiceValue(event.target.value);
   };
 
-  // Event : 장바구니 버튼 클릭 시 POST body로 데이터 전송 및 알림창 생성
-  // 남은 작업 내용 1 : 장바구니 버튼 클릭 시 데이터 전송
-  // 남은 작업 내용 2 : 백엔드님과 키 값 맞추기 or 데이터 연동하기
-  const CartBtnClickHandler = () => {
-    fetch('http://10.58.4.82:8000/products/38', {
-      method: 'POST',
-      body: JSON.stringify({
-        size: sizeChoiceValue,
-        stock: quantityValue,
-      }),
-    })
-      .then(res => res.json())
-      .then(data => {
-        setProductData(data.result);
-        console.log('하이');
-      });
+  // // Event : 장바구니 버튼 클릭 시 POST body로 데이터 전송 및 알림창 생성
+  // // 남은 작업 내용 1 : 장바구니 버튼 클릭 시 데이터 전송
+  // // 남은 작업 내용 2 : 백엔드님과 키 값 맞추기 or 데이터 연동하기
+  // const CartBtnClickHandler = () => {
+  //   fetch('http://10.58.4.82:8000/products/38', {
+  //     method: 'POST',
+  //     body: JSON.stringify({
+  //       size: sizeChoiceValue,
+  //       stock: quantityValue,
+  //     }),
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       setProductData(data.result);
+  //       console.log('하이');
+  //     });
 
-    // 남은 작업 내용 3 : 페이지 이동 이벤트 걸기, alert창 띄우기
-    const navigate = useNavigate();
-  };
+  //   // 남은 작업 내용 3 : 페이지 이동 이벤트 걸기, alert창 띄우기
+  //   const navigate = useNavigate();
+  // };
 
   return (
     <section className="ProductDetail">
@@ -170,18 +169,6 @@ const ProductDetail = () => {
             <div className="memberBenefitsWrap">
               <button className="memberBenefits">회원 혜택 보기</button>
             </div>
-            {/* 레이아웃 변경으로 인한 삭제 */}
-            {/* <ul className="productDetailOptions">
-              {productData.sizes &&
-                productData.sizes.map(({ size_id, size, stock }) => (
-                  <ProductStock
-                    key={size_id}
-                    size_id={size_id}
-                    size={size}
-                    stock={stock}
-                  />
-                ))}
-            </ul> */}
             <div className="sizeChoiceWrap">
               <span className="sizeTitle">사이즈 선택</span>
               <select className="sizeOptions" onChange={sizeDataGetHandler}>
@@ -239,7 +226,7 @@ const ProductDetail = () => {
               <button
                 type="button"
                 className="cartBtn"
-                onClick={CartBtnClickHandler}
+                // onClick={CartBtnClickHandler}
               >
                 장바구니
               </button>

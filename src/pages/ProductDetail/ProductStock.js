@@ -7,19 +7,6 @@ const ProductStock = ({ size_id, size, stock }) => {
 
   const sizeStockCheckHandler = (size_id, event) => {
     setBtnActive(!btnActive);
-
-    // console.log(event.target);
-    // console.log(event.currentTarget);
-    // console.log(size_id);
-    // console.log(Number(event.target.name) === size_id);
-
-    // const checkboxes = document.getElementsByName('optionsBtnActive');
-    // console.log(checkboxes.className);
-
-    // checkboxes.forEach(checkboxes => {
-    //   checkboxes.className = setBtnActive(!btnActive);
-    //   console.log(checkboxes.className);
-    // });
   };
 
   return (
