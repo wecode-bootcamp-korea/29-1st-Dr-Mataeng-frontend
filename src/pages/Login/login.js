@@ -8,10 +8,6 @@ const Login = () => {
     id: '',
     pw: '',
   });
-  const [checkbox, setCheckbox] = useState(false);
-  const handleCheckbox = event => {
-    setCheckbox(event.target.checked);
-  };
 
   const { id, pw } = loginInput;
 
@@ -23,14 +19,6 @@ const Login = () => {
     };
     setLoginInput(nextInput);
   };
-
-  // const idValidation = () => {
-  //   return id.length > 0;
-  // };
-
-  // const pwValidation = () => {
-  //   return pw.length > 0;
-  // };
 
   const navigate = useNavigate();
   const goToMain = () => {
