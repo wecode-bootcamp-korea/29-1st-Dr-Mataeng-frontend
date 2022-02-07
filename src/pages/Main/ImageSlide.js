@@ -23,7 +23,7 @@ const ImageSlide = () => {
   };
 
   return (
-    <>
+    <React.Fragment>
       <div className="container">
         <div className="albums">
           <div className="images" style={{ left: count * 100 + '%' }}>
@@ -42,7 +42,7 @@ const ImageSlide = () => {
           <img src="images/icon/next.png" alt="next button" />
         </button>
       </div>
-    </>
+    </React.Fragment>
   );
 };
 
