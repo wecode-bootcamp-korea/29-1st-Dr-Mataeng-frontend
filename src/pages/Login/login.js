@@ -24,34 +24,17 @@ const Login = () => {
     setLoginInput(nextInput);
   };
 
-  const idValidation = () => {
-    return id.length > 0;
-  };
+  // const idValidation = () => {
+  //   return id.length > 0;
+  // };
 
-  const pwValidation = () => {
-    return pw.length > 0;
-  };
+  // const pwValidation = () => {
+  //   return pw.length > 0;
+  // };
 
   const navigate = useNavigate();
   const goToMain = () => {
     navigate('/Main');
-  };
-
-  const inputReset = () => {
-    console.log('체크됐냐?' + checkbox);
-    if (checkbox) {
-      setLoginInput({
-        id: loginInput.id,
-        pw: '',
-      });
-    } else {
-      setLoginInput({
-        id: '',
-        pw: '',
-      });
-    }
-
-    console.log(loginInput);
   };
 
   const loginValidation = () => {
@@ -66,13 +49,12 @@ const Login = () => {
       .then(result => {
         if (result.message === 'INVALID_USER(PASSWORD)') {
           alert('비밀번호가 틀렸습니다.');
-          inputReset();
         } else if (result.message === 'INVALID_USER(USERNAME)') {
           alert('존재하지 않는 아이디입니다.');
-          inputReset();
         } else {
-          inputReset();
           goToMain();
+          localStorage.setItem('id', 'loginInput.id');
+          localStorage.setItem('token', 'access_token');
         }
       });
   };
@@ -104,29 +86,23 @@ const Login = () => {
               <h3 className="formTitle">로그인</h3>
               <form className="loginFrom">
                 <div className="loginInput">
-                  <div className={idValidation() ? 'container' : 'redBorder'}>
+                  <div className="container">
                     <input
                       name="id"
                       valus={id}
                       type="text"
-                      placeholder={
-                        idValidation() ? '아이디' : '아이디는 필수 사항입니다.'
-                      }
+                      placeholder="아이디"
                       onChange={handleInput}
                     />
                   </div>
                 </div>
                 <div className="loginInput">
-                  <div className={pwValidation() ? 'container' : 'redBorder'}>
+                  <div className="container">
                     <input
                       name="pw"
                       value={pw}
                       type="password"
-                      placeholder={
-                        pwValidation()
-                          ? '비밀번호'
-                          : '비밀번호는 필수 사항입니다.'
-                      }
+                      placeholder="비밀번호"
                       onChange={handleInput}
                     />
                   </div>
