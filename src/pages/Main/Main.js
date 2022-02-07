@@ -4,9 +4,9 @@ import ImageSlide from '../Main/ImageSlide';
 
 const Main = () => {
   return (
-    <React.Fragment>
+    <>
       <ImageSlide />
-    </React.Fragment>
+    </>
   );
 };
 
