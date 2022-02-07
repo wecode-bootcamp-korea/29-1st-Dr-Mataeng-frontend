@@ -1,8 +1,8 @@
 import React from 'react';
 import './ProductDetail.scss';
 import { useState, useEffect } from 'react';
-import ProductStock from './ProductStock';
 import { useNavigate } from 'react-router';
+// import ProductStock from './ProductStock'; // 레이아웃 변경으로 인한 삭제
 
 const ProductDetail = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -11,8 +11,7 @@ const ProductDetail = () => {
   const [productData, setProductData] = useState([]);
   const [sizeChoiceValue, setSizeChoiceValue] = useState('');
 
-  // mock 데이터 받아오기
-  // error : 객체안의 객체 접근 시 에러 발생 (ex productData.result.id) 하므로 data를 받아올 때 result를 받아와야 함
+  // Connect : mock 데이터
   // useEffect(() => {
   //   fetch('/data/productDetailData.json', {
   //     method: 'GET',
@@ -21,12 +20,7 @@ const ProductDetail = () => {
   //     .then(data => setProductData(data.result));
   // }, []);
 
-  // const a = productData.sizes[0].stock;
-  const b = productData.sizes;
-  const c = b;
-  // console.log(c[0]);
-
-  // 백엔드 데이터 연동
+  // Connect : 백엔드와 데이터 연동
   useEffect(() => {
     fetch('http://10.58.4.82:8000/products/38', {
       method: 'GET',
@@ -38,7 +32,7 @@ const ProductDetail = () => {
       });
   }, []);
 
-  // 우측 엘리먼트 고정
+  // Event : 스크롤 이벤트, 우측 엘리먼트 고정
   const handleFollow = () => {
     setScrollPosition(window.pageYOffset);
     if (scrollPosition >= 125) {
@@ -58,9 +52,8 @@ const ProductDetail = () => {
     };
   });
 
-  // 수량 조절 (error : 고정되지 않는 value)
+  // Event : +, - 버튼으로 주문 수량 선택, 사이즈 재고별 limit 걸기
   const quantityCountHandler = event => {
-    // 사이즈 체크에 따른 stock값 불러오기
     const sizeDataFilter = productData.sizes?.filter(
       el => el.size === sizeChoiceValue
     );
@@ -82,10 +75,8 @@ const ProductDetail = () => {
     }
   };
 
-  // 수량 조절 (타겟 벨류가 넘버타입으로 들어가야 위 +,-버튼 클릭 시 넘버타입으로 인식함)
-  // onChange(input값이 바뀌는 경우), onKeyup(0을 입력한 순간을 캐치) 중복 들어감. onChage를 빼면 고정되지 않은 value 오류
+  // Event : 키보드 입력으로 주문 수량 작성, 사이즈 재고별 limit 걸기
   const quantityValueHandler = event => {
-    // 사이즈 체크에 따른 stock값 불러오기
     const sizeDataFilter = productData.sizes?.filter(
       el => el.size === sizeChoiceValue
     );
@@ -102,11 +93,12 @@ const ProductDetail = () => {
     }
   };
 
-  // size데이터 받아오는 이벤트
+  // Event : 사이즈 select value 받아오기
   const sizeDataGetHandler = event => {
     setSizeChoiceValue(event.target.value);
   };
 
+  // Event : 장바구니 버튼 클릭 시 POST body로 데이터 전송 및 알림창 생성
   // 남은 작업 내용 1 : 장바구니 버튼 클릭 시 데이터 전송
   // 남은 작업 내용 2 : 백엔드님과 키 값 맞추기 or 데이터 연동하기
   const CartBtnClickHandler = () => {
@@ -123,7 +115,7 @@ const ProductDetail = () => {
         console.log('하이');
       });
 
-    // 남은 작업 내용 3 : 페이지 이동 이벤트 걸기
+    // 남은 작업 내용 3 : 페이지 이동 이벤트 걸기, alert창 띄우기
     const navigate = useNavigate();
   };
 
@@ -178,6 +170,7 @@ const ProductDetail = () => {
             <div className="memberBenefitsWrap">
               <button className="memberBenefits">회원 혜택 보기</button>
             </div>
+            {/* 레이아웃 변경으로 인한 삭제 */}
             {/* <ul className="productDetailOptions">
               {productData.sizes &&
                 productData.sizes.map(({ size_id, size, stock }) => (
@@ -239,7 +232,6 @@ const ProductDetail = () => {
                 />
               </div>
               <span className="purchasePrice">
-                {/* String타입을 주지 않으면 에러남 ㅠ 왜그러니 */}
                 {String(productData.price * quantityValue)}
               </span>
             </div>
