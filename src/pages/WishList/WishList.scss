@@ -329,6 +329,11 @@
         color: #666666;
         display: flex;
         margin: 0;
+
+        .total {
+          color: black;
+          font-weight: 700;
+        }
       }
 
       .orderPrice {
