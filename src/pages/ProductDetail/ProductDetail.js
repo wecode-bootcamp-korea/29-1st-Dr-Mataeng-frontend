@@ -1,7 +1,7 @@
 import React from 'react';
 import './ProductDetail.scss';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router';
+// import { useNavigate } from 'react-router';
 
 const ProductDetail = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
