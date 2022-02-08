@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import INPUT_LIST from './InputList';
 import SignUpInput from './SignUpInput';
 import './SignUp.scss';
@@ -78,6 +78,13 @@ function SignUp() {
   return (
     <div className="signUp">
       <div className="baseWrapper">
+        <Link to="/Main" className="goBackBtn">
+          <img
+            alt="left arrow icon"
+            className="leftArrowIcon"
+            src="/images/search/icon-left-arrow.png"
+          />
+        </Link>
         <div className="signUpWrap">
           <h1>환영합니다.</h1>
           <h4>지금 바로 다양한 해택을 만나보세요.</h4>
