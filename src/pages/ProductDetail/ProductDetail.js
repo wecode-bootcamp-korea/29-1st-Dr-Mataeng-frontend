@@ -89,14 +89,18 @@ const ProductDetail = () => {
   };
 
   // Event : 장바구니 버튼 클릭 시 POST body로 데이터 전송 및 알림창 생성
-  const productParams = useParams();
-  console.log(productParams);
+  const Params = useParams();
+  console.log(Params);
 
   const CartBtnClickHandler = () => {
-    fetch('http://127.0.0.1:8000/carts', {
+    fetch('http://10.58.7.157:8000/carts', {
       method: 'POST',
+      header: {
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1fQ.wJO6SJNZeBgZWe8KLTo2flSDaL0KdDOA_oBpObKiRCw',
+      },
       body: JSON.stringify({
-        product_id: productParams.id, // FIXME : 백엔드 데이터 저장 잘 되는지 여쭤보기
+        product_id: Params.id, // FIXME : 백엔드 데이터 저장 잘 되는지 여쭤보기
         size: sizeChoiceValue,
         quantity: quantityValue,
       }),
