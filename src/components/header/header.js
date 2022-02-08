@@ -20,6 +20,7 @@ const Header = () => {
   };
 
   // Event : 검색어 입력 값 조건에 따른 Link태그 이동 막기
+  // event3 : 검색어 입력 값이 0 보다 작거나 같은 경우 Link태그 이동 막기
   const preventLinkHandler = ({ id, event }) => {
     if (id === 1) {
       if (inputValue.length <= 0) event.preventDefault();
