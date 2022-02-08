@@ -1,7 +1,7 @@
 import React from 'react';
 import './ProductDetail.scss';
 import { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router';
+import { useParams } from 'react-router';
 
 const ProductDetail = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -89,11 +89,14 @@ const ProductDetail = () => {
   };
 
   // Event : 장바구니 버튼 클릭 시 POST body로 데이터 전송 및 알림창 생성
+  const productParams = useParams();
+  console.log(productParams);
+
   const CartBtnClickHandler = () => {
     fetch('http://127.0.0.1:8000/carts', {
       method: 'POST',
       body: JSON.stringify({
-        product_id: productData.product_id, // FIXME : 상품 리스트에서 아이디 값 전달받기 or 백엔드 데이터 저장 잘 되는지 여쭤보기
+        product_id: productParams.id, // FIXME : 백엔드 데이터 저장 잘 되는지 여쭤보기
         size: sizeChoiceValue,
         quantity: quantityValue,
       }),
