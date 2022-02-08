@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../Login/Login.scss';
+import Footer from '../../components/footer/footer';
 
 const Login = () => {
   const [loginInput, setLoginInput] = useState({
@@ -19,17 +20,31 @@ const Login = () => {
     setLoginInput(nextInput);
   };
 
-  const idValidation = () => {
-    return id.length > 0;
-  };
-
-  const pwValidation = () => {
-    return pw.length > 0;
-  };
-
   const navigate = useNavigate();
   const goToMain = () => {
     navigate('/Main');
+  };
+
+  const loginValidation = () => {
+    fetch('http://10.58.2.127:8000/users/signin', {
+      method: 'POST',
+      body: JSON.stringify({
+        username: loginInput.id,
+        password: loginInput.pw,
+      }),
+    })
+      .then(response => response.json())
+      .then(result => {
+        if (result.message === 'INVALID_USER(PASSWORD)') {
+          alert('비밀번호가 틀렸습니다.');
+        } else if (result.message === 'INVALID_USER(USERNAME)') {
+          alert('존재하지 않는 아이디입니다.');
+        } else {
+          goToMain();
+          localStorage.setItem('id', 'loginInput.id');
+          localStorage.setItem('token', 'access_token');
+        }
+      });
   };
 
   return (
@@ -38,7 +53,7 @@ const Login = () => {
         <div className="loginHead">
           <div className="loginHeadTop">
             <button className="loginHeadTop backButton" onClick={goToMain}>
-              <img src="images/backBotton.png" alt="뒤로가기" />
+              <img src="/images/backBotton.png" alt="뒤로가기" />
             </button>
           </div>
           <div className="loginHeadBottom">
@@ -59,29 +74,23 @@ const Login = () => {
               <h3 className="formTitle">로그인</h3>
               <form className="loginFrom">
                 <div className="loginInput">
-                  <div className={idValidation() ? 'container' : 'redBorder'}>
+                  <div className="container">
                     <input
                       name="id"
                       valus={id}
                       type="text"
-                      placeholder={
-                        idValidation() ? '아이디' : '아이디는 필수 사항입니다.'
-                      }
+                      placeholder="아이디"
                       onChange={handleInput}
                     />
                   </div>
                 </div>
                 <div className="loginInput">
-                  <div className={pwValidation() ? 'container' : 'redBorder'}>
+                  <div className="container">
                     <input
                       name="pw"
                       value={pw}
                       type="password"
-                      placeholder={
-                        pwValidation()
-                          ? '비밀번호'
-                          : '비밀번호는 필수 사항입니다.'
-                      }
+                      placeholder="비밀번호"
                       onChange={handleInput}
                     />
                   </div>
@@ -90,14 +99,14 @@ const Login = () => {
               <div className="utilContainer">
                 <div className="saveId">
                   <input type="checkbox" />
-                  <span>아이디 자동저장</span>
+                  아이디 자동저장
                 </div>
                 <div className="findId">
                   <span>아이디/비밀번호 찾기</span>
                 </div>
               </div>
               <div className="loginButton">
-                <button>로그인</button>
+                <button onClick={loginValidation}>로그인</button>
               </div>
               <div className="signUpButton">
                 <button onClick={goToMain}>
@@ -108,8 +117,8 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };
-
 export default Login;

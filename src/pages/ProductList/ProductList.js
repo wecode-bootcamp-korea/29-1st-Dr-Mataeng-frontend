@@ -9,24 +9,23 @@ const ProductList = () => {
   const [filterShow, setFilterShow] = useState(false);
   const navigate = useNavigate();
 
-  const goToDetail = () => {
-    navigate(`/productDetail/${itemList.product_id}`);
-    console.log(itemList.product_id);
-  };
-
   const filterHandler = () => {
     setFilterShow(!filterShow);
   };
 
   useEffect(() => {
-    fetch('http://10.58.7.157:8000/products?category=부츠&gender=여성,공용', {
+    fetch('/data/productList.json', {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => {
-        setItemList(data.result);
+        setItemList(data);
       });
   }, []);
+
+  const goToDetail = productId => {
+    navigate(`/productDetail/${productId}`);
+  };
 
   return (
     <section className="ProductList">
@@ -70,7 +69,10 @@ const ProductList = () => {
               product_like,
             }) => (
               <li className="product" key={product_id}>
-                <div className="productImgWrap" onClick={goToDetail}>
+                <div
+                  className="productImgWrap"
+                  onClick={() => goToDetail(product_id)}
+                >
                   <img
                     alt="product"
                     className="productImg"
@@ -80,12 +82,9 @@ const ProductList = () => {
 
                 <div className="contentWrap">
                   <div className="contentLeft">
-                    <Link
-                      to="/search/result?dm_search_text={동적 라우팅}"
-                      className="name"
-                    >
+                    <div className="name" onClick={goToDetail}>
                       {product_name}
-                    </Link>
+                    </div>
                     <span className="color">{product_color}</span>
                     <button className="likeConutWrap">
                       <img
