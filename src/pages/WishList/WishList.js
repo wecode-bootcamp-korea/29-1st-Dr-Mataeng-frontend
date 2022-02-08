@@ -12,7 +12,6 @@ const WishList = () => {
     for (let i = 0; i < cartList.length; i++) {
       totalPrice += cartList[i].price;
     }
-    console.log(totalPrice);
     return totalPrice;
   };
 
