@@ -1,12 +1,18 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function ProductList(props) {
-  let { color, size, quantity, price, like, image, productName } = props;
+  let { key, color, size, quantity, price, like, image, productName } = props;
+
+  const navigate = useNavigate();
+  const goToDetail = () => {
+    navigate(`/productDetail/${key}`);
+  };
   return (
     <li className="itemList">
       <div className="productContainer">
         <div className="productBox">
-          <img src={image} alt="productimage" />
+          <img src={image} onClick={goToDetail} alt="productimage" />
           <div className="productInfoBox">
             <div className="productInfo">
               <h2>{productName}</h2>
