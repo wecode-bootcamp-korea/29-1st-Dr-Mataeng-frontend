@@ -6,14 +6,7 @@
   .baseWrapper {
     margin: 50px;
     width: 1140px;
-    .goBackBtn {
-      .leftArrowIcon {
-        width: 42px;
-        height: 24px;
-        margin: 40px 0;
-        object-fit: cover;
-      }
-    }
+
     .signUpWrap {
       display: flex;
       flex-direction: column;

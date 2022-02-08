@@ -82,7 +82,10 @@ const ProductList = () => {
 
                 <div className="contentWrap">
                   <div className="contentLeft">
-                    <div className="name" onClick={goToDetail}>
+                    <div
+                      className="name"
+                      onClick={() => goToDetail(product_id)}
+                    >
                       {product_name}
                     </div>
                     <span className="color">{product_color}</span>
