@@ -1,0 +1,34 @@
+[
+  {
+    "product_id": 1,
+    "product_name": "1808벡스",
+    "product_image": "images/main/main0.jpg",
+    "product_color": "블랙",
+    "product_size": 230,
+    "quantity": 3,
+    "price": 138000,
+    "product_lick": 255
+  },
+
+  {
+    "product_id": 2,
+    "product_name": "1808벡스",
+    "product_image": "images/main/main0.jpg",
+    "product_color": "블랙",
+    "product_size": 230,
+    "quantity": 3,
+    "price": 280000,
+    "product_lick": 2535
+  },
+
+  {
+    "product_id": 3,
+    "product_name": "1808벡스",
+    "product_image": "images/main/main0.jpg",
+    "product_color": "블랙",
+    "product_size": 240,
+    "quantity": 3,
+    "price": 655000,
+    "product_lick": 535
+  }
+]

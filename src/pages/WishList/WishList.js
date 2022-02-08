@@ -3,21 +3,45 @@ import './WishList.scss';
 import Footer from '../../components/footer/footer';
 import { useState } from 'react/cjs/react.development';
 import ProductList from './ProductList';
+import WISHLIST_DATA from './wishlistData';
 
 const WishList = () => {
   const [cartList, setCartList] = useState([]);
+  const priceList = () => {
+    let totalPrice = 0;
+    for (let i = 0; i < cartList.length; i++) {
+      totalPrice += cartList[i].price;
+    }
+    console.log(totalPrice);
+    return totalPrice;
+  };
+
+  // useEffect(() => {
+  //   fetch('http://10.58.7.157:8000/carts', {
+  //     method: 'GET',
+  //     headers: {
+  //       Authorization:
+  //         'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1fQ.wJO6SJNZeBgZWe8KLTo2flSDaL0KdDOA_oBpObKiRCw',
+  //     },
+  //   })
+  //     .then(response => response.json())
+  //     .then(data => setCartList(data.result));
+  // }, []);
 
   useEffect(() => {
-    fetch('http://10.58.4.82:8000/carts', {
-      method: 'GET',
-      headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1fQ.wJO6SJNZeBgZWe8KLTo2flSDaL0KdDOA_oBpObKiRCw',
-      },
-    })
-      .then(response => response.json())
-      .then(data => setCartList(data.result));
+    setCartList(WISHLIST_DATA);
   }, []);
+
+  // const deleteHandler = () => {
+  //   fetch('api', {
+  //     method : "DELETE",
+  //     headers : {
+  //       Authorization:
+  //         'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1fQ.wJO6SJNZeBgZWe8KLTo2flSDaL0KdDOA_oBpObKiRCw',
+  //     },
+  //   })
+  //     .then
+  // }
 
   return (
     <>
@@ -53,7 +77,7 @@ const WishList = () => {
         <div className="cartBox">
           <div className="cartBoxContainer">
             <ul className="orderProductList">
-              {cartList.map(list => {
+              {WISHLIST_DATA.map(list => {
                 return (
                   <ProductList
                     key={list.product_id}
@@ -79,7 +103,7 @@ const WishList = () => {
                   <dt className="orderPriceTitle">총 상품 금액</dt>
                   <dd className="orderPrice">
                     <span>₩</span>
-                    <span>3,000</span>
+                    <span>{priceList()}</span>
                   </dd>
                 </div>
                 <div className="orderPriceList">
@@ -93,7 +117,7 @@ const WishList = () => {
                   <dt className="orderPriceTitletotal">총 결제 예정 금액</dt>
                   <dd className="orderPrice">
                     <span>₩</span>
-                    <span>3,000</span>
+                    <span>{priceList()}</span>
                   </dd>
                 </div>
               </div>

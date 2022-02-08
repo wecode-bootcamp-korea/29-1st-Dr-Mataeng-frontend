@@ -1,7 +1,7 @@
 import React from 'react';
 
 function ProductList(props) {
-  let { color, size, quantity, price, like, image, productName } = this.props;
+  let { color, size, quantity, price, like, image, productName } = props;
   return (
     <li className="itemList">
       <div className="productContainer">
