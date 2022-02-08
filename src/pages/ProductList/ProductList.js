@@ -1,27 +1,37 @@
 import React from 'react';
-import './ProductList.scss';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Filter from './Filter';
+import './ProductList.scss';
+import Pagination from './Pagination';
 
 const ProductList = () => {
   const [itemList, setItemList] = useState([]);
   const [filterShow, setFilterShow] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const updateOffset = buttonIndex => {
+    const limit = 6;
+    const offset = buttonIndex * limit;
+    const queryString = `?limit=${limit}&offset=${offset}`;
+
+    navigate(queryString);
+  };
 
   const filterHandler = () => {
     setFilterShow(!filterShow);
   };
 
   useEffect(() => {
-    fetch('/data/productList.json', {
+    fetch(`http://127.0.0.1:8000/products${location.search}`, {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => {
         setItemList(data);
       });
-  }, []);
+  }, [location.search]);
 
   const goToDetail = productId => {
     navigate(`/productDetail/${productId}`);
@@ -108,6 +118,7 @@ const ProductList = () => {
           )}
         </ul>
       </div>
+      <Pagination updateOffset={updateOffset} />
     </section>
   );
 };

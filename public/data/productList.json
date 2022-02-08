@@ -11,30 +11,60 @@
   },
   {
     "product_id": 2,
-    "modelName": "1461 모노2",
-    "modelImage": "/images/search/product.png",
-    "price": "180,000",
-    "color": "블랙",
-    "yearOfManufacture": "제품라벨 표기",
-    "countryOfManufacture": "태국",
-    "material": "SMOOTH/천연가죽(소가죽)"
-  },
-  {
-    "id": 3,
-    "modelName": "1461 모노3",
-    "modelImage": "/images/search/product.png",
+    "product_name": "1461 모노2",
+    "thumbnail_img": "/images/search/product.png",
     "price": "170,000",
-    "color": "블랙",
+    "product_colo": "블랙",
     "yearOfManufacture": "제품라벨 표기",
     "countryOfManufacture": "태국",
     "material": "SMOOTH/천연가죽(소가죽)"
   },
   {
-    "id": 4,
-    "modelName": "1461 모노4",
-    "modelImage": "/images/search/product.png",
+    "product_id": 3,
+    "product_name": "1461 모노2",
+    "thumbnail_img": "/images/search/product.png",
     "price": "160,000",
-    "color": "블랙",
+    "product_colo": "블랙",
+    "yearOfManufacture": "제품라벨 표기",
+    "countryOfManufacture": "태국",
+    "material": "SMOOTH/천연가죽(소가죽)"
+  },
+  {
+    "product_id": 4,
+    "product_name": "1461 모노2",
+    "thumbnail_img": "/images/search/product.png",
+    "price": "180,000",
+    "product_colo": "블랙",
+    "yearOfManufacture": "제품라벨 표기",
+    "countryOfManufacture": "태국",
+    "material": "SMOOTH/천연가죽(소가죽)"
+  },
+  {
+    "product_id": 5,
+    "product_name": "1461 모노2",
+    "thumbnail_img": "/images/search/product.png",
+    "price": "140,000",
+    "product_colo": "블랙",
+    "yearOfManufacture": "제품라벨 표기",
+    "countryOfManufacture": "태국",
+    "material": "SMOOTH/천연가죽(소가죽)"
+  },
+  {
+    "product_id": 6,
+    "product_name": "1461 모노2",
+    "thumbnail_img": "/images/search/product.png",
+    "price": "180,000",
+    "product_colo": "블랙",
+    "yearOfManufacture": "제품라벨 표기",
+    "countryOfManufacture": "태국",
+    "material": "SMOOTH/천연가죽(소가죽)"
+  },
+  {
+    "product_id": 7,
+    "product_name": "1461 모노2",
+    "thumbnail_img": "/images/search/product.png",
+    "price": "130,000",
+    "product_colo": "블랙",
     "yearOfManufacture": "제품라벨 표기",
     "countryOfManufacture": "태국",
     "material": "SMOOTH/천연가죽(소가죽)"
