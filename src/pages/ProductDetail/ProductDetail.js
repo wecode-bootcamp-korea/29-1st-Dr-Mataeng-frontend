@@ -21,7 +21,7 @@ const ProductDetail = () => {
 
   // Connect : 백엔드와 데이터 연동
   useEffect(() => {
-    fetch('http://10.58.4.82:8000/products/38', {
+    fetch('http://10.58.7.157:8000/products/38', {
       method: 'GET',
     })
       .then(res => res.json())
@@ -54,7 +54,7 @@ const ProductDetail = () => {
   // Event : +, - 버튼으로 주문 수량 선택, 사이즈 재고별 limit 걸기
   const quantityCountHandler = event => {
     const sizeDataFilter = productData.sizes?.filter(
-      el => el.size === sizeChoiceValue
+      sizesList => sizesList.size === sizeChoiceValue
     );
     const sizeDataStock = sizeDataFilter[0].stock;
 
@@ -187,13 +187,18 @@ const ProductDetail = () => {
               </select>
             </div>
             <div className="productThumbnailWrap">
-              <div className="productThumbnailContainer">
-                <img
-                  alt="product thumbnail"
-                  className="productThumbnail"
-                  src="/images/productDetail/productDetail.jpeg"
-                />
-              </div>
+              {productData.colors?.map(({ product_id, color_img }) => (
+                <button
+                  className="productThumbnailContainer colorChoiceActive"
+                  key={product_id}
+                >
+                  <img
+                    alt="product thumbnail"
+                    className="productThumbnail"
+                    src={color_img}
+                  />
+                </button>
+              ))}
             </div>
             <div className="purchasePriceAndQuantity">
               <div className="purchaseQuantityWrap">

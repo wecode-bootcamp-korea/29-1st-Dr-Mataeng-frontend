@@ -127,6 +127,7 @@
     }
 
     .productThumbnailWrap {
+      @include elementPosition(flex, row, flex-start);
       margin: 32px 0;
 
       .productThumbnailContainer {
@@ -135,6 +136,8 @@
         border: 3px solid #111;
         border-radius: 50%;
         overflow: hidden;
+        margin-right: 14px;
+        cursor: pointer;
 
         .productThumbnail {
           width: 100%;
@@ -142,6 +145,10 @@
           object-fit: cover;
           object-position: bottom;
         }
+      }
+
+      .colorChoiceActive {
+        border: 3px solid #111;
       }
     }
     .productDetailOptions {
@@ -336,6 +343,7 @@
         font-size: $fontLarge;
         color: $fontBlack;
         font-weight: $fontBold;
+        line-height: 40px;
       }
     }
 
