@@ -1,4 +1,4 @@
-import React from 'react';
+import { React } from 'react';
 import './Main.scss';
 import ImageSlide from '../Main/ImageSlide';
 
@@ -7,8 +7,47 @@ const Main = () => {
     <>
       <ImageSlide />
       <div className="container">
-        <div className="collection">
+        <div className="mainWrap">
           <div className="textWrap">
+            <h2 className="mdTitle">MD 추천</h2>
+            <div className="productTabs">
+              <button className="productBt">
+                <span>오드릭</span>
+              </button>
+              <button className="productBt">
+                <span>온라인전용</span>
+              </button>
+              <button className="productBt">
+                <span>부츠</span>
+              </button>
+              <button className="productBt">
+                <span>비건</span>
+              </button>
+              <button className="productBt">
+                <span>콜라보레이션</span>
+              </button>
+              <button className="productBt">
+                <span>기타용품</span>
+              </button>
+            </div>
+            <div className="productSwiper">
+              <div className="productLeft">
+                <div className="productTop">
+                  <h2 className="productName">제이든 하이</h2>
+                </div>
+                <div className="swiperImg">
+                  <img src="images/main/product2.jpg" alt="product" />
+                </div>
+              </div>
+              <div className="productLeft">
+                <div className="productTop">
+                  <h2 className="productName">오드릭 부츠</h2>
+                </div>
+                <div className="swiperImg">
+                  <img src="images/main/product1.jpg" alt="product" />
+                </div>
+              </div>
+            </div>
             <div className="subTitle"> 2022년 검은 호랑이의 해 기념 컬렉션</div>
             <div className="collectTitle">YEAR OF THE TIGER</div>
             <div className="titleLine" />
