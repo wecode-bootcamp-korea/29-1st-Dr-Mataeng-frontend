@@ -26,7 +26,7 @@ const Login = () => {
   };
 
   const loginValidation = () => {
-    fetch('http://10.58.2.127:8000/users/signin', {
+    fetch('http://10.58.7.157:8000/users/signin', {
       method: 'POST',
       body: JSON.stringify({
         username: loginInput.id,
@@ -41,8 +41,8 @@ const Login = () => {
           alert('존재하지 않는 아이디입니다.');
         } else {
           goToMain();
-          localStorage.setItem('id', 'loginInput.id');
-          localStorage.setItem('token', 'access_token');
+          localStorage.setItem('id', result.username);
+          localStorage.setItem('token', result.access_token);
         }
       });
   };
