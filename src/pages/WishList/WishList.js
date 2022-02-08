@@ -15,6 +15,14 @@ const WishList = () => {
     return totalPrice;
   };
 
+  const cartIdList = () => {
+    let idList = [];
+    for (let i = 0; i < cartList.length; i++) {
+      idList.push(cartList[i].cart_id);
+    }
+    return idList;
+  };
+
   // useEffect(() => {
   //   fetch('http://10.58.7.157:8000/carts', {
   //     method: 'GET',
@@ -77,18 +85,7 @@ const WishList = () => {
           <div className="cartBoxContainer">
             <ul className="orderProductList">
               {WISHLIST_DATA.map(list => {
-                return (
-                  <ProductList
-                    key={list.product_id}
-                    productName={list.product_name}
-                    image={list.product_image}
-                    color={list.product_color}
-                    size={list.product_size}
-                    quantity={list.quantity}
-                    price={list.price}
-                    like={list.product_like}
-                  />
-                );
+                return <ProductList key={list.product_id} list={list} />;
               })}
             </ul>
           </div>

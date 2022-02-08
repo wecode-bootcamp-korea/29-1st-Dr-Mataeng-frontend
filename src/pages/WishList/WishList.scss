@@ -187,7 +187,8 @@
       width: 100%;
       height: 192px;
       border-bottom: 1px solid #dddddd;
-      padding: 16px 32px 16px 77px;
+      padding: 16px 22px 16px 60px;
+      display: flex;
 
       .productBox {
         width: 100%;
@@ -196,6 +197,22 @@
         img {
           width: 128px;
           height: 160px;
+        }
+      }
+
+      .deleteButton {
+        margin-top: 10px;
+        width: 20px;
+        height: 20px;
+        button {
+          width: 100%;
+          height: 100%;
+          border-style: none;
+          img {
+            width: 100%;
+            height: 100%;
+            opacity: 0.5;
+          }
         }
       }
 
