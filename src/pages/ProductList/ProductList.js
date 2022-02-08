@@ -1,6 +1,6 @@
 import React from 'react';
 import './ProductList.scss';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Filter from './Filter';
 
@@ -8,6 +8,11 @@ const ProductList = () => {
   const [itemList, setItemList] = useState([]);
   const [filterShow, setFilterShow] = useState(false);
   const navigate = useNavigate();
+
+  const goToDetail = () => {
+    navigate(`/productDetail/${itemList.product_id}`);
+    console.log(itemList.product_id);
+  };
 
   const filterHandler = () => {
     setFilterShow(!filterShow);
@@ -65,19 +70,14 @@ const ProductList = () => {
               product_like,
             }) => (
               <li className="product" key={product_id}>
-                <Link
-                  to={{
-                    pathname: '/search/result?dm_search_text={동적 라우팅}',
-                    state: { product_id },
-                  }}
-                  className="productImgWrap"
-                >
+                <div className="productImgWrap" onClick={goToDetail}>
                   <img
                     alt="product"
                     className="productImg"
                     src={thumbnail_img}
                   />
-                </Link>
+                </div>
+
                 <div className="contentWrap">
                   <div className="contentLeft">
                     <Link
