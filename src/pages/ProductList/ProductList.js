@@ -1,19 +1,20 @@
 import React from 'react';
 import './ProductList.scss';
-import { Link, useLocation } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Filter from './Filter';
 
 const ProductList = () => {
   const [itemList, setItemList] = useState([]);
   const [filterShow, setFilterShow] = useState(false);
+  const navigate = useNavigate();
 
   const filterHandler = () => {
     setFilterShow(!filterShow);
   };
 
   useEffect(() => {
-    fetch('http://10.58.4.82:8000/products?category=부츠&gender=여성,공용', {
+    fetch('http://10.58.7.157:8000/products?category=부츠&gender=여성,공용', {
       method: 'GET',
     })
       .then(res => res.json())
