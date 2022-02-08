@@ -2,6 +2,7 @@ import React from 'react';
 import './Search.scss';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router';
 // import { useLocation } from 'react-router';
 
 const Search = () => {
@@ -34,6 +35,12 @@ const Search = () => {
   //     });
   // }, []);
 
+  // 동적 라우팅 구현
+  const navigate = useNavigate();
+  const goToDetail = () => {
+    navigate('/main');
+  };
+
   return (
     <section className="Search">
       <div className="titleWrap">
@@ -60,18 +67,17 @@ const Search = () => {
         <ul className="productList">
           {itemList.map(({ id, modelName, modelImage, price, color }) => (
             <li className="product" key={id}>
-              <Link
-                to="/search/result?dm_search_text={동적 라우팅}"
-                className="productImgWrap"
-              >
-                <img alt="product" className="productImg" src={modelImage} />
+              <Link to="/" className="productImgWrap">
+                <img
+                  alt="product"
+                  className="productImg"
+                  src={modelImage}
+                  onClick={goToDetail}
+                />
               </Link>
               <div className="contentWrap">
                 <div className="contentLeft">
-                  <Link
-                    to="/search/result?dm_search_text={동적 라우팅}"
-                    className="name"
-                  >
+                  <Link to="/" className="name" onClick={goToDetail}>
                     {modelName}
                   </Link>
                   <span className="color">{color}</span>
