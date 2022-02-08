@@ -1,10 +1,8 @@
 import React from 'react';
-import { useState } from 'react';
+
 import './Filter.scss';
 
 function Filter() {
-  const [checked, setCheked] = useState();
-
   return (
     <div className="filter">
       <div className="filterWrap">
