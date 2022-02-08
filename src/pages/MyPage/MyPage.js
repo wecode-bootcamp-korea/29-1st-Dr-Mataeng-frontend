@@ -37,13 +37,8 @@ const Mypage = () => {
           <p className="userRank">DOCS FAMILY</p>
         </div>
         <div className="userPoingWrap">
-          {POINT_LIST.map(({ id, pointType, pointHistory, url }) => (
-            <MypagePoints
-              key={id}
-              label={pointType}
-              point={pointHistory}
-              url={url}
-            />
+          {POINT_LIST.map(point => (
+            <MypagePoints key={point.id} point={point} />
           ))}
         </div>
       </section>

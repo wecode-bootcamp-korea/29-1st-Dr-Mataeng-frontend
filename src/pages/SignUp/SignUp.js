@@ -17,8 +17,10 @@ function SignUp() {
     recommend: '',
   });
 
-  function handleChangeState(e) {
-    setInputs({ ...inputs, [e.target.name]: e.target.value });
+  function handleChangeState({ target }) {
+    const { name, value } = target;
+
+    setInputs({ ...inputs, [name]: value });
   }
 
   const navigate = useNavigate();

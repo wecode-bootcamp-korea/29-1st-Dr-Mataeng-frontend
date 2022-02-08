@@ -26,6 +26,7 @@ const Login = () => {
   };
 
   const loginValidation = () => {
+    // config
     fetch('http://10.58.2.127:8000/users/signin', {
       method: 'POST',
       body: JSON.stringify({
@@ -41,6 +42,7 @@ const Login = () => {
           alert('존재하지 않는 아이디입니다.');
         } else {
           goToMain();
+          // TODO comment
           localStorage.setItem('id', 'loginInput.id');
           localStorage.setItem('token', 'access_token');
         }

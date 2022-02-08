@@ -1,6 +1,8 @@
 import React from 'react';
 
-const MypagePoints = ({ id, label, point, url }) => {
+const MypagePoints = ({ point }) => {
+  const { id } = point;
+
   return (
     <div className="userPoingHistoryWrap" key={id}>
       <img alt="point icon" className="pointIcon" src={url} />
