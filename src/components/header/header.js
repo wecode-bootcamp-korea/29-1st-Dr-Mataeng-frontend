@@ -8,7 +8,19 @@ import './header.scss';
 const Header = () => {
   const [navHandler, setnavHandler] = useState(false);
   const [inputValue, setInputValue] = useState('');
+  const [logOutput, setlogOutput] = useState(['로그인', '로그아웃']);
+
   // const [searchData, setSearchData] = useState([]);
+
+  const isLogin = () => {
+    if (!localStorage.getItem('token')) {
+      navigate('/login');
+    } else {
+      localStorage.removeItem('token');
+      alert('로그아웃 되었습니다.');
+      document.location.href = 'main';
+    }
+  };
 
   const navDisplayHandler = () => {
     setnavHandler(!navHandler);
@@ -67,6 +79,9 @@ const Header = () => {
       )}
       <div className="topMenuListWrap">
         <ul className="topMenuList">
+          <li className="login" onClick={isLogin}>
+            {!localStorage.getItem('token') ? logOutput[0] : logOutput[1]}
+          </li>
           {TOP_BAR_MENU_LIST.map(({ id, url, buttonName }) => (
             <li className="topMenuWrap" key={id}>
               <Link to={url} className="topMenu">
@@ -129,11 +144,6 @@ const Header = () => {
 
 // 상수 데이터 1 : 아이콘 리스트
 const TOP_BAR_MENU_LIST = [
-  {
-    id: 1,
-    buttonName: '로그인',
-    url: '/Main',
-  },
   {
     id: 2,
     buttonName: '회원가입',

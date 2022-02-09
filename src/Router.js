@@ -9,10 +9,12 @@ import ProductList from './pages/ProductList/ProductList';
 import Search from './pages/Search/Search';
 import SignUp from './pages/SignUp/SignUp';
 import WishList from './pages/WishList/WishList';
+import Header from './components/header/header';
 
 function Router() {
   return (
     <BrowserRouter>
+      <Header />
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/main" element={<Main />} />
