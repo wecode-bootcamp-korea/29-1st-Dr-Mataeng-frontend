@@ -31,7 +31,7 @@ const Main = () => {
               </button>
             </div>
             <div className="productSwiper">
-              <div className="productLeft">
+              <div className="productInside">
                 <div className="productTop">
                   <h2 className="productName">제이든 하이</h2>
                 </div>
@@ -39,7 +39,7 @@ const Main = () => {
                   <img src="images/main/product2.jpg" alt="product" />
                 </div>
               </div>
-              <div className="productLeft">
+              <div className="productInside">
                 <div className="productTop">
                   <h2 className="productName">오드릭 부츠</h2>
                 </div>
