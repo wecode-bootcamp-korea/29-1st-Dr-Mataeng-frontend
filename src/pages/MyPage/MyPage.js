@@ -23,10 +23,6 @@ const Mypage = () => {
       .then(data => setUserData(data.users));
   }, []);
 
-  console.log(userData);
-
-  //{name: '테스트', point: '0', phone_number: '010-0000-0000', email: 'test1234@gmail.com'}
-
   return (
     <main className="Mypage">
       <div className="MypagePosition">
