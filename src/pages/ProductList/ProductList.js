@@ -24,9 +24,12 @@ const ProductList = () => {
   };
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:8000/products${location.search}`, {
-      method: 'GET',
-    })
+    fetch(
+      `http://10.58.3.22:8000/products?gender=여성,공용${location.search}`,
+      {
+        method: 'GET',
+      }
+    )
       .then(res => res.json())
       .then(data => {
         setItemList(data.result);
