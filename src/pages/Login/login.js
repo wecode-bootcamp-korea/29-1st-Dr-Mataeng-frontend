@@ -24,6 +24,9 @@ const Login = () => {
   const goToMain = () => {
     navigate('/Main');
   };
+  const goToSinup = () => {
+    navigate('/signUp');
+  };
 
   const loginValidation = () => {
     fetch('http://10.58.7.157:8000/users/signin', {
@@ -109,7 +112,7 @@ const Login = () => {
                 <button onClick={loginValidation}>로그인</button>
               </div>
               <div className="signUpButton">
-                <button onClick={goToMain}>
+                <button onClick={goToSinup}>
                   <span>회원가입</span>
                 </button>
               </div>
@@ -117,7 +120,6 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };
