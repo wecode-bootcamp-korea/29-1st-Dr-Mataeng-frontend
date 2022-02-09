@@ -55,25 +55,25 @@ const WishList = () => {
           </div>
         </div>
       </header>
-      <div className="cart">
-        <div className="cart container">
-          <div className="containerRow">
-            <div className="controlCheckbox">
-              <div className="checkbox">
-                <input type="checkbox" />
-                <span>전체선택({cart.length})</span>
-              </div>
-              <div className="deleteButton">
-                <button>
-                  <img alt="trashcan" src="images/icon/trash-can.png" />
-                  <span>선택 삭제</span>
-                </button>
+      {cart.length === 0 && <Empty />}
+      {cart.length > 0 && (
+        <div className="cart">
+          <div className="cart container">
+            <div className="containerRow">
+              <div className="controlCheckbox">
+                <div className="checkbox">
+                  <input type="checkbox" />
+                  <span>전체선택({cart.length})</span>
+                </div>
+                <div className="deleteButton">
+                  <button>
+                    <img alt="trashcan" src="images/icon/trash-can.png" />
+                    <span>선택 삭제</span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        {cart.length === 0 && <Empty />}
-        {cart.length > 0 && (
           <div className="cartBox">
             <div className="cartBoxContainer">
               <ul className="orderProductList">
@@ -123,8 +123,8 @@ const WishList = () => {
               </div>
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </>
   );
 };
