@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import './WishList.scss';
-import Footer from '../../components/footer/footer';
 import { useState } from 'react/cjs/react.development';
 import ProductList from './ProductList';
 import WISHLIST_DATA from './wishlistData';
@@ -8,31 +7,12 @@ import Empty from './Empty';
 
 const WishList = () => {
   const [cart, setCart] = useState([]);
-  const [page, setPage] = useState('cartpage');
-
-  const renderPage = () => {
-    console.log(cart.length);
-    if (cart.length === 0) {
-      setPage('empty');
-    } else {
-      setPage('cartpage');
-    }
-  };
-
   const priceList = () => {
     let totalPrice = 0;
     for (let i = 0; i < cart.length; i++) {
       totalPrice += cart[i].price;
     }
     return totalPrice;
-  };
-
-  const cartIdList = () => {
-    let idList = [];
-    for (let i = 0; i < cart.length; i++) {
-      idList.push(cart[i].cart_id);
-    }
-    return idList;
   };
 
   // useEffect(() => {
@@ -65,8 +45,8 @@ const WishList = () => {
           </div>
         </div>
       </header>
-      {page === 'empty' && <Empty />}
-      {page === 'cartpage' && (
+      {cart.length === 0 && <Empty />}
+      {cart.length > 0 && (
         <div className="cart">
           <div className="cart container">
             <div className="containerRow">
