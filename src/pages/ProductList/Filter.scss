@@ -1,0 +1,77 @@
+@import '/src/styles/variables.scss';
+
+.filter {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  border-top: 1px solid #ddd;
+  .filterWrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 1140px;
+    margin: 10px;
+    .filterHead {
+      display: flex;
+      justify-content: right;
+      width: 100%;
+      margin: 20px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      label {
+        font-weight: $fontBold;
+        width: 70px;
+        font-size: $fontMedium;
+      }
+      .filterSort {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        width: 100%;
+        padding: 10px;
+        margin: 20px;
+
+        li {
+          list-style: none;
+          margin-left: 20px;
+          font-size: $fontMedium;
+        }
+        input {
+          margin-left: 5px;
+        }
+        .filterInputItemRange {
+          width: 300px;
+        }
+      }
+    }
+    .submitBt {
+      width: 100%;
+      padding-top: 20px;
+      padding-bottom: 30px;
+      text-align: center;
+      .apply,
+      .initial {
+        width: 300px;
+        height: 62px;
+        font-weight: 700;
+        font-size: 22px;
+        margin: 10px;
+      }
+      .initial {
+        background-color: white;
+        border: 1px solid #111;
+      }
+      .apply {
+        background-color: #111;
+        color: white;
+        border: none;
+      }
+    }
+  }
+}
