@@ -8,6 +8,11 @@ import Empty from './Empty';
 const WishList = () => {
   const [cart, setCart] = useState([]);
 
+  let referrer = document.referrer;
+  const goToPrevPage = () => {
+    window.location.href = referrer;
+  };
+
   const priceList = () => {
     let totalPrice = 0;
     for (let i = 0; i < cart.length; i++) {
@@ -41,6 +46,7 @@ const WishList = () => {
               <img
                 src="images/productList/icon-left-arrow.png"
                 alt="뒤로가기"
+                onClick={goToPrevPage}
               />
             </button>
           </div>
