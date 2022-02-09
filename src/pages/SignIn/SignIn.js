@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../SignIn/SignIn.scss';
-import Footer from '../../components/footer/footer';
 
 const SignIn = () => {
   const [loginInput, setLoginInput] = useState({
@@ -25,6 +24,10 @@ const SignIn = () => {
     navigate('/Main');
   };
 
+  const goToSignUp = () => {
+    navigate('/signUp');
+  };
+
   const loginValidation = () => {
     fetch('http://10.58.2.127:8000/users/signin', {
       method: 'POST',
@@ -41,8 +44,8 @@ const SignIn = () => {
           alert('존재하지 않는 아이디입니다.');
         } else {
           goToMain();
-          localStorage.setItem('id', 'loginInput.id');
-          localStorage.setItem('token', 'access_token');
+          localStorage.setItem('id', result.username);
+          localStorage.setItem('token', result.access_token);
         }
       });
   };
@@ -112,7 +115,7 @@ const SignIn = () => {
                 <button onClick={loginValidation}>로그인</button>
               </div>
               <div className="signUpButton">
-                <button onClick={goToMain}>
+                <button onClick={goToSignUp}>
                   <span>회원가입</span>
                 </button>
               </div>
@@ -120,7 +123,6 @@ const SignIn = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };
