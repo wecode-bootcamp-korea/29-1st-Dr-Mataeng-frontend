@@ -12,7 +12,7 @@ const ProductDetail = () => {
 
   // Connect : 백엔드와 데이터 연동
   useEffect(() => {
-    fetch('http://10.58.7.157:8000/products/38', {
+    fetch('http://10.58.3.22:8000/products/38', {
       method: 'GET',
     })
       .then(res => res.json())
@@ -90,14 +90,14 @@ const ProductDetail = () => {
 
   // Event : 장바구니 버튼 클릭 시 POST body로 데이터 전송 및 알림창 생성
   const Params = useParams();
-  console.log(Params);
+  // console.log(Params);
 
   const CartBtnClickHandler = () => {
-    fetch('http://10.58.7.157:8000/carts', {
+    fetch('http://10.58.3.22:8000/carts', {
       method: 'POST',
       header: {
         Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1fQ.wJO6SJNZeBgZWe8KLTo2flSDaL0KdDOA_oBpObKiRCw',
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2fQ.Ya44VVMRIy86Oixk3ngSjD3jiK9eWNlsKjr2akaYkvc',
       },
       body: JSON.stringify({
         product_id: Params.id, // FIXME : 백엔드 데이터 저장 잘 되는지 여쭤보기
@@ -106,7 +106,10 @@ const ProductDetail = () => {
       }),
     })
       .then(res => res.json())
-      .then(alert('장바구니에 담겼습니다.'));
+      .then(
+        // alert('장바구니에 담겼습니다.')
+        res => console.log(res)
+      );
   };
 
   return (
