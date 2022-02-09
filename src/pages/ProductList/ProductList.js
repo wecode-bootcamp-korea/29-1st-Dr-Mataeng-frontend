@@ -48,7 +48,9 @@ const ProductList = () => {
           />
         </Link>
         <h1 className="mainTitle">여성부츠</h1>
-        <span className="mediumTitle">60개의 여성 부츠 상품이 있습니다.</span>
+        <span className="mediumTitle">
+          {itemList.length}개의 여성 부츠 상품이 있습니다.
+        </span>
         <span className="productIntroduction">
           닥터마틴의 여성 부츠 컬렉션입니다. 심플한 스타일부터 과감한 스타일까지
           개성을 지닌 닥터 마틴의 여성 부츠는 성별과 나이를 초월해 시대를
