@@ -149,26 +149,21 @@ const Header = () => {
 const TOP_BAR_MENU_LIST = [
   {
     id: 1,
-    buttonName: '로그인',
-    url: '/Login',
-  },
-  {
-    id: 2,
     buttonName: '회원가입',
     url: '/SignUp',
   },
   {
-    id: 3,
+    id: 2,
     buttonName: '매장찾기',
     url: '/Main',
   },
   {
-    id: 4,
+    id: 3,
     buttonName: '브랜드헤리티지',
     url: '/Main',
   },
   {
-    id: 5,
+    id: 4,
     buttonName: '고객센터',
     url: '/Main',
   },
