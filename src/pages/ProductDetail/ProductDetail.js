@@ -91,8 +91,6 @@ const ProductDetail = () => {
 
   // Event : 장바구니 버튼 클릭 시 POST body로 데이터 전송 및 알림창 생성
   const params = useParams();
-  console.log(params);
-
   const navigate = useNavigate();
 
   const CartBtnClickHandler = () => {
