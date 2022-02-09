@@ -11,9 +11,12 @@ const ProductDetail = () => {
   const [productData, setProductData] = useState([]);
   const [sizeChoiceValue, setSizeChoiceValue] = useState('');
 
+  const params = useParams();
+  const navigate = useNavigate();
+
   // Connect : 백엔드와 데이터 연동
   useEffect(() => {
-    fetch('http://10.58.3.22:8000/products/38', {
+    fetch(`http://10.58.3.22:8000/products/${params.id}`, {
       method: 'GET',
     })
       .then(res => res.json())
@@ -90,9 +93,6 @@ const ProductDetail = () => {
   };
 
   // Event : 장바구니 버튼 클릭 시 POST body로 데이터 전송 및 알림창 생성
-  const params = useParams();
-  const navigate = useNavigate();
-
   const CartBtnClickHandler = () => {
     fetch('http://10.58.3.22:8000/carts', {
       method: 'POST',
