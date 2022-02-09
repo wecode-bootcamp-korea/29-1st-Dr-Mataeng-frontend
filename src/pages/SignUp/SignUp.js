@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import INPUT_LIST from './InputList';
 import SignUpInput from './SignUpInput';
+import TopBt from './TopBt';
 import './SignUp.scss';
 
 function SignUp() {
@@ -155,6 +156,7 @@ function SignUp() {
             회원가입
           </button>
         </div>
+        <TopBt />
       </div>
     </div>
   );
