@@ -213,9 +213,9 @@
           .orderProductList {
             @include elementPosition(flex, row, flex-start);
             border: 1px solid #ddd;
+            border-bottom: none;
             background-color: #fafafa;
             padding: 16px 32px 16px 32px;
-            margin-bottom: 20px;
 
             .productTumWrap {
               width: 128px;
@@ -274,7 +274,7 @@
           }
 
           .orderProductList:last-child {
-            margin-bottom: 30px;
+            border-bottom: 1px solid #ddd;
           }
         }
       }

@@ -6,6 +6,7 @@ import './MyPage.scss';
 const Mypage = () => {
   const [orderProduct, setOrderProduct] = useState(false);
   const [userData, setUserData] = useState('');
+  const [orderData, setOrderData] = useState([]);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -28,6 +29,20 @@ const Mypage = () => {
       .then(res => res.json())
       .then(data => setUserData(data.users));
   }, []);
+
+  useEffect(() => {
+    fetch(`http://172.20.10.5:8000/orders`, {
+      method: 'GET',
+      headers: {
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1fQ.wJO6SJNZeBgZWe8KLTo2flSDaL0KdDOA_oBpObKiRCw',
+      },
+    })
+      .then(res => res.json())
+      .then(data => setOrderData(...data.result));
+  }, []);
+
+  console.log(orderData.order_items);
 
   return (
     <main className="Mypage">
@@ -56,7 +71,7 @@ const Mypage = () => {
               />
             </button>
             <span className="userName">
-              <strong>{userData.name}</strong>
+              <strong>{userData.name}님</strong>
             </span>
             <span className="greetings">환영합니다.</span>
           </div>
@@ -85,7 +100,9 @@ const Mypage = () => {
         <div className="contentsWrap">
           <div className="orderProductInfoWrap">
             <div className="expectedOrderPrice">
-              <span className="title">주문 제품 (1item | ₩280,000)</span>
+              <span className="title">
+                주문 번호 : {orderData.order_number}
+              </span>
               <button className="orderListBtn" onClick={orderProductHandler}>
                 <img
                   alt="arrow icon"
@@ -101,33 +118,39 @@ const Mypage = () => {
             <div
               className={orderProduct ? 'orderListWrap' : 'orderListWrapShow'}
             >
-              {/* <div className="orderItemWrap">
-                <img
-                  alt="basket icon"
-                  className="basketIcon"
-                  src="/images/myPage/icon-bag.png"
-                />
-                <span className="title">주문상품</span>
-              </div> */}
               <ul className="orderProductListWrap">
-                <li className="orderProductList">
-                  <div className="productTumWrap">
-                    <img
-                      alt="shoes thumbnail"
-                      className="productTum"
-                      src="/images/myPage/tum-test.jpeg"
-                    />
-                  </div>
-                  <div className="productInfoWrap">
-                    <h2 className="productInfoTitle">아드리안</h2>
-                    <ul className="productInfoOption">
-                      <li className="optionList">컬러 : 블랙</li>
-                      <li className="optionList">사이즈 : 220</li>
-                      <li className="optionList">수량 : 1</li>
-                    </ul>
-                    <span className="productInfoPrice">280000</span>
-                  </div>
-                </li>
+                {orderData.order_items?.map(
+                  ({
+                    order_item_id,
+                    product_image,
+                    product_name,
+                    product_color,
+                    product_size,
+                    quantity,
+                    price,
+                  }) => (
+                    <li className="orderProductList" key={order_item_id}>
+                      <div className="productTumWrap">
+                        <img
+                          alt="shoes thumbnail"
+                          className="productTum"
+                          src={product_image}
+                        />
+                      </div>
+                      <div className="productInfoWrap">
+                        <h2 className="productInfoTitle">{product_name}</h2>
+                        <ul className="productInfoOption">
+                          <li className="optionList">컬러 : {product_color}</li>
+                          <li className="optionList">
+                            사이즈 : {product_size}
+                          </li>
+                          <li className="optionList">수량 : {quantity}</li>
+                        </ul>
+                        <span className="productInfoPrice">{price}</span>
+                      </div>
+                    </li>
+                  )
+                )}
               </ul>
             </div>
           </div>
@@ -136,12 +159,12 @@ const Mypage = () => {
               <span className="orderPriceTitle">주문 정보</span>
               <ul className="orderPriceListWrap">
                 <li className="orderPriceList">
-                  <span className="title">상품 금액</span>
-                  <span className="price">280,000</span>
+                  <span className="title">총 상품 금액</span>
+                  <span className="price">{orderData.total_price}</span>
                 </li>
                 <li className="orderPriceList">
                   <span className="title">주문 상태</span>
-                  <span className="price">배송 대기 중</span>
+                  <span className="price">{orderData.order_status}</span>
                 </li>
               </ul>
             </article>
