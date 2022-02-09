@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const ProductList = ({ list }) => {
+const ProductList = ({ list, cart, setCart }) => {
   const {
     cart_id,
     product_id,
@@ -20,7 +20,7 @@ const ProductList = ({ list }) => {
   };
 
   const deleteHandler = () => {
-    console.log(list);
+    setCart(cart.filter(cart => cart.cart_id !== cart_id));
   };
 
   return (
@@ -45,7 +45,11 @@ const ProductList = ({ list }) => {
           </div>
           <div className="deleteButton">
             <button>
-              <img src="images/icon/cancel.png" onClick={deleteHandler} />
+              <img
+                src="images/icon/cancel.png"
+                alt="deleteicon"
+                onClick={deleteHandler}
+              />
             </button>
           </div>
         </div>

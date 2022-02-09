@@ -7,6 +7,7 @@ import Empty from './Empty';
 
 const WishList = () => {
   const [cart, setCart] = useState([]);
+
   const priceList = () => {
     let totalPrice = 0;
     for (let i = 0; i < cart.length; i++) {
@@ -14,6 +15,21 @@ const WishList = () => {
     }
     return totalPrice;
   };
+
+  // const getData = deleteList => {
+  //   setCartId(deleteList);
+  //   setCart(cart.filter(cart => cart !== cartId));
+
+  //   console.log(cart);
+  // };
+
+  // const deleteListt = () => {
+  //   console.log('delete!!');
+  //   setCart(cart.filter(cart => cart !== cartId));
+  //   return cart;
+  // };
+
+  console.log(cart);
 
   // useEffect(() => {
   //   fetch('http://10.58.7.157:8000/carts', {
@@ -68,7 +84,14 @@ const WishList = () => {
             <div className="cartBoxContainer">
               <ul className="orderProductList">
                 {WISHLIST_DATA.map(list => {
-                  return <ProductList key={list.product_id} list={list} />;
+                  return (
+                    <ProductList
+                      key={list.product_id}
+                      list={list}
+                      cart={cart}
+                      setCart={setCart}
+                    />
+                  );
                 })}
               </ul>
             </div>
