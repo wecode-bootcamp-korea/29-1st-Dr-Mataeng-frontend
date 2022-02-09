@@ -128,106 +128,207 @@
       }
     }
   }
+}
 
-  .orderListWrap,
-  .orderListWrapShow {
-    width: 980px;
+.Payment {
+  @include elementPosition(flex, column, center);
+  align-items: center;
 
-    .orderItemWrap {
-      @include elementPosition(flex, row, flex-start);
-      align-items: center;
-      margin: 32px 8px 19px 8px;
+  .contentsWrap {
+    @include elementPosition(flex, row, space-between);
+    width: 1140px;
+    margin: 20px 0 144px 0;
 
-      .basketIcon {
-        width: 31px;
-        height: 27px;
-        margin-right: 12px;
-      }
+    .orderProductInfoWrap {
+      width: 680px;
 
-      .title {
+      .expectedOrderPrice {
+        @include elementPosition(flex, row, space-between);
+        width: 100%;
+        height: 62px;
+        background-color: #111;
         font-size: $fontMedium;
-        font-weight: $fontBold;
-        color: $fontBlack;
-      }
-    }
+        color: $fontGray;
+        padding: 0 30px;
+        align-items: center;
 
-    .orderProductListWrap {
-      @include elementPosition(flex, column, flex-start);
-
-      .orderProductList {
-        @include elementPosition(flex, row, flex-start);
-        border: 1px solid #ddd;
-        background-color: #fafafa;
-        padding: 16px 32px 16px 32px;
-        margin-bottom: 20px;
-
-        .productTumWrap {
-          width: 128px;
-          height: 160px;
-
-          .productTum {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
+        .title {
+          font-size: $fontMedium;
+          font-weight: $fontBold;
+          color: #fff;
         }
 
-        .productInfoWrap {
-          margin: 8px 0 0 20px;
+        .orderListBtn {
+          background: transparent;
+          cursor: pointer;
+          align-items: center;
+          display: flex;
 
-          .productInfoTitle {
+          .arrowIcon {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+
+      .orderListWrap,
+      .orderListWrapShow {
+        width: 100%;
+
+        .orderItemWrap {
+          @include elementPosition(flex, row, flex-start);
+          align-items: center;
+          margin: 32px 8px 19px 8px;
+
+          .basketIcon {
+            width: 31px;
+            height: 27px;
+            margin-right: 12px;
+          }
+
+          .title {
             font-size: $fontMedium;
             font-weight: $fontBold;
             color: $fontBlack;
-            margin-bottom: 13px;
+          }
+        }
+
+        .orderProductListWrap {
+          @include elementPosition(flex, column, flex-start);
+
+          .orderProductList {
+            @include elementPosition(flex, row, flex-start);
+            border: 1px solid #ddd;
+            background-color: #fafafa;
+            padding: 16px 32px 16px 32px;
+            margin-bottom: 20px;
+
+            .productTumWrap {
+              width: 128px;
+              height: 160px;
+
+              .productTum {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+            }
+
+            .productInfoWrap {
+              margin: 8px 0 0 20px;
+
+              .productInfoTitle {
+                font-size: $fontMedium;
+                font-weight: $fontBold;
+                color: $fontBlack;
+                margin-bottom: 13px;
+              }
+
+              .productInfoOption {
+                @include elementPosition(flex, row, flex-start);
+
+                .optionList {
+                  font-size: $fontSmall;
+                  color: $fontGray;
+                }
+
+                .optionList::before {
+                  display: inline-flex;
+                  content: '|';
+                  padding: 0 20px;
+                  color: #ddd;
+                }
+
+                .optionList:first-child::before {
+                  display: none;
+                }
+              }
+
+              .productInfoPrice {
+                margin-top: 25px;
+                font-size: $fontLarge;
+                font-weight: $fontBold;
+                display: block;
+              }
+
+              .productInfoPrice::before {
+                content: '₩ ';
+                font-weight: 400;
+                font-size: 24px;
+              }
+            }
           }
 
-          .productInfoOption {
-            @include elementPosition(flex, row, flex-start);
+          .orderProductList:last-child {
+            margin-bottom: 30px;
+          }
+        }
+      }
 
-            .optionList {
+      .orderListWrap {
+        display: none;
+      }
+
+      .orderListWrapShow {
+        display: block;
+      }
+    }
+
+    .orderPriceWrap {
+      width: 436px;
+
+      .orderPriceStickyWrap {
+        border: 1px solid #ddd;
+
+        .orderPriceTitle {
+          background: #fafafa;
+          border-bottom: 1px solid #ddd;
+          line-height: 71px;
+          padding: 0 34px;
+          font-size: $fontMedium;
+          font-weight: $fontBold;
+          display: block;
+        }
+
+        .orderPriceListWrap {
+          margin: 30px;
+
+          .orderPriceList {
+            @include elementPosition(flex, row, space-between);
+            align-items: center;
+            margin-bottom: 30px;
+
+            .title {
               font-size: $fontSmall;
               color: $fontGray;
             }
 
-            .optionList::before {
-              display: inline-flex;
-              content: '|';
-              padding: 0 20px;
-              color: #ddd;
+            .titleAccent {
+              color: $fontBlack;
+              font-weight: $fontBold;
             }
 
-            .optionList:first-child::before {
-              display: none;
+            .price {
+              color: $fontBlack;
+              font-weight: $fontBold;
+              font-size: $fontMedium;
             }
-          }
 
-          .productInfoPrice {
-            margin-top: 25px;
-            font-size: $fontLarge;
-            font-weight: $fontBold;
-            display: block;
-          }
+            .price::before {
+              font-size: 1.2rem;
+              font-weight: 400;
+              content: '₩ ';
+              display: inline-block;
+              letter-spacing: -0.01em;
+              font-family: 'Spoqa Han Sans', sans-serif;
+            }
 
-          .productInfoPrice::before {
-            content: '₩ ';
-            font-weight: 400;
-            font-size: 24px;
+            .priceAccent {
+              font-size: $fontLarge;
+            }
           }
         }
       }
-
-      .orderProductList:last-child {
-        margin-bottom: 30px;
-      }
     }
-  }
-
-  .orderListWrap {
-    display: none;
-  }
-
-  .orderListWrapShow {
-    display: block;
   }
 }
