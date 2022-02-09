@@ -42,8 +42,6 @@ const Mypage = () => {
       .then(data => setOrderData(...data.result));
   }, []);
 
-  console.log(orderData.order_items);
-
   return (
     <main className="Mypage">
       <div className="MypagePosition">
