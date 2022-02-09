@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Filter from './Filter';
 import './ProductList.scss';
 import Pagination from './Pagination';
+import TopBt from '../SignUp/TopBt';
 
 const ProductList = () => {
   const [itemList, setItemList] = useState([]);
@@ -124,6 +125,7 @@ const ProductList = () => {
         </ul>
       </div>
       <Pagination updateOffset={updateOffset} />
+      <TopBt />
     </section>
   );
 };
