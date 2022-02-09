@@ -6,7 +6,7 @@ const Main = () => {
   return (
     <>
       <ImageSlide />
-      <div className="container">
+      <div className="maincontainer">
         <div className="mainWrap">
           <div className="textWrap">
             <h2 className="mdTitle">MD 추천</h2>
