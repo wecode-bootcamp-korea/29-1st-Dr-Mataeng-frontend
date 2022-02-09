@@ -8,9 +8,10 @@ import Empty from './Empty';
 
 const WishList = () => {
   const [cart, setCart] = useState([]);
-  const [page, setPage] = useState('empty');
+  const [page, setPage] = useState('cartpage');
 
   const renderPage = () => {
+    console.log(cart.length);
     if (cart.length === 0) {
       setPage('empty');
     } else {
@@ -48,7 +49,6 @@ const WishList = () => {
 
   useEffect(() => {
     setCart(WISHLIST_DATA);
-    renderPage();
   }, []);
 
   return (
@@ -128,7 +128,6 @@ const WishList = () => {
           </div>
         </div>
       )}
-      <Footer />
     </>
   );
 };
