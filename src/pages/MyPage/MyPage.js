@@ -7,6 +7,12 @@ const Mypage = () => {
   const [orderProduct, setOrderProduct] = useState(false);
   const [userData, setUserData] = useState('');
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    alert('로그아웃 되었습니다.');
+    document.location.href = 'main';
+  };
+
   const orderProductHandler = () => {
     setOrderProduct(!orderProduct);
   };
@@ -67,6 +73,11 @@ const Mypage = () => {
                 moneyPoing={userData.point}
               />
             ))}
+          </div>
+          <div className="userLogout">
+            <button className="logout" onClick={handleLogout}>
+              로그아웃
+            </button>
           </div>
         </section>
       </div>
