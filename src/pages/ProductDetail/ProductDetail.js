@@ -2,6 +2,7 @@ import React from 'react';
 import './ProductDetail.scss';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
+import { useNavigate } from 'react-router';
 
 const ProductDetail = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -89,18 +90,20 @@ const ProductDetail = () => {
   };
 
   // Event : 장바구니 버튼 클릭 시 POST body로 데이터 전송 및 알림창 생성
-  const Params = useParams();
-  // console.log(Params);
+  const params = useParams();
+  console.log(params);
+
+  const navigate = useNavigate();
 
   const CartBtnClickHandler = () => {
     fetch('http://10.58.3.22:8000/carts', {
       method: 'POST',
-      header: {
+      headers: {
         Authorization:
           'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2fQ.Ya44VVMRIy86Oixk3ngSjD3jiK9eWNlsKjr2akaYkvc',
       },
       body: JSON.stringify({
-        product_id: Params.id, // FIXME : 백엔드 데이터 저장 잘 되는지 여쭤보기
+        product_id: params.id, // FIXME : 백엔드 데이터 저장 잘 되는지 여쭤보기
         size: sizeChoiceValue,
         quantity: quantityValue,
       }),
@@ -110,6 +113,11 @@ const ProductDetail = () => {
         // alert('장바구니에 담겼습니다.')
         res => console.log(res)
       );
+
+    // const paymentPageMoveHandler = () => {
+    //   navigate('/myPage');
+    // };
+    // paymentPageMoveHandler();
   };
 
   return (
