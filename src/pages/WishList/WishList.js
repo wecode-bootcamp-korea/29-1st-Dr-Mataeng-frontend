@@ -16,36 +16,21 @@ const WishList = () => {
     return totalPrice;
   };
 
-  // const getData = deleteList => {
-  //   setCartId(deleteList);
-  //   setCart(cart.filter(cart => cart !== cartId));
-
-  //   console.log(cart);
-  // };
-
-  // const deleteListt = () => {
-  //   console.log('delete!!');
-  //   setCart(cart.filter(cart => cart !== cartId));
-  //   return cart;
-  // };
-
-  console.log(cart);
+  useEffect(() => {
+    fetch('http://10.58.3.22:8000/carts', {
+      method: 'GET',
+      headers: {
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1fQ.wJO6SJNZeBgZWe8KLTo2flSDaL0KdDOA_oBpObKiRCw',
+      },
+    })
+      .then(response => response.json())
+      .then(data => setCart(data.result));
+  }, []);
 
   // useEffect(() => {
-  //   fetch('http://10.58.7.157:8000/carts', {
-  //     method: 'GET',
-  //     headers: {
-  //       Authorization:
-  //         'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1fQ.wJO6SJNZeBgZWe8KLTo2flSDaL0KdDOA_oBpObKiRCw',
-  //     },
-  //   })
-  //     .then(response => response.json())
-  //     .then(data => setCart(data.result));
+  //   setCart(WISHLIST_DATA);
   // }, []);
-
-  useEffect(() => {
-    setCart(WISHLIST_DATA);
-  }, []);
 
   return (
     <>
@@ -61,76 +46,73 @@ const WishList = () => {
           </div>
         </div>
       </header>
-      {cart.length === 0 && <Empty />}
-      {cart.length > 0 && (
-        <div className="cart">
-          <div className="cart container">
-            <div className="containerRow">
-              <div className="controlCheckbox">
-                <div className="checkbox">
-                  <input type="checkbox" />
-                  <span>전체선택({cart.length})</span>
-                </div>
-                <div className="deleteButton">
-                  <button>
-                    <img alt="trashcan" src="images/icon/trash-can.png" />
-                    <span>선택 삭제</span>
-                  </button>
-                </div>
+      <div className="cart">
+        <div className="cart container">
+          <div className="containerRow">
+            <div className="controlCheckbox">
+              <div className="checkbox">
+                <input type="checkbox" />
+                <span>전체선택({cart.length})</span>
               </div>
-            </div>
-          </div>
-          <div className="cartBox">
-            <div className="cartBoxContainer">
-              <ul className="orderProductList">
-                {WISHLIST_DATA.map(list => {
-                  return (
-                    <ProductList
-                      key={list.product_id}
-                      list={list}
-                      cart={cart}
-                      setCart={setCart}
-                    />
-                  );
-                })}
-              </ul>
-            </div>
-            <div className="orderBoxContainer">
-              <div className="orderBox">
-                <div className="orderTitle">
-                  <span>주문 예정 금액</span>
-                </div>
-                <div className="orderPriceBox">
-                  <div className="orderPriceList">
-                    <dt className="orderPriceTitle">총 상품 금액</dt>
-                    <dd className="orderPrice">
-                      <span>₩</span>
-                      <span>{priceList()}</span>
-                    </dd>
-                  </div>
-                  <div className="orderPriceList">
-                    <dt className="orderPriceTitle">할인 금액</dt>
-                    <dd className="orderPrice">
-                      <span>₩</span>
-                      <span>(-)0</span>
-                    </dd>
-                  </div>
-                  <div className="orderPriceList">
-                    <dt className="orderPriceTitletotal">총 결제 예정 금액</dt>
-                    <dd className="orderPrice">
-                      <span>₩</span>
-                      <span>{priceList()}</span>
-                    </dd>
-                  </div>
-                </div>
-              </div>
-              <div className="buyButton">
-                <button>구매하기</button>
+              <div className="deleteButton">
+                <button>
+                  <img alt="trashcan" src="images/icon/trash-can.png" />
+                  <span>선택 삭제</span>
+                </button>
               </div>
             </div>
           </div>
         </div>
-      )}
+        <div className="cartBox">
+          <div className="cartBoxContainer">
+            <ul className="orderProductList">
+              {cart.map(list => {
+                return (
+                  <ProductList
+                    key={list.product_id}
+                    list={list}
+                    cart={cart}
+                    setCart={setCart}
+                  />
+                );
+              })}
+            </ul>
+          </div>
+          <div className="orderBoxContainer">
+            <div className="orderBox">
+              <div className="orderTitle">
+                <span>주문 예정 금액</span>
+              </div>
+              <div className="orderPriceBox">
+                <div className="orderPriceList">
+                  <dt className="orderPriceTitle">총 상품 금액</dt>
+                  <dd className="orderPrice">
+                    <span>₩</span>
+                    <span>{priceList()}</span>
+                  </dd>
+                </div>
+                <div className="orderPriceList">
+                  <dt className="orderPriceTitle">할인 금액</dt>
+                  <dd className="orderPrice">
+                    <span>₩</span>
+                    <span>(-)0</span>
+                  </dd>
+                </div>
+                <div className="orderPriceList">
+                  <dt className="orderPriceTitletotal">총 결제 예정 금액</dt>
+                  <dd className="orderPrice">
+                    <span>₩</span>
+                    <span>{priceList()}</span>
+                  </dd>
+                </div>
+              </div>
+            </div>
+            <div className="buyButton">
+              <button>구매하기</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
