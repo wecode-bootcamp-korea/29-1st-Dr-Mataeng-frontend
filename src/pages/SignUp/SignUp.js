@@ -68,7 +68,7 @@ function SignUp() {
         .then(response => response.json())
         .then(result =>
           result.message === 'SUCCESS'
-            ? navigate('/main')
+            ? navigate('/login')
             : console.info('결과: ', result)
         );
     } else if (!submitValid) {
