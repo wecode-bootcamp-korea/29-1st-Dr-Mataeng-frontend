@@ -16,7 +16,7 @@ const ProductDetail = () => {
 
   // Connect : 백엔드와 데이터 연동
   useEffect(() => {
-    fetch(`http://10.58.3.22:8000/products/${params.id}`, {
+    fetch(`http://172.20.10.5:8000/products/${params.id}`, {
       method: 'GET',
     })
       .then(res => res.json())
@@ -94,7 +94,7 @@ const ProductDetail = () => {
 
   // Event : 장바구니 버튼 클릭 시 POST body로 데이터 전송 및 알림창 생성
   const CartBtnClickHandler = () => {
-    fetch('http://10.58.3.22:8000/carts', {
+    fetch('http://172.20.10.5:8000/carts', {
       method: 'POST',
       headers: {
         Authorization:
@@ -107,15 +107,12 @@ const ProductDetail = () => {
       }),
     })
       .then(res => res.json())
-      .then(
-        // alert('장바구니에 담겼습니다.')
-        res => console.log(res)
-      );
+      .then(alert('장바구니에 담겼습니다.'));
 
-    // const paymentPageMoveHandler = () => {
-    //   navigate('/myPage');
-    // };
-    // paymentPageMoveHandler();
+    const paymentPageMoveHandler = () => {
+      navigate('/myPage');
+    };
+    paymentPageMoveHandler();
   };
 
   return (
