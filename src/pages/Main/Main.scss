@@ -1,3 +1,4 @@
+@import '/src/styles/variables.scss';
 @mixin fullPage {
   width: 100%;
   height: 800px;
@@ -35,6 +36,106 @@
     top: -470px;
     img {
       width: 100%;
+    }
+  }
+}
+
+.mainWrap {
+  padding: 120px 0 100px 0;
+  .textWrap {
+    width: 1140px;
+    margin: 0 auto;
+    .mdTitle {
+      font-size: 48px;
+      font-weight: $fontBold;
+      text-align: center;
+    }
+    .productTabs {
+      margin-top: 32px;
+      margin-bottom: 60px;
+      text-align: center;
+      .productBt {
+        font-size: $fontMedium;
+        height: 52px;
+        border: 1px solid black;
+        padding: 0 30px;
+        margin-right: 8px;
+        background-color: #fff;
+        &:hover {
+          background-color: black;
+          color: #fff;
+        }
+        span {
+          font-weight: 400;
+        }
+      }
+    }
+    .productSwiper {
+      display: flex;
+      align-items: flex-start;
+      width: 1140px;
+      height: 592px;
+      margin-top: 20px;
+      .productLeft {
+        .productTop {
+          .productName {
+            font-size: 26px;
+            margin-bottom: 20px;
+            font-weight: $fontBold;
+            padding-left: 20px;
+          }
+        }
+      }
+      .swiperImg {
+        img {
+          width: 558px;
+          height: 349px;
+          padding: 20px;
+        }
+      }
+    }
+    .subTitle {
+      margin-bottom: 10px;
+      font-size: $fontTitle;
+      font-weight: 400;
+    }
+    .collectTitle {
+      font-size: 64px;
+      font-weight: $fontBold;
+    }
+    .titleLine {
+      margin-top: 59px;
+      width: 470px;
+      height: 12px;
+      background-color: $fontBlack;
+    }
+  }
+  .collectionImg {
+    width: 100%;
+    margin-top: 56px;
+    margin-bottom: 101px;
+    img {
+      width: 100%;
+      height: 800px;
+      object-fit: cover;
+    }
+  }
+  .descript {
+    height: 80px;
+    font-size: $fontLarge;
+    line-height: 1.54;
+    font-weight: 400;
+  }
+  .descriptBt {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 160px;
+    height: 52px;
+    margin: 39px 0 0 1px;
+    border: 1px solid black;
+    span {
+      font-size: 18px;
     }
   }
 }
