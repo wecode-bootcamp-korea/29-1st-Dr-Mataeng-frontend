@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Login from './pages/Login/Login';
+import SignIn from './pages/SignIn/SignIn';
 import Main from './pages/Main/Main';
 import MyPage from './pages/MyPage/MyPage';
 import Payment from './pages/Payment/Payment';
@@ -17,7 +17,7 @@ function Router() {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<SignIn />} />
         <Route path="/main" element={<Main />} />
         <Route path="/myPage" element={<MyPage />} />
         <Route path="/payment" element={<Payment />} />
