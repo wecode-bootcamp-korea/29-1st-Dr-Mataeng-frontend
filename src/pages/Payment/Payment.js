@@ -40,8 +40,6 @@ const Payment = () => {
       .then(data => setOrderData(data.result));
   }, []);
 
-  // console.log(oorderData[0].cart_id);
-
   // Function : 합계 계산
   let abc = 0;
 
@@ -53,19 +51,45 @@ const Payment = () => {
   sumPriceHandler();
 
   // 결제하기 버튼
+  let testResult = [
+    {
+      cart_id: 13,
+      product_id: 1,
+      product_name: '오드릭 부츠 하드웨어',
+      product_image:
+        'https://media.istockphoto.com/photos/black-army-shoes-picture-id171572967?b=1&k=20&m=171572967&s=170667a&w=0&h=sURzXxdSGGDIx3lGHH0iBim6FZTY_UeHUGx90zbVlgY=',
+      product_like: 121,
+      product_color: '블랙',
+      product_size: '240',
+      quantity: 1,
+      price: 300000,
+    },
+    {
+      cart_id: 14,
+      product_id: 2,
+      product_name: '1460 YOTT',
+      product_image:
+        'https://media.istockphoto.com/photos/boot-on-white-picture-id114380617?b=1&k=20&m=114380617&s=170667a&w=0&h=i7Yl_BUUXOpMBYitMcJvMJ3dSZjsPHfGlg8iXiuMo-M=',
+      product_like: 402,
+      product_color: '블랙',
+      product_size: '220',
+      quantity: 2,
+      price: 540000,
+    },
+  ];
+  let testmap = testResult.map(({ cart_id }) => 'cart_id=' + cart_id).join('&');
+
+  console.log(testmap);
+
   useEffect(() => {
-    fetch(`http://172.20.10.5:8000/orders?cart_id=14`, {
+    fetch(`http://172.20.10.5:8000/orders?${testmap}`, {
       method: 'POST',
       headers: {
         Authorization:
           'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1fQ.wJO6SJNZeBgZWe8KLTo2flSDaL0KdDOA_oBpObKiRCw',
       },
-    })
-      .then(res => res.json())
-      .then(data => console.log(data));
+    });
   }, []);
-
-  // console.log(orderData);
 
   return (
     <section className="Payment">
