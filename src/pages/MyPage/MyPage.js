@@ -1,5 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import MypagePoints from './MypagePoints';
 import './MyPage.scss';
 
