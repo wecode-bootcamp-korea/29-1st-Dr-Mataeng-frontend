@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import MypagePoints from './MypagePoints';
-import { Link } from 'react-router-dom';
 import './MyPage.scss';
 
 const Mypage = () => {
@@ -19,20 +18,20 @@ const Mypage = () => {
             className="defaultImg"
             src="/images/mypage/logo@3x.png"
           />
-          <div className="imgUploadBtn">
+          <div className="uploadBtnWrap">
             <img
-              alt="photo icon"
-              className="uploadBtnImg"
+              alt="frame icon"
+              className="uploadBtn"
               src="/images/mypage/img_profile.png"
             />
           </div>
         </section>
         <section className="infoWrap">
           <div className="infoGreetingsWrap">
-            <button type="button" className="gearBtn">
+            <button type="button" className="gearBtnWrap">
               <img
                 alt="gear icon"
-                className="gearBtnImg"
+                className="gearBtn"
                 src="/images/mypage/btn_mypageSetting.jpeg"
               />
             </button>
