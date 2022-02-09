@@ -17,13 +17,16 @@ const ProductList = ({ list }) => {
   let arr = [];
   arr.push(cart_id);
   console.log(arr);
+  console.log(arr[0]);
 
   const navigate = useNavigate();
   const goToDetail = () => {
     navigate(`/productDetail/${product_id}`);
   };
 
-  const deleteHandler = () => {};
+  const deleteHandler = productRemove => {
+    list();
+  };
 
   return (
     <li className="itemList">
