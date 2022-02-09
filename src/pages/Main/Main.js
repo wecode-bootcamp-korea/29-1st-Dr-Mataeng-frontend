@@ -64,6 +64,7 @@ const Main = () => {
               <span>자세히 보기</span>
             </div>
           </div>
+          <div />
         </div>
       </div>
     </>
