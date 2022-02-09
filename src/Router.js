@@ -9,10 +9,13 @@ import ProductList from './pages/ProductList/ProductList';
 import Search from './pages/Search/Search';
 import SignUp from './pages/SignUp/SignUp';
 import WishList from './pages/WishList/WishList';
+import Header from './components/header/header';
+import Footer from './components/footer/footer';
 
 function Router() {
   return (
     <BrowserRouter>
+      <Header />
       <Routes>
         <Route path="/Login" element={<Login />} />
         <Route path="/Main" element={<Main />} />
@@ -24,6 +27,7 @@ function Router() {
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/WishList" element={<WishList />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

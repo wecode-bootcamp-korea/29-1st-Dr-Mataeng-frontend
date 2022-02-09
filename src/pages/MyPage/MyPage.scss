@@ -1,124 +1,327 @@
 @import '/src/styles/variables.scss';
 
 .Mypage {
-  @include elementPosition(flex, row, center);
+  @include elementPosition(flex, column, center);
+  align-items: center;
   padding: 90px 0 140px 0;
 
-  .imgUploadWrap {
-    width: 483px;
-    margin-right: 84px;
-    position: relative;
+  .MypagePosition {
+    @include elementPosition(flex, row, center);
 
-    .defaultImg {
+    .imgUploadWrap {
       width: 483px;
-      height: 100%;
-      object-fit: cover;
-      box-shadow: 0 10px 18px 0 rgb(0 0 0 / 15%);
-    }
-
-    .imgUploadBtn {
-      width: 84px;
-      height: 84px;
-      border-radius: 50%;
-      box-shadow: 0 0.333rem 0.6rem 0 rgb(0 0 0 / 15%);
-      cursor: pointer;
-      position: absolute;
-      right: 44px;
-      bottom: -42px;
-
-      .uploadBtnImg {
-        width: 100%;
-        height: 100%;
-      }
-    }
-  }
-
-  .infoWrap {
-    width: 413px;
-    padding: 40px 0;
-
-    .infoGreetingsWrap {
-      padding-bottom: 28px;
-      line-height: 29px;
-      font-size: $fontLarge;
-      color: $fontGray;
+      margin-right: 84px;
       position: relative;
 
-      .gearBtn {
-        width: 33px;
-        height: 33px;
-        border: none;
+      .defaultImg {
+        width: 483px;
+        height: 100%;
+        object-fit: cover;
+        box-shadow: 0 10px 18px 0 rgb(0 0 0 / 15%);
+      }
+
+      .uploadBtnWrap {
+        width: 84px;
+        height: 84px;
+        border-radius: 50%;
+        box-shadow: 0 0.333rem 0.6rem 0 rgb(0 0 0 / 15%);
         cursor: pointer;
         position: absolute;
-        top: 0;
-        right: 0;
+        right: 44px;
+        bottom: -42px;
 
-        .gearBtnImg {
+        .uploadBtn {
           width: 100%;
           height: 100%;
-          object-fit: cover;
         }
       }
+    }
 
-      .userName {
-        font-weight: $fontBold;
-        color: $fontBlack;
-        margin-right: 10px;
-      }
+    .infoWrap {
+      width: 413px;
+      padding: 40px 0;
 
-      .greetings {
-        padding-top: 80px;
+      .infoGreetingsWrap {
         padding-bottom: 28px;
         line-height: 29px;
         font-size: $fontLarge;
         color: $fontGray;
-        letter-spacing: -0.5px;
+        position: relative;
+
+        .gearBtnWrap {
+          width: 33px;
+          height: 33px;
+          border: none;
+          cursor: pointer;
+          position: absolute;
+          top: 0;
+          right: 0;
+
+          .gearBtn {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        .userName {
+          font-weight: $fontBold;
+          color: $fontBlack;
+          margin-right: 10px;
+        }
+
+        .greetings {
+          padding-top: 80px;
+          padding-bottom: 28px;
+          line-height: 29px;
+          font-size: $fontLarge;
+          color: $fontGray;
+          letter-spacing: -0.5px;
+        }
+      }
+
+      .userRankWrap {
+        line-height: 21px;
+        font-size: $fontLarge;
+        color: $fontBlack;
+        font-weight: $fontBold;
+        padding-bottom: 162px;
+        letter-spacing: -1px;
+        border-bottom: 8px solid #ddd;
+      }
+
+      .userPoingWrap {
+        @include elementPosition(flex, row, space-between);
+        align-items: center;
+        margin-top: 50px;
+
+        .userPoingHistoryWrap {
+          @include elementPosition(flex, column, center);
+          text-align: center;
+          align-items: center;
+          width: 33%;
+
+          .pointIcon {
+            width: 37px;
+            height: 37px;
+          }
+
+          .pointIconName {
+            color: $fontGray;
+            font-size: $fontMedium;
+            line-height: 20px;
+            padding-bottom: 26px;
+            display: block;
+            text-align: center;
+            padding-top: 10px;
+          }
+
+          .holdingPoints {
+            color: $fontBlack;
+            font-size: $fontTitle;
+            font-weight: $fontBold;
+            line-height: 37px;
+            border-bottom: 2px solid #111;
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+}
+
+.PaymentWrap {
+  @include elementPosition(flex, column, center);
+  align-items: center;
+  border-top: 1px solid #ddd;
+  margin-top: 120px;
+  padding-top: 80px;
+
+  .contentsWrap {
+    @include elementPosition(flex, row, space-between);
+    width: 980px;
+
+    .orderProductInfoWrap {
+      width: 600px;
+
+      .expectedOrderPrice {
+        @include elementPosition(flex, row, space-between);
+        width: 100%;
+        height: 62px;
+        background-color: #111;
+        font-size: $fontMedium;
+        color: $fontGray;
+        padding: 0 30px;
+        align-items: center;
+
+        .title {
+          font-size: $fontMedium;
+          font-weight: $fontBold;
+          color: #fff;
+        }
+
+        .orderListBtn {
+          background: transparent;
+          cursor: pointer;
+          align-items: center;
+          display: flex;
+
+          .arrowIcon {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+
+      .orderListWrap,
+      .orderListWrapShow {
+        width: 100%;
+
+        .orderItemWrap {
+          @include elementPosition(flex, row, flex-start);
+          align-items: center;
+          margin: 32px 8px 19px 8px;
+
+          .basketIcon {
+            width: 31px;
+            height: 27px;
+            margin-right: 12px;
+          }
+
+          .title {
+            font-size: $fontMedium;
+            font-weight: $fontBold;
+            color: $fontBlack;
+          }
+        }
+
+        .orderProductListWrap {
+          @include elementPosition(flex, column, flex-start);
+
+          .orderProductList {
+            @include elementPosition(flex, row, flex-start);
+            border: 1px solid #ddd;
+            background-color: #fafafa;
+            padding: 16px 32px 16px 32px;
+            margin-bottom: 20px;
+
+            .productTumWrap {
+              width: 128px;
+              height: 160px;
+
+              .productTum {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+            }
+
+            .productInfoWrap {
+              margin: 8px 0 0 20px;
+
+              .productInfoTitle {
+                font-size: $fontMedium;
+                font-weight: $fontBold;
+                color: $fontBlack;
+                margin-bottom: 13px;
+              }
+
+              .productInfoOption {
+                @include elementPosition(flex, row, flex-start);
+
+                .optionList {
+                  font-size: $fontSmall;
+                  color: $fontGray;
+                }
+
+                .optionList::before {
+                  display: inline-flex;
+                  content: '|';
+                  padding: 0 20px;
+                  color: #ddd;
+                }
+
+                .optionList:first-child::before {
+                  display: none;
+                }
+              }
+
+              .productInfoPrice {
+                margin-top: 25px;
+                font-size: $fontLarge;
+                font-weight: $fontBold;
+                display: block;
+              }
+
+              .productInfoPrice::before {
+                content: '₩ ';
+                font-weight: 400;
+                font-size: 24px;
+              }
+            }
+          }
+
+          .orderProductList:last-child {
+            margin-bottom: 30px;
+          }
+        }
+      }
+
+      .orderListWrap {
+        display: none;
+      }
+
+      .orderListWrapShow {
+        display: block;
       }
     }
 
-    .userRankWrap {
-      line-height: 21px;
-      font-size: $fontLarge;
-      color: $fontBlack;
-      font-weight: $fontBold;
-      padding-bottom: 162px;
-      letter-spacing: -1px;
-      border-bottom: 8px solid #ddd;
-    }
+    .orderPriceWrap {
+      width: 355px;
 
-    .userPoingWrap {
-      @include elementPosition(flex, row, space-between);
-      align-items: center;
-      margin-top: 50px;
+      .orderPriceStickyWrap {
+        border: 1px solid #ddd;
 
-      .userPoingHistoryWrap {
-        @include elementPosition(flex, column, center);
-        text-align: center;
-        align-items: center;
-        width: 33%;
-
-        .pointIcon {
-          width: 37px;
-          height: 37px;
-        }
-
-        .pointIconName {
-          color: $fontGray;
+        .orderPriceTitle {
+          background: #fafafa;
+          border-bottom: 1px solid #ddd;
+          line-height: 60px;
+          padding: 0 34px;
           font-size: $fontMedium;
-          line-height: 20px;
-          padding-bottom: 26px;
+          font-weight: $fontBold;
           display: block;
-          text-align: center;
-          padding-top: 10px;
         }
 
-        .holdingPoints {
-          color: $fontBlack;
-          font-size: $fontTitle;
-          font-weight: $fontBold;
-          line-height: 37px;
-          border-bottom: 2px solid #111;
-          display: inline-block;
+        .orderPriceListWrap {
+          margin: 30px;
+          height: 133px;
+
+          .orderPriceList {
+            @include elementPosition(flex, row, space-between);
+            align-items: center;
+            margin-bottom: 30px;
+
+            .title {
+              font-size: $fontSmall;
+              color: $fontGray;
+            }
+
+            .price {
+              color: $fontBlack;
+              font-weight: $fontBold;
+              font-size: $fontMedium;
+            }
+          }
+        }
+
+        .orderPriceList:first-child {
+          .price::before {
+            font-size: 1.2rem;
+            font-weight: 400;
+            content: '₩ ';
+            display: inline-block;
+            font-family: 'Spoqa Han Sans', sans-serif;
+          }
         }
       }
     }

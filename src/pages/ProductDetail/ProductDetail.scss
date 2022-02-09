@@ -1,0 +1,360 @@
+@import '/src/styles/variables.scss';
+
+.ProductDetailContainer {
+  @include elementPosition(flex, row, center);
+  margin-bottom: 100px;
+
+  .productImgWrap {
+    width: 560px;
+    margin-right: 60px;
+
+    .detailImg {
+      width: 100%;
+      height: 700px;
+      object-fit: cover;
+      margin-bottom: 12px;
+    }
+  }
+
+  .contentWrap {
+    width: 520px;
+    padding-bottom: 200px;
+
+    .content {
+      position: static;
+    }
+
+    .contentFix {
+      position: sticky;
+      top: 0;
+    }
+
+    .productDetailTop {
+      @include elementPosition(flex, row, space-between);
+      padding-top: 10px;
+
+      .shareHeartWrap {
+        @include elementPosition(flex, row, flex-start);
+        align-items: center;
+
+        .shareIconWrap,
+        .heartIconWrap {
+          width: 23px;
+          height: 23px;
+          background: transparent;
+          cursor: pointer;
+
+          .shareIcon,
+          .heartIcon {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        .shareIconWrap {
+          margin-right: 30px;
+        }
+
+        .heartIconWrap {
+          margin-right: 7px;
+        }
+
+        .wishConutWrap {
+          @include elementPosition(flex, row, flex-start);
+          align-items: center;
+
+          .wishConut {
+            font-size: $fontMedium;
+            font-weight: $fontBold;
+            color: $fontBlack;
+            padding-top: 3px;
+          }
+        }
+      }
+
+      .gradeStarWrap {
+        @include elementPosition(flex, row, flex-end);
+        align-items: center;
+
+        .gradeStar {
+          display: flex;
+
+          .Star {
+            color: #ddd;
+            font-size: 18px;
+          }
+        }
+
+        .gradeConut {
+          cursor: pointer;
+          margin-left: 7px;
+          border-bottom: 1px solid #111;
+          font-size: $fontMedium;
+          color: $fontBlack;
+          font-weight: $fontBold;
+          line-height: 15px;
+          padding-top: 3px;
+        }
+
+        .gradeConutTxt {
+          font-size: $fontMedium;
+          color: $fontBlack;
+          font-weight: $fontBold;
+        }
+      }
+    }
+
+    .productDetailTitle {
+      font-weight: $fontBold;
+      font-size: $fontLarge;
+      color: $fontBlack;
+      margin: 22px 0;
+    }
+
+    .memberBenefitsWrap {
+      margin-bottom: 22px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid #ddd;
+
+      .memberBenefits {
+        width: 166px;
+        height: 34px;
+        border: 1px solid #111;
+        cursor: pointer;
+        background: transparent;
+      }
+    }
+
+    .productThumbnailWrap {
+      @include elementPosition(flex, row, flex-start);
+      margin: 32px 0;
+
+      .productThumbnailContainer {
+        width: 60px;
+        height: 60px;
+        border: 3px solid #111;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 14px;
+        cursor: pointer;
+
+        .productThumbnail {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: bottom;
+        }
+      }
+
+      .colorChoiceActive {
+        border: 3px solid #111;
+      }
+    }
+    .productDetailOptions {
+      @include elementPosition(flex, row, space-between);
+      width: 100%;
+      flex-wrap: wrap;
+
+      .optionsWrap {
+        @include elementPosition(flex, row, center);
+        border: 1px solid #e5e5e5;
+        margin-bottom: 8px;
+
+        .optionsBtn {
+          background: transparent;
+          text-align: left;
+          width: 166px;
+          padding: 0 20px;
+          height: 36px;
+          cursor: pointer;
+
+          .size {
+            font-size: $fontMedium;
+          }
+
+          .quantity {
+            margin-left: 10px;
+            font-size: 12px;
+            color: #999;
+            top: -4px;
+            position: relative;
+          }
+        }
+
+        .optionsBtnActive {
+          background: #111;
+          text-align: left;
+          width: 166px;
+          padding: 0 20px;
+          height: 36px;
+          cursor: pointer;
+
+          .size {
+            font-size: $fontMedium;
+            color: #fff;
+          }
+
+          .quantity {
+            margin-left: 10px;
+            font-size: 12px;
+            color: #fff;
+            top: -4px;
+            position: relative;
+          }
+        }
+      }
+    }
+
+    .sizeChoiceWrap {
+      @include elementPosition(flex, row, space-between);
+      align-items: center;
+
+      .sizeTitle {
+        margin: 0 10px;
+        width: 150px;
+        font-size: $fontMedium;
+        color: $fontBlack;
+      }
+
+      .sizeOptions {
+        border-bottom: 1px solid #e5e5e5;
+        width: 100%;
+        padding: 0 10px;
+        height: 36px;
+        font-size: $fontMedium;
+      }
+    }
+
+    .purchasePriceAndQuantity {
+      @include elementPosition(flex, row, space-between);
+      align-items: center;
+
+      .purchaseQuantityWrap {
+        @include elementPosition(flex, row, flex-start);
+        align-items: center;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #e5e5e5;
+
+        .quantityTitle {
+          margin-left: 10px;
+          font-size: $fontMedium;
+          color: $fontBlack;
+        }
+
+        .quantityInput {
+          width: 61px;
+          height: 27px;
+          text-align: center;
+          font-size: $fontMedium;
+          font-weight: $fontBold;
+          color: $fontBlack;
+          background: transparent;
+        }
+
+        .quantityMinus,
+        .quantityPlus {
+          padding: 5px;
+          cursor: pointer;
+          margin-left: 10px;
+          background: transparent;
+          width: 16px;
+          height: 16px;
+        }
+
+        .quantityMinus {
+          background: url('../../../public/images/productDetail/icon-minus.png')
+            no-repeat center;
+          background-size: cover;
+        }
+
+        .quantityPlus {
+          background: url('../../../public/images/productDetail/icon-plus.png')
+            no-repeat center;
+          background-size: cover;
+        }
+      }
+
+      .purchasePrice {
+        font-size: $fontLarge;
+        font-weight: $fontBold;
+        color: $fontBlack;
+      }
+
+      .purchasePrice:before {
+        content: '₩ ';
+        font-weight: 400;
+        font-size: 24px;
+      }
+    }
+
+    .cartAndBuyBtn {
+      @include elementPosition(flex, row, space-between);
+      margin-top: 17px;
+
+      .cartBtn,
+      .buyBtn {
+        width: 255px;
+        height: 62px;
+        border: 1px solid #111;
+        cursor: pointer;
+        font-size: $fontMedium;
+        font-weight: $fontBold;
+      }
+
+      .cartBtn {
+        color: $fontBlack;
+        background: transparent;
+      }
+
+      .buyBtn {
+        background: #111;
+        color: #fff;
+      }
+    }
+  }
+}
+
+.productDetailDescList {
+  @include elementPosition(flex, row, center);
+  margin-bottom: 180px;
+
+  .position {
+    width: 560px;
+  }
+  .descListWrap {
+    @include elementPosition(flex, row, flex-start);
+    width: 580px;
+    flex-wrap: wrap;
+
+    .descList {
+      width: 50%;
+      @include elementPosition(flex, column, flex-start);
+
+      .model {
+        padding-left: 2px;
+        font-size: $fontMedium;
+        margin-bottom: 7px;
+        color: $fontGray;
+      }
+
+      .name {
+        padding-left: 2px;
+        font-size: $fontLarge;
+        color: $fontBlack;
+        font-weight: $fontBold;
+        line-height: 40px;
+      }
+    }
+
+    .descList:nth-child(1),
+    .descList:nth-child(2) {
+      margin-bottom: 45px;
+    }
+
+    .descList:nth-child(2),
+    .descList:nth-child(4) {
+      padding-left: 25px;
+    }
+  }
+}

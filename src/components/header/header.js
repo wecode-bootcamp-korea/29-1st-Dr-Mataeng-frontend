@@ -1,8 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Nav from './Nav';
-import { useNavigate } from 'react-router';
 
 import './header.scss';
 
@@ -15,11 +14,14 @@ const Header = () => {
     setnavHandler(!navHandler);
   };
 
+  // Event : 헤더 검색어 받아오기
   const inputValueRecord = event => {
     setInputValue(event.target.value);
   };
 
+  // Event : 검색어 입력 값 조건에 따른 Link태그 이동 막기
   // event3 : 검색어 입력 값이 0 보다 작거나 같은 경우 Link태그 이동 막기
+  /*
   const preventLinkHandler = ({ id, event }) => {
     if (id === 1) {
       if (inputValue.length <= 0) event.preventDefault();
@@ -27,8 +29,9 @@ const Header = () => {
       event.preventDefault();
     }
   };
+  */
 
-  // event4 : 엔터 키 누르면 페이지 이동
+  // Event : 엔터 키 입력 시 페이지 이동 및 value 전달
   const navigate = useNavigate();
 
   const handleClick = event => {
@@ -41,6 +44,20 @@ const Header = () => {
       });
     }
   };
+
+  // Event : 필터 처리 된 데이터 받아오기
+  // useEffect(() => {
+  //   fetch('/data/comment.json', {
+  //     method: 'POST',
+  //     body: JSON.stringify({
+  //       name: inputValue,
+  //     }),
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       setSearchData(...data);
+  //     });
+  // }, [inputValue]);
 
   return (
     <header className="Header">
@@ -72,7 +89,7 @@ const Header = () => {
         <img
           alt="brand logo"
           className="headerLogo"
-          src="/images/header/header-logo.svg"
+          src="/images/header/header-logo.png"
         />
         <div className="searchAndIconWrap">
           <input
@@ -88,13 +105,15 @@ const Header = () => {
                   <Link
                     className={btnName}
                     to={linkUrl}
+                    key={id}
+                    /*
                     state={{
                       inputValue: inputValue,
                       productFilter:
                         '여기에 백에서 전달받은 data를 집어넣어야 한닷!!!',
                     }}
-                    key={id}
                     onClick={event => preventLinkHandler({ id, event })}
+                    */
                   >
                     <img
                       alt="header menu icon"
@@ -117,12 +136,12 @@ const TOP_BAR_MENU_LIST = [
   {
     id: 1,
     buttonName: '로그인',
-    url: '/Main',
+    url: '/Login',
   },
   {
     id: 2,
     buttonName: '회원가입',
-    url: '/Main',
+    url: '/SignUp',
   },
   {
     id: 3,
@@ -162,7 +181,7 @@ const HEADER_ICON_LIST = [
     btnName: 'iconWrap',
     iconName: 'headerIcon',
     imgUrl: '/images/header/icon-bag.png',
-    linkUrl: '/Search',
+    linkUrl: '/WishList',
   },
   {
     id: 4,
@@ -176,7 +195,7 @@ const HEADER_ICON_LIST = [
     btnName: 'iconWrap',
     iconName: 'headerIcon',
     imgUrl: '/images/header/icon-user.png',
-    linkUrl: '/Search',
+    linkUrl: '/MyPage',
   },
 ];
 
