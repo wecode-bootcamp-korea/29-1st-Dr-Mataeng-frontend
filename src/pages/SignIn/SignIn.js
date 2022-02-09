@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../Login/Login.scss';
+import '../SignIn/SignIn.scss';
 import Footer from '../../components/footer/footer';
 
 const SignIn = () => {
