@@ -1,7 +1,7 @@
 import React from 'react';
 import './Payment.scss';
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const Payment = () => {
   const [orderProduct, setOrderProduct] = useState(true);
