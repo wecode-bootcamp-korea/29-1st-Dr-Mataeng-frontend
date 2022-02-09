@@ -21,7 +21,7 @@ const SignIn = () => {
 
   const navigate = useNavigate();
   const goToMain = () => {
-    navigate('/Main');
+    navigate('/signUp');
   };
 
   const goToSignUp = () => {
