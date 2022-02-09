@@ -9,21 +9,25 @@ import ProductList from './pages/ProductList/ProductList';
 import Search from './pages/Search/Search';
 import SignUp from './pages/SignUp/SignUp';
 import WishList from './pages/WishList/WishList';
+import Header from './components/header/header';
+import Footer from './components/footer/footer';
 
 function Router() {
   return (
     <BrowserRouter>
+      <Header />
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/main" element={<Main />} />
         <Route path="/myPage" element={<MyPage />} />
         <Route path="/payment" element={<Payment />} />
-        <Route path="/productDetail" element={<ProductDetail />} />
+        <Route path="/productDetail/:id" element={<ProductDetail />} />
         <Route path="/productList" element={<ProductList />} />
         <Route path="/search" element={<Search />} />
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/wishList" element={<WishList />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
