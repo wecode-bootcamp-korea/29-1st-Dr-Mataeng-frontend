@@ -29,7 +29,7 @@ const ProductList = () => {
     })
       .then(res => res.json())
       .then(data => {
-        setItemList(data);
+        setItemList(data.result);
       });
   }, [location.search]);
 
