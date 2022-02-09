@@ -19,6 +19,7 @@
   height: 800px;
   display: flex;
   position: relative;
+  transition: 1s;
   img {
     @include fullPage();
   }
