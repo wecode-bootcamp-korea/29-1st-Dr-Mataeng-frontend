@@ -1,13 +1,31 @@
 import React, { useState } from 'react';
 import MypagePoints from './MypagePoints';
+import { useEffect } from 'react';
 import './MyPage.scss';
 
 const Mypage = () => {
   const [orderProduct, setOrderProduct] = useState(false);
+  const [userData, setUserData] = useState('');
 
   const orderProductHandler = () => {
     setOrderProduct(!orderProduct);
   };
+
+  useEffect(() => {
+    fetch(`http://172.20.10.5:8000/users/user`, {
+      method: 'GET',
+      headers: {
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1fQ.wJO6SJNZeBgZWe8KLTo2flSDaL0KdDOA_oBpObKiRCw',
+      },
+    })
+      .then(res => res.json())
+      .then(data => setUserData(data.users));
+  }, []);
+
+  console.log(userData);
+
+  //{name: '테스트', point: '0', phone_number: '010-0000-0000', email: 'test1234@gmail.com'}
 
   return (
     <main className="Mypage">
@@ -36,7 +54,7 @@ const Mypage = () => {
               />
             </button>
             <span className="userName">
-              <strong>유재민님,</strong>
+              <strong>{userData.name}</strong>
             </span>
             <span className="greetings">환영합니다.</span>
           </div>
@@ -50,6 +68,7 @@ const Mypage = () => {
                 label={pointType}
                 point={pointHistory}
                 url={url}
+                moneyPoing={userData.point}
               />
             ))}
           </div>
