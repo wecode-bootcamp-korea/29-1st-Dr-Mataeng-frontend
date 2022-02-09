@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MypagePoints from './MypagePoints';
 import './MyPage.scss';
 
@@ -8,56 +8,130 @@ const Mypage = () => {
     alert('로그아웃 되었습니다.');
     document.location.href = 'main';
   };
+  const [orderProduct, setOrderProduct] = useState(false);
+
+  const orderProductHandler = () => {
+    setOrderProduct(!orderProduct);
+  };
 
   return (
     <main className="Mypage">
-      <section className="imgUploadWrap">
-        <img
-          alt="dr mataeng logo"
-          className="defaultImg"
-          src="/images/mypage/logo@3x.png"
-        />
-        <div className="imgUploadBtn">
+      <div className="MypagePosition">
+        <section className="imgUploadWrap">
           <img
-            alt="photo icon"
-            className="uploadBtnImg"
-            src="/images/mypage/img_profile.png"
+            alt="dr mataeng logo"
+            className="defaultImg"
+            src="/images/mypage/logo@3x.png"
           />
-        </div>
-      </section>
-      <section className="infoWrap">
-        <div className="infoGreetingsWrap">
-          <button type="button" className="gearBtn">
+          <div className="uploadBtnWrap">
             <img
-              alt="gear icon"
-              className="gearBtnImg"
-              src="/images/mypage/btn_mypageSetting.jpeg"
+              alt="frame icon"
+              className="uploadBtn"
+              src="/images/mypage/img_profile.png"
             />
-          </button>
-          <span className="userName">
-            <strong>유재민님,</strong>
-          </span>
-          <span className="greetings">환영합니다.</span>
+          </div>
+        </section>
+        <section className="infoWrap">
+          <div className="infoGreetingsWrap">
+            <button type="button" className="gearBtnWrap">
+              <img
+                alt="gear icon"
+                className="gearBtn"
+                src="/images/mypage/btn_mypageSetting.jpeg"
+              />
+            </button>
+            <span className="userName">
+              <strong>유재민님,</strong>
+            </span>
+            <span className="greetings">환영합니다.</span>
+          </div>
+          <div className="userRankWrap">
+            <p className="userRank">DOCS FAMILY</p>
+          </div>
+          <div className="userPoingWrap">
+            {POINT_LIST.map(({ id, pointType, pointHistory, url }) => (
+              <MypagePoints
+                key={id}
+                label={pointType}
+                point={pointHistory}
+                url={url}
+              />
+            ))}
+          </div>
+          <div className="userLogout">
+            <button className="logout" onClick={handleLogout}>
+              로그아웃
+            </button>
+          </div>
+        </section>
+      </div>
+      <div className="PaymentWrap">
+        <div className="contentsWrap">
+          <div className="orderProductInfoWrap">
+            <div className="expectedOrderPrice">
+              <span className="title">주문 제품 (1item | ₩280,000)</span>
+              <button className="orderListBtn" onClick={orderProductHandler}>
+                <img
+                  alt="arrow icon"
+                  className="arrowIcon"
+                  src={
+                    orderProduct
+                      ? '/images/myPage/icon-down-arrow-white.png'
+                      : '/images/myPage/icon-up-arrow-white.png'
+                  }
+                />
+              </button>
+            </div>
+            <div
+              className={orderProduct ? 'orderListWrap' : 'orderListWrapShow'}
+            >
+              {/* <div className="orderItemWrap">
+                <img
+                  alt="basket icon"
+                  className="basketIcon"
+                  src="/images/myPage/icon-bag.png"
+                />
+                <span className="title">주문상품</span>
+              </div> */}
+              <ul className="orderProductListWrap">
+                <li className="orderProductList">
+                  <div className="productTumWrap">
+                    <img
+                      alt="shoes thumbnail"
+                      className="productTum"
+                      src="/images/myPage/tum-test.jpeg"
+                    />
+                  </div>
+                  <div className="productInfoWrap">
+                    <h2 className="productInfoTitle">아드리안</h2>
+                    <ul className="productInfoOption">
+                      <li className="optionList">컬러 : 블랙</li>
+                      <li className="optionList">사이즈 : 220</li>
+                      <li className="optionList">수량 : 1</li>
+                    </ul>
+                    <span className="productInfoPrice">280000</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="orderPriceWrap">
+            <article className="orderPriceStickyWrap">
+              <span className="orderPriceTitle">주문 정보</span>
+              <ul className="orderPriceListWrap">
+                <li className="orderPriceList">
+                  <span className="title">상품 금액</span>
+                  <span className="price">280,000</span>
+                </li>
+                <li className="orderPriceList">
+                  <span className="title">주문 상태</span>
+                  <span className="price">배송 대기 중</span>
+                </li>
+              </ul>
+            </article>
+          </div>
         </div>
-        <div className="userRankWrap">
-          <p className="userRank">DOCS FAMILY</p>
-        </div>
-        <div className="userPoingWrap">
-          {POINT_LIST.map(({ id, pointType, pointHistory, url }) => (
-            <MypagePoints
-              key={id}
-              label={pointType}
-              point={pointHistory}
-              url={url}
-            />
-          ))}
-        </div>
-        <div className="userLogout">
-          <button className="logout" onClick={handleLogout}>
-            로그아웃
-          </button>
-        </div>
-      </section>
+      </div>
     </main>
   );
 };

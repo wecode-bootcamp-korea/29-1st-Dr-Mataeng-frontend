@@ -6,6 +6,12 @@
   .baseWrapper {
     margin: 50px;
     width: 1140px;
+    .goBackBtn {
+      .leftArrowIcon {
+        width: 34px;
+        height: 25px;
+      }
+    }
 
     .signUpWrap {
       display: flex;
