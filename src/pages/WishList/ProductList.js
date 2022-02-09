@@ -21,7 +21,7 @@ const ProductList = ({ list, cart, setCart }) => {
 
   const deleteHandler = () => {
     setCart(cart.filter(cart => cart.cart_id !== cart_id));
-    fetch(`http://10.58.3.22:8000/carts/${cart_id}`, {
+    fetch(`http://172.20.10.5:8000/carts?cart_id=${cart_id}`, {
       method: 'DELETE',
       headers: {
         Authorization:
