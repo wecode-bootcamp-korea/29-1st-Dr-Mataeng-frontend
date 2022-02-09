@@ -130,17 +130,19 @@
   }
 }
 
-.Payment {
+.PaymentWrap {
   @include elementPosition(flex, column, center);
   align-items: center;
+  border-top: 1px solid #ddd;
+  margin-top: 120px;
+  padding-top: 80px;
 
   .contentsWrap {
     @include elementPosition(flex, row, space-between);
-    width: 1140px;
-    margin: 20px 0 144px 0;
+    width: 980px;
 
     .orderProductInfoWrap {
-      width: 680px;
+      width: 600px;
 
       .expectedOrderPrice {
         @include elementPosition(flex, row, space-between);
@@ -275,7 +277,7 @@
     }
 
     .orderPriceWrap {
-      width: 436px;
+      width: 355px;
 
       .orderPriceStickyWrap {
         border: 1px solid #ddd;
@@ -283,7 +285,7 @@
         .orderPriceTitle {
           background: #fafafa;
           border-bottom: 1px solid #ddd;
-          line-height: 71px;
+          line-height: 60px;
           padding: 0 34px;
           font-size: $fontMedium;
           font-weight: $fontBold;
@@ -292,6 +294,7 @@
 
         .orderPriceListWrap {
           margin: 30px;
+          height: 133px;
 
           .orderPriceList {
             @include elementPosition(flex, row, space-between);
@@ -303,29 +306,21 @@
               color: $fontGray;
             }
 
-            .titleAccent {
-              color: $fontBlack;
-              font-weight: $fontBold;
-            }
-
             .price {
               color: $fontBlack;
               font-weight: $fontBold;
               font-size: $fontMedium;
             }
+          }
+        }
 
-            .price::before {
-              font-size: 1.2rem;
-              font-weight: 400;
-              content: '₩ ';
-              display: inline-block;
-              letter-spacing: -0.01em;
-              font-family: 'Spoqa Han Sans', sans-serif;
-            }
-
-            .priceAccent {
-              font-size: $fontLarge;
-            }
+        .orderPriceList:first-child {
+          .price::before {
+            font-size: 1.2rem;
+            font-weight: 400;
+            content: '₩ ';
+            display: inline-block;
+            font-family: 'Spoqa Han Sans', sans-serif;
           }
         }
       }

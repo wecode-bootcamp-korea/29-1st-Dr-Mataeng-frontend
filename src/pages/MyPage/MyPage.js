@@ -12,7 +12,7 @@ const Mypage = () => {
 
   return (
     <main className="Mypage">
-      <main className="MypagePosition">
+      <div className="MypagePosition">
         <section className="imgUploadWrap">
           <img
             alt="dr mataeng logo"
@@ -55,20 +55,20 @@ const Mypage = () => {
             ))}
           </div>
         </section>
-      </main>
-      <section className="Payment">
+      </div>
+      <div className="PaymentWrap">
         <div className="contentsWrap">
           <div className="orderProductInfoWrap">
             <div className="expectedOrderPrice">
-              <span className="title">주문 예정 금액 (1item | ₩280,000)</span>
+              <span className="title">주문 제품 (1item | ₩280,000)</span>
               <button className="orderListBtn" onClick={orderProductHandler}>
                 <img
                   alt="arrow icon"
                   className="arrowIcon"
                   src={
                     orderProduct
-                      ? '/images/payment/icon-down-arrow-white.png'
-                      : '/images/payment/icon-up-arrow-white.png'
+                      ? '/images/myPage/icon-down-arrow-white.png'
+                      : '/images/myPage/icon-up-arrow-white.png'
                   }
                 />
               </button>
@@ -76,21 +76,21 @@ const Mypage = () => {
             <div
               className={orderProduct ? 'orderListWrap' : 'orderListWrapShow'}
             >
-              <div className="orderItemWrap">
+              {/* <div className="orderItemWrap">
                 <img
                   alt="basket icon"
                   className="basketIcon"
-                  src="/images/payment/icon-bag.png"
+                  src="/images/myPage/icon-bag.png"
                 />
                 <span className="title">주문상품</span>
-              </div>
+              </div> */}
               <ul className="orderProductListWrap">
                 <li className="orderProductList">
                   <div className="productTumWrap">
                     <img
                       alt="shoes thumbnail"
                       className="productTum"
-                      src="/images/payment/tum-test.jpeg"
+                      src="/images/myPage/tum-test.jpeg"
                     />
                   </div>
                   <div className="productInfoWrap">
@@ -108,29 +108,21 @@ const Mypage = () => {
           </div>
           <div className="orderPriceWrap">
             <article className="orderPriceStickyWrap">
-              <span className="orderPriceTitle">주문 예정 금액</span>
+              <span className="orderPriceTitle">주문 정보</span>
               <ul className="orderPriceListWrap">
                 <li className="orderPriceList">
-                  <span className="title">총 상품 금액</span>
+                  <span className="title">상품 금액</span>
                   <span className="price">280,000</span>
                 </li>
                 <li className="orderPriceList">
-                  <span className="title">배송비</span>
-                  <span className="price">(+)0</span>
-                </li>
-                <li className="orderPriceList">
-                  <span className="title">할인 금액</span>
-                  <span className="price">(-)0</span>
-                </li>
-                <li className="orderPriceList">
-                  <span className="title titleAccent">총 결제 예정 금액</span>
-                  <span className="price priceAccent">280,000</span>
+                  <span className="title">주문 상태</span>
+                  <span className="price">배송 대기 중</span>
                 </li>
               </ul>
             </article>
           </div>
         </div>
-      </section>
+      </div>
     </main>
   );
 };
