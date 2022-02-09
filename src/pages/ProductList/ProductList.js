@@ -12,6 +12,8 @@ const ProductList = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const decodeuri = decodeURI(location.search);
+
   const updateOffset = buttonIndex => {
     const limit = 6;
     const offset = buttonIndex * limit;
@@ -26,7 +28,7 @@ const ProductList = () => {
 
   useEffect(() => {
     fetch(
-      `http://172.20.10.5:8000/products?gender=여성&gender=공용${location.search}`,
+      `http://172.20.10.5:8000/products?gender=여성&gender=공용&category=부츠${decodeuri}`,
       {
         method: 'GET',
       }
@@ -40,6 +42,8 @@ const ProductList = () => {
   const goToDetail = productId => {
     navigate(`/productDetail/${productId}`);
   };
+
+  console.log(decodeuri);
 
   return (
     <section className="ProductList">

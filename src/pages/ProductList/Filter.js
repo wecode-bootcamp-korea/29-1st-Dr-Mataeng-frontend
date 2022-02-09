@@ -27,11 +27,11 @@ function Filter() {
             <label for="size">사이즈</label>
             <li className="filterInputItem" name="size">
               220
-              <input type="checkbox" value="220" />
+              <input name="size" type="checkbox" value="220" />
             </li>
             <li className="filterInputItem" name="size">
               230
-              <input type="checkbox" value="230" />
+              <input name="size" type="checkbox" value="230" />
             </li>
             <li className="filterInputItem" name="size">
               240
@@ -55,31 +55,32 @@ function Filter() {
             </li>
             <li className="filterInputItem" name="size">
               290
-              <input type="checkbox" value="290" />
+              <input type="checkbox" name="size" value="290" />
             </li>
           </ul>
           <ul className="filterSort">
             <label name="price">가격</label>
-            <li>
-              <input
-                className="filterInputItemRange"
-                type="range"
-                name="price"
-                min="10000"
-                max="500000"
-              />
-            </li>
           </ul>
           <div>
             <ul className="filterSort">
               <label for="color">색상</label>
               <li>
                 블랙
-                <input className="black" name="color" type="checkbox" />
+                <input
+                  className="black"
+                  name="color"
+                  type="checkbox"
+                  value="블랙"
+                />
               </li>
               <li>
                 화이트
-                <input className="black" name="color" type="checkbox" />
+                <input
+                  className="black"
+                  name="color"
+                  type="checkbox"
+                  value="화이트"
+                />
               </li>
               <li>
                 버건디
@@ -87,7 +88,12 @@ function Filter() {
               </li>
               <li>
                 브라운
-                <input className="black" name="color" type="checkbox" />
+                <input
+                  className="black"
+                  name="color"
+                  type="checkbox"
+                  value="브라운"
+                />
               </li>
               <li>
                 다크브라운
