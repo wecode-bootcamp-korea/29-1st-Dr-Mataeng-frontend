@@ -25,7 +25,7 @@ const ProductList = () => {
 
   useEffect(() => {
     fetch(
-      `http://10.58.3.22:8000/products?gender=여성,공용${location.search}`,
+      `http://172.20.10.5:8000/products?gender=여성&gender=공용${location.search}`,
       {
         method: 'GET',
       }
