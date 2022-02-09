@@ -1,47 +1,70 @@
-import React, { useState } from 'react';
+import { React } from 'react';
 import './Main.scss';
+import ImageSlide from '../Main/ImageSlide';
 
 const Main = () => {
-  const [count, setCount] = useState(0);
-  const showPrevImage = () => {
-    let num = count;
-    if (num < 0 && num > -4) {
-      num = num + 1;
-    } else if (num === 0) {
-      num = -3;
-    }
-    return setCount(num);
-  };
-
-  const showNextImage = () => {
-    let num = count;
-    if (num > -3 && num < 1) {
-      num = num - 1;
-    } else if (num === -3) {
-      num = 0;
-    }
-    return setCount(num);
-  };
-
   return (
     <>
+      <ImageSlide />
       <div className="container">
-        <div className="albums">
-          <div className="images" style={{ left: count * 100 + '%' }}>
-            <img src="images/main/main0.jpg" alt="shoes" />
-            <img src="images/main/main1.jpg" alt="shoes" />
-            <img src="images/main/main2.jpg" alt="shoes" />
-            <img src="images/main/main3.jpg" alt="shoes" />
+        <div className="mainWrap">
+          <div className="textWrap">
+            <h2 className="mdTitle">MD 추천</h2>
+            <div className="productTabs">
+              <button className="productBt">
+                <span>오드릭</span>
+              </button>
+              <button className="productBt">
+                <span>온라인전용</span>
+              </button>
+              <button className="productBt">
+                <span>부츠</span>
+              </button>
+              <button className="productBt">
+                <span>비건</span>
+              </button>
+              <button className="productBt">
+                <span>콜라보레이션</span>
+              </button>
+              <button className="productBt">
+                <span>기타용품</span>
+              </button>
+            </div>
+            <div className="productSwiper">
+              <div className="productLeft">
+                <div className="productTop">
+                  <h2 className="productName">제이든 하이</h2>
+                </div>
+                <div className="swiperImg">
+                  <img src="images/main/product2.jpg" alt="product" />
+                </div>
+              </div>
+              <div className="productLeft">
+                <div className="productTop">
+                  <h2 className="productName">오드릭 부츠</h2>
+                </div>
+                <div className="swiperImg">
+                  <img src="images/main/product1.jpg" alt="product" />
+                </div>
+              </div>
+            </div>
+            <div className="subTitle"> 2022년 검은 호랑이의 해 기념 컬렉션</div>
+            <div className="collectTitle">YEAR OF THE TIGER</div>
+            <div className="titleLine" />
+          </div>
+          <div className="collectionImg">
+            <img src="images/main/tiger.jpg" alt="tiger" />
+          </div>
+          <div className="textWrap">
+            <div className="descript">
+              2022년 검은 호랑이의 해를 맞이하여 <br /> 신년 한정판 컬렉션을
+              만나보세요.
+            </div>
+            <div className="descriptBt">
+              <span>자세히 보기</span>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="nextButton">
-        <button onClick={showPrevImage}>
-          <img src="images/icon/prev.png" alt="previous button" />
-        </button>
-        <button onClick={showNextImage}>
-          <img src="images/icon/next.png" alt="next button" />
-        </button>
       </div>
     </>
   );
