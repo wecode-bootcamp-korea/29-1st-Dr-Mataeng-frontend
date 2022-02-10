@@ -33,7 +33,7 @@ const ProductList = () => {
 
   useEffect(() => {
     fetch(
-      `http://10.58.6.159:8000/products?gender=여성&gender=공용&${questionMark}`,
+      `http://3.36.97.236:8000/products?gender=여성&gender=공용&${questionMark}`,
       {
         method: 'GET',
       }

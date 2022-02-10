@@ -19,7 +19,7 @@ const Mypage = () => {
   };
 
   useEffect(() => {
-    fetch(`http://172.20.10.5:8000/users/user`, {
+    fetch(`http://10.58.6.159:8000/users/user`, {
       method: 'GET',
       headers: {
         Authorization:
@@ -31,7 +31,7 @@ const Mypage = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`http://172.20.10.5:8000/orders`, {
+    fetch(`http://10.58.6.159:8000/orders`, {
       method: 'GET',
       headers: {
         Authorization:
@@ -39,7 +39,9 @@ const Mypage = () => {
       },
     })
       .then(res => res.json())
-      .then(data => setOrderData(...data.result));
+      .then(data => {
+        setOrderData(...data.result);
+      });
   }, []);
 
   return (
@@ -94,81 +96,85 @@ const Mypage = () => {
           </div>
         </section>
       </div>
-      <div className="PaymentWrap">
-        <div className="contentsWrap">
-          <div className="orderProductInfoWrap">
-            <div className="expectedOrderPrice">
-              <span className="title">
-                주문 번호 : {orderData.order_number}
-              </span>
-              <button className="orderListBtn" onClick={orderProductHandler}>
-                <img
-                  alt="arrow icon"
-                  className="arrowIcon"
-                  src={
-                    orderProduct
-                      ? '/images/myPage/icon-down-arrow-white.png'
-                      : '/images/myPage/icon-up-arrow-white.png'
-                  }
-                />
-              </button>
+      {orderData.order_items?.length > 0 && (
+        <div className="PaymentWrap">
+          <div className="contentsWrap">
+            <div className="orderProductInfoWrap">
+              <div className="expectedOrderPrice">
+                <span className="title">
+                  주문 번호 : {orderData.order_number}
+                </span>
+                <button className="orderListBtn" onClick={orderProductHandler}>
+                  <img
+                    alt="arrow icon"
+                    className="arrowIcon"
+                    src={
+                      orderProduct
+                        ? '/images/myPage/icon-down-arrow-white.png'
+                        : '/images/myPage/icon-up-arrow-white.png'
+                    }
+                  />
+                </button>
+              </div>
+              <div
+                className={orderProduct ? 'orderListWrap' : 'orderListWrapShow'}
+              >
+                <ul className="orderProductListWrap">
+                  {orderData.order_items?.map(
+                    ({
+                      order_item_id,
+                      product_image,
+                      product_name,
+                      product_color,
+                      product_size,
+                      quantity,
+                      price,
+                    }) => (
+                      <li className="orderProductList" key={order_item_id}>
+                        <div className="productTumWrap">
+                          <img
+                            alt="shoes thumbnail"
+                            className="productTum"
+                            src={product_image}
+                          />
+                        </div>
+                        <div className="productInfoWrap">
+                          <h2 className="productInfoTitle">{product_name}</h2>
+                          <ul className="productInfoOption">
+                            <li className="optionList">
+                              컬러 : {product_color}
+                            </li>
+                            <li className="optionList">
+                              사이즈 : {product_size}
+                            </li>
+                            <li className="optionList">수량 : {quantity}</li>
+                          </ul>
+                          <span className="productInfoPrice">{price}</span>
+                        </div>
+                      </li>
+                    )
+                  )}
+                </ul>
+              </div>
             </div>
-            <div
-              className={orderProduct ? 'orderListWrap' : 'orderListWrapShow'}
-            >
-              <ul className="orderProductListWrap">
-                {orderData.order_items?.map(
-                  ({
-                    order_item_id,
-                    product_image,
-                    product_name,
-                    product_color,
-                    product_size,
-                    quantity,
-                    price,
-                  }) => (
-                    <li className="orderProductList" key={order_item_id}>
-                      <div className="productTumWrap">
-                        <img
-                          alt="shoes thumbnail"
-                          className="productTum"
-                          src={product_image}
-                        />
-                      </div>
-                      <div className="productInfoWrap">
-                        <h2 className="productInfoTitle">{product_name}</h2>
-                        <ul className="productInfoOption">
-                          <li className="optionList">컬러 : {product_color}</li>
-                          <li className="optionList">
-                            사이즈 : {product_size}
-                          </li>
-                          <li className="optionList">수량 : {quantity}</li>
-                        </ul>
-                        <span className="productInfoPrice">{price}</span>
-                      </div>
-                    </li>
-                  )
-                )}
-              </ul>
+            <div className="orderPriceWrap">
+              <article className="orderPriceStickyWrap">
+                <span className="orderPriceTitle">주문 정보</span>
+                <ul className="orderPriceListWrap">
+                  <li className="orderPriceList">
+                    <span className="title">총 상품 금액</span>
+                    <span className="price">{orderData.total_price}</span>
+                  </li>
+                  <li className="orderPriceList">
+                    <span className="title">주문 상태</span>
+                    <span className="price">{orderData.order_status}</span>
+                  </li>
+                </ul>
+              </article>
             </div>
-          </div>
-          <div className="orderPriceWrap">
-            <article className="orderPriceStickyWrap">
-              <span className="orderPriceTitle">주문 정보</span>
-              <ul className="orderPriceListWrap">
-                <li className="orderPriceList">
-                  <span className="title">총 상품 금액</span>
-                  <span className="price">{orderData.total_price}</span>
-                </li>
-                <li className="orderPriceList">
-                  <span className="title">주문 상태</span>
-                  <span className="price">{orderData.order_status}</span>
-                </li>
-              </ul>
-            </article>
           </div>
         </div>
-      </div>
+      )}
     </main>
   );
 };

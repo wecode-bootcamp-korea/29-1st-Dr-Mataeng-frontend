@@ -92,7 +92,7 @@
     }
 
     .productList {
-      @include elementPosition(flex, row, space-between);
+      @include elementPosition(flex, row, flex-start);
       width: 100%;
       flex-wrap: wrap;
 
@@ -186,6 +186,9 @@
             }
           }
         }
+      }
+      .product:nth-child(3n + 2) {
+        margin: 0 24px;
       }
     }
   }
