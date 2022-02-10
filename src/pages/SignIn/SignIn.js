@@ -83,7 +83,7 @@ const SignIn = () => {
                   <div className="container">
                     <input
                       name="id"
-                      valus={id}
+                      value={id}
                       type="text"
                       placeholder="아이디"
                       onChange={handleInput}
