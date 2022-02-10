@@ -13,7 +13,7 @@ const Search = () => {
   // Connect : 백엔드와 연동하여 필터 로직 받아오기
   useEffect(() => {
     fetch(
-      `http://10.58.6.159:8000/products/search?text=${location.state.inputValue}`,
+      `http://3.36.97.236:8000/products/search?text=${location.state.inputValue}`,
       {
         method: 'GET',
       }
