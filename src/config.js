@@ -1,4 +1,4 @@
-const BASE_URL = 'http://10.58.6.159:8000';
+const BASE_URL = 'http://3.36.97.236:8000';
 
 export const END_POINT = {
   signIn: `${BASE_URL}/users/signin`,
