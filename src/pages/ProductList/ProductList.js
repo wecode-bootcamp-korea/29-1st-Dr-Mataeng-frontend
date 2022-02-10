@@ -19,6 +19,10 @@ const ProductList = () => {
     const limit = 6;
     const offset = buttonIndex * limit;
     const queryString = `?limit=${limit}&offset=${offset}`;
+    window.scrollTo({
+      top: 400,
+      behavior: 'auto',
+    });
 
     navigate(queryString);
   };
