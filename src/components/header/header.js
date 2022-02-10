@@ -8,7 +8,6 @@ import './header.scss';
 const Header = () => {
   const [navHandler, setnavHandler] = useState(false);
   const [inputValue, setInputValue] = useState('');
-  // const [searchData, setSearchData] = useState([]);
 
   const isLogin = () => {
     if (!localStorage.getItem('token')) {
@@ -46,25 +45,14 @@ const Header = () => {
       navigate('/Search', {
         state: {
           inputValue: inputValue,
-          productFilter: '여기에 백에서 전달받은 data를 집어넣어야 한닷!!!',
         },
       });
     }
   };
 
-  // Event : 필터 처리 된 데이터 받아오기
-  // useEffect(() => {
-  //   fetch('/data/comment.json', {
-  //     method: 'POST',
-  //     body: JSON.stringify({
-  //       name: inputValue,
-  //     }),
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       setSearchData(...data);
-  //     });
-  // }, [inputValue]);
+  const goToMainHandler = () => {
+    navigate('/main');
+  };
 
   return (
     <header className="Header">
@@ -95,6 +83,7 @@ const Header = () => {
           alt="brand logo"
           className="headerLogo"
           src="/images/header/header-logo.png"
+          onClick={goToMainHandler}
         />
         <div className="searchAndIconWrap">
           <input
@@ -113,8 +102,6 @@ const Header = () => {
                     key={id}
                     state={{
                       inputValue: inputValue,
-                      productFilter:
-                        '여기에 백에서 전달받은 data를 집어넣어야 한닷!!!',
                     }}
                     onClick={event => {
                       if (id === 1 && id === 2 && id === 4) {
