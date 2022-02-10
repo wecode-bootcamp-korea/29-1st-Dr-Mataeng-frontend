@@ -9,7 +9,6 @@ const Header = () => {
   const [navHandler, setnavHandler] = useState(false);
   const [inputValue, setInputValue] = useState('');
   // const [searchData, setSearchData] = useState([]);
-  const [logOutput, setlogOutput] = useState(['로그인', '로그아웃']);
 
   const isLogin = () => {
     if (!localStorage.getItem('token')) {
@@ -31,8 +30,6 @@ const Header = () => {
   };
 
   // Event : 검색어 입력 값 조건에 따른 Link태그 이동 막기
-  // event3 : 검색어 입력 값이 0 보다 작거나 같은 경우 Link태그 이동 막기
-  /*
   const preventLinkHandler = ({ id, event }) => {
     if (id === 1) {
       if (inputValue.length <= 0) event.preventDefault();
@@ -40,7 +37,6 @@ const Header = () => {
       event.preventDefault();
     }
   };
-  */
 
   // Event : 엔터 키 입력 시 페이지 이동 및 value 전달
   const navigate = useNavigate();
@@ -72,16 +68,11 @@ const Header = () => {
 
   return (
     <header className="Header">
-      {navHandler && (
-        <Nav
-          navDisplayHandler={navDisplayHandler}
-          // inputValueRecord={inputValueRecord}
-        />
-      )}
+      {navHandler && <Nav navDisplayHandler={navDisplayHandler} />}
       <div className="topMenuListWrap">
         <ul className="topMenuList">
           <li className="login" onClick={isLogin}>
-            {!localStorage.getItem('token') ? logOutput[0] : logOutput[1]}
+            {!localStorage.getItem('token') ? '로그인' : '로그아웃'}
           </li>
           {TOP_BAR_MENU_LIST.map(({ id, url, buttonName }) => (
             <li className="topMenuWrap" key={id}>
@@ -120,14 +111,16 @@ const Header = () => {
                     className={btnName}
                     to={linkUrl}
                     key={id}
-                    /*
                     state={{
                       inputValue: inputValue,
                       productFilter:
                         '여기에 백에서 전달받은 data를 집어넣어야 한닷!!!',
                     }}
-                    onClick={event => preventLinkHandler({ id, event })}
-                    */
+                    onClick={event => {
+                      if (id === 1 && id === 2 && id === 4) {
+                        preventLinkHandler({ id, event });
+                      }
+                    }}
                   >
                     <img
                       alt="header menu icon"
@@ -183,7 +176,7 @@ const HEADER_ICON_LIST = [
     btnName: 'iconWrap',
     iconName: 'headerIcon',
     imgUrl: '/images/header/icon-heart.png',
-    linkUrl: '/Search',
+    linkUrl: '/Main',
   },
   {
     id: 3,
@@ -197,7 +190,7 @@ const HEADER_ICON_LIST = [
     btnName: 'iconWrap',
     iconName: 'headerIcon',
     imgUrl: '/images/header/icon-eye.png',
-    linkUrl: '/Search',
+    linkUrl: '/Main',
   },
   {
     id: 5,
