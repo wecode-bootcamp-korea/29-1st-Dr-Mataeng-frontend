@@ -5,6 +5,7 @@ import Filter from './Filter';
 import './ProductList.scss';
 import Pagination from './Pagination';
 import TopBt from '../SignUp/TopBt';
+import END_POINT from '../../config';
 
 const ProductList = () => {
   const [itemList, setItemList] = useState([]);
@@ -26,7 +27,7 @@ const ProductList = () => {
 
   useEffect(() => {
     fetch(
-      `http://172.20.10.5:8000/products?gender=여성&gender=공용${location.search}`,
+      END_POINT.productList + `?gender=여성&gender=공용${location.search}`,
       {
         method: 'GET',
       }
