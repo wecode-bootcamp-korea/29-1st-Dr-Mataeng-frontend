@@ -54,7 +54,7 @@ function SignUp() {
 
   const checkInputValid = () => {
     if (submitValid) {
-      fetch('http://10.58.2.127:8000/users/user', {
+      fetch('http://13.36.97.236:8000/users/user', {
         method: 'POST',
         body: JSON.stringify({
           name: inputs.name,
