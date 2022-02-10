@@ -71,7 +71,7 @@
         .orderItemWrap {
           @include elementPosition(flex, row, flex-start);
           align-items: center;
-          margin: 32px 8px 19px 8px;
+          margin: 20px 8px 19px 8px;
 
           .basketIcon {
             width: 31px;
@@ -170,7 +170,7 @@
         .ordererTitleWrap {
           @include elementPosition(flex, row, flex-start);
           align-items: center;
-          margin: 32px 8px 19px 8px;
+          margin: 20px 8px 19px 8px;
 
           .userIcon {
             width: 31px;

@@ -13,10 +13,17 @@ const ProductList = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const decodeuri = decodeURI(location.search);
+  const questionMark = decodeuri.substr(1);
+
   const updateOffset = buttonIndex => {
     const limit = 6;
     const offset = buttonIndex * limit;
     const queryString = `?limit=${limit}&offset=${offset}`;
+    window.scrollTo({
+      top: 400,
+      behavior: 'auto',
+    });
 
     navigate(queryString);
   };
@@ -41,7 +48,6 @@ const ProductList = () => {
   const goToDetail = productId => {
     navigate(`/productDetail/${productId}`);
   };
-
   return (
     <section className="ProductList">
       <div className="titleWrap">
