@@ -28,8 +28,15 @@ const SignIn = () => {
     navigate('/signUp');
   };
 
+  const reset = () => {
+    setLoginInput({
+      id: '',
+      pw: '',
+    });
+  };
+
   const loginValidation = () => {
-    fetch('http://10.58.2.127:8000/users/signin', {
+    fetch('http://10.58.6.159:8000/users/signin', {
       method: 'POST',
       body: JSON.stringify({
         username: loginInput.id,
@@ -40,8 +47,10 @@ const SignIn = () => {
       .then(result => {
         if (result.message === 'INVALID_USER(PASSWORD)') {
           alert('비밀번호가 틀렸습니다.');
+          reset();
         } else if (result.message === 'INVALID_USER(USERNAME)') {
           alert('존재하지 않는 아이디입니다.');
+          reset();
         } else {
           goToMain();
           localStorage.setItem('id', result.username);
