@@ -52,6 +52,20 @@
       color: $fontBlack;
     }
 
+    .productNone {
+      @include elementPosition(flex, column, center);
+      align-items: center;
+      width: 1140px;
+      height: 400px;
+
+      .exclamationMark {
+        width: 110px;
+        height: 100px;
+        margin-top: -80px;
+        object-fit: cover;
+      }
+    }
+
     .productList {
       @include elementPosition(flex, row, flex-start);
       width: 100%;

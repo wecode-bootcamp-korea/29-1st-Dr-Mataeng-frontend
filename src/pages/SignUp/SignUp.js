@@ -15,7 +15,7 @@ function SignUp() {
     phone: '',
     gender: '',
     email: '',
-    emailSelect: '',
+    emailSelect: '@gmail.com',
     recommend: '',
   });
 
