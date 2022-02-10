@@ -1,5 +1,3 @@
-import React, { useState } from 'react';
-
 import './Filter.scss';
 
 function Filter() {
@@ -62,6 +60,7 @@ function Filter() {
           </ul>
           <ul className="filterSort">
             <label name="price">가격</label>
+            <input type="range" />
           </ul>
           <div>
             <ul className="filterSort">

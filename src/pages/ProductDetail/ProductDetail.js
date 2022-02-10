@@ -1,7 +1,8 @@
 import React from 'react';
 import './ProductDetail.scss';
 import { useState, useEffect } from 'react';
-// import { useNavigate } from 'react-router';
+import { useParams } from 'react-router';
+import { useNavigate } from 'react-router';
 
 const ProductDetail = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -10,18 +11,12 @@ const ProductDetail = () => {
   const [productData, setProductData] = useState([]);
   const [sizeChoiceValue, setSizeChoiceValue] = useState('');
 
-  // Connect : mock 데이터
-  // useEffect(() => {
-  //   fetch('/data/productDetailData.json', {
-  //     method: 'GET',
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => setProductData(data.result));
-  // }, []);
+  const params = useParams();
+  const navigate = useNavigate();
 
   // Connect : 백엔드와 데이터 연동
   useEffect(() => {
-    fetch('http://10.58.7.157:8000/products/38', {
+    fetch(`http://172.20.10.5:8000/products/${params.id}`, {
       method: 'GET',
     })
       .then(res => res.json())
@@ -34,7 +29,7 @@ const ProductDetail = () => {
   // Event : 스크롤 이벤트, 우측 엘리먼트 고정
   const handleFollow = () => {
     setScrollPosition(window.pageYOffset);
-    if (scrollPosition >= 125) {
+    if (scrollPosition >= HEADER_HEIGHT) {
       secContentRight('contentFix');
     } else {
       secContentRight('content');
@@ -97,26 +92,28 @@ const ProductDetail = () => {
     setSizeChoiceValue(event.target.value);
   };
 
-  // // Event : 장바구니 버튼 클릭 시 POST body로 데이터 전송 및 알림창 생성
-  // // 남은 작업 내용 1 : 장바구니 버튼 클릭 시 데이터 전송
-  // // 남은 작업 내용 2 : 백엔드님과 키 값 맞추기 or 데이터 연동하기
-  // const CartBtnClickHandler = () => {
-  //   fetch('http://10.58.4.82:8000/products/38', {
-  //     method: 'POST',
-  //     body: JSON.stringify({
-  //       size: sizeChoiceValue,
-  //       stock: quantityValue,
-  //     }),
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       setProductData(data.result);
-  //       console.log('하이');
-  //     });
+  // Event : 장바구니 버튼 클릭 시 POST body로 데이터 전송 및 알림창 생성
+  const CartBtnClickHandler = () => {
+    fetch('http://172.20.10.5:8000/carts', {
+      method: 'POST',
+      headers: {
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2fQ.Ya44VVMRIy86Oixk3ngSjD3jiK9eWNlsKjr2akaYkvc',
+      },
+      body: JSON.stringify({
+        product_id: params.id, // FIXME : 백엔드 데이터 저장 잘 되는지 여쭤보기
+        size: sizeChoiceValue,
+        quantity: quantityValue,
+      }),
+    })
+      .then(res => res.json())
+      .then(alert('장바구니에 담겼습니다.'));
 
-  //   // 남은 작업 내용 3 : 페이지 이동 이벤트 걸기, alert창 띄우기
-  //   const navigate = useNavigate();
-  // };
+    const paymentPageMoveHandler = () => {
+      navigate('/myPage');
+    };
+    paymentPageMoveHandler();
+  };
 
   return (
     <section className="ProductDetail">
@@ -231,7 +228,7 @@ const ProductDetail = () => {
               <button
                 type="button"
                 className="cartBtn"
-                // onClick={CartBtnClickHandler}
+                onClick={CartBtnClickHandler}
               >
                 장바구니
               </button>
@@ -266,5 +263,7 @@ const ProductDetail = () => {
     </section>
   );
 };
+
+const HEADER_HEIGHT = 125;
 
 export default ProductDetail;

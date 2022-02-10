@@ -9,6 +9,17 @@ const Header = () => {
   const [navHandler, setnavHandler] = useState(false);
   const [inputValue, setInputValue] = useState('');
   // const [searchData, setSearchData] = useState([]);
+  const [logOutput, setlogOutput] = useState(['로그인', '로그아웃']);
+
+  const isLogin = () => {
+    if (!localStorage.getItem('token')) {
+      navigate('/login');
+    } else {
+      localStorage.removeItem('token');
+      alert('로그아웃 되었습니다.');
+      document.location.href = 'main';
+    }
+  };
 
   const navDisplayHandler = () => {
     setnavHandler(!navHandler);
@@ -69,6 +80,9 @@ const Header = () => {
       )}
       <div className="topMenuListWrap">
         <ul className="topMenuList">
+          <li className="login" onClick={isLogin}>
+            {!localStorage.getItem('token') ? logOutput[0] : logOutput[1]}
+          </li>
           {TOP_BAR_MENU_LIST.map(({ id, url, buttonName }) => (
             <li className="topMenuWrap" key={id}>
               <Link to={url} className="topMenu">
@@ -135,26 +149,21 @@ const Header = () => {
 const TOP_BAR_MENU_LIST = [
   {
     id: 1,
-    buttonName: '로그인',
-    url: '/Login',
-  },
-  {
-    id: 2,
     buttonName: '회원가입',
     url: '/SignUp',
   },
   {
-    id: 3,
+    id: 2,
     buttonName: '매장찾기',
     url: '/Main',
   },
   {
-    id: 4,
+    id: 3,
     buttonName: '브랜드헤리티지',
     url: '/Main',
   },
   {
-    id: 5,
+    id: 4,
     buttonName: '고객센터',
     url: '/Main',
   },

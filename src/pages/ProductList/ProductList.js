@@ -13,6 +13,7 @@ const ProductList = () => {
   const location = useLocation();
 
   const decodeuri = decodeURI(location.search);
+  const questionMark = decodeuri.substr(1);
 
   const updateOffset = buttonIndex => {
     const limit = 6;
@@ -28,7 +29,7 @@ const ProductList = () => {
 
   useEffect(() => {
     fetch(
-      `http://172.20.10.5:8000/products?gender=여성&gender=공용&category=부츠${decodeuri}`,
+      `http://10.58.6.159:8000/products?gender=여성&gender=공용&${questionMark}`,
       {
         method: 'GET',
       }
@@ -42,9 +43,6 @@ const ProductList = () => {
   const goToDetail = productId => {
     navigate(`/productDetail/${productId}`);
   };
-
-  console.log(decodeuri);
-
   return (
     <section className="ProductList">
       <div className="titleWrap">
