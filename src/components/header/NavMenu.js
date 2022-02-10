@@ -18,8 +18,6 @@ const NavMenu = ({
     setbtnHandler(!btnHandler);
   };
 
-  console.log("하이");
-
   return (
     <div className="NavMenu" key={id}>
       <div className="menuTitleWrap">
