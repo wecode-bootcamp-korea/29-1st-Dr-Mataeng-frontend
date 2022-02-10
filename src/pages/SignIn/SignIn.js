@@ -9,6 +9,7 @@ const SignIn = () => {
   });
 
   const { id, pw } = loginInput;
+  const [check, setCheck] = useState();
 
   const handleInput = event => {
     const { name, value } = event.target;
@@ -29,10 +30,21 @@ const SignIn = () => {
   };
 
   const reset = () => {
-    setLoginInput({
-      id: '',
-      pw: '',
-    });
+    if (check) {
+      setLoginInput({
+        id: loginInput.id,
+        pw: '',
+      });
+    } else {
+      setLoginInput({
+        id: '',
+        pw: '',
+      });
+    }
+  };
+
+  const isCheck = event => {
+    setCheck(event.target.checked);
   };
 
   const loginValidation = () => {
@@ -113,7 +125,7 @@ const SignIn = () => {
               </form>
               <div className="utilContainer">
                 <div className="saveId">
-                  <input type="checkbox" />
+                  <input type="checkbox" onChange={isCheck} />
                   아이디 자동저장
                 </div>
                 <div className="findId">
