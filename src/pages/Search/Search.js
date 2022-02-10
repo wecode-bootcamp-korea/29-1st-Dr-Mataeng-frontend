@@ -24,8 +24,6 @@ const Search = () => {
       });
   }, [location.state.inputValue]);
 
-  console.log(searchData);
-
   return (
     <section className="Search">
       <div className="titleWrap">
