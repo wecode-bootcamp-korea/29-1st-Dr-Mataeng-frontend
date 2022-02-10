@@ -46,7 +46,18 @@ const Search = () => {
       </div>
       <div className="borderLine" />
       <div className="productListWrap">
-        <h1 className="productCount">제품 &#40;{searchData.length}&#41;</h1>
+        {searchData.length > 0 && (
+          <div className="productCount">제품 &#40;{searchData.length}&#41;</div>
+        )}
+        {searchData.length <= 0 && (
+          <div className="productNone">
+            <img
+              alt="Exclamation Mark"
+              className="exclamationMark"
+              src="/images/search/search_none.png"
+            />
+          </div>
+        )}
         <ul className="productList">
           {searchData.map(
             ({
