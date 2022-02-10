@@ -10,3 +10,5 @@ export const END_POINT = {
   wishList: `${BASE_URL}/carts`,
   payment: `${BASE_URL}/orders`,
 };
+
+export default END_POINT;
