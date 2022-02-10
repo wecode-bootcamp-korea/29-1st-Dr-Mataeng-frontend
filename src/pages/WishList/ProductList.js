@@ -42,7 +42,6 @@ const ProductList = ({ list, cart, setCart }) => {
                 <li>컬러 : {product_color} </li>
                 <li>사이즈 : {product_size}</li>
                 <li>수량 : {quantity}</li>
-                <li className="point">포인트 사용 불가</li>
               </ul>
             </div>
             <div className="productPrice">

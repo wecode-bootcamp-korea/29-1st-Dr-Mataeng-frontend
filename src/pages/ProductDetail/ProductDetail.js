@@ -110,7 +110,7 @@ const ProductDetail = () => {
       .then(alert('장바구니에 담겼습니다.'));
 
     const paymentPageMoveHandler = () => {
-      navigate('/myPage');
+      navigate('/wishList');
     };
     paymentPageMoveHandler();
   };
@@ -177,7 +177,7 @@ const ProductDetail = () => {
                     disabled={stock === 0}
                   >
                     {size}
-                    {stock < 5 && ' - 재고 5개 미만'}
+                    {stock < 5 && stock > 0 && ' - 재고 5개 미만'}
                     {stock <= 0 && ' - 일시품절'}
                   </option>
                 ))}
