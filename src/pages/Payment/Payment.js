@@ -1,18 +1,72 @@
 import React from 'react';
 import './Payment.scss';
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 const Payment = () => {
   const [orderProduct, setOrderProduct] = useState(true);
+  const [userData, setUserData] = useState('');
+  const [orderData, setOrderData] = useState([]);
 
   const orderProductHandler = () => {
     setOrderProduct(!orderProduct);
   };
 
+  const navigate = useNavigate();
+
   const orderPaymentHandler = () => {
+    // 데이터 받아오기
+    let queryApiAdress = orderData
+      .map(({ cart_id }) => 'cart_id=' + cart_id)
+      .join('&');
+
+    // 쿼리스트링 보내기
+    fetch(`http://10.58.6.159:8000/orders?${queryApiAdress}`, {
+      method: 'POST',
+      headers: {
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1fQ.wJO6SJNZeBgZWe8KLTo2flSDaL0KdDOA_oBpObKiRCw',
+      },
+    });
+
     alert('주문이 완료되었습니다.');
+
+    navigate('/myPage');
   };
+
+  useEffect(() => {
+    fetch(`http://10.58.6.159:8000/users/user`, {
+      method: 'GET',
+      headers: {
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1fQ.wJO6SJNZeBgZWe8KLTo2flSDaL0KdDOA_oBpObKiRCw',
+      },
+    })
+      .then(res => res.json())
+      .then(data => setUserData(data.users));
+  }, []);
+
+  useEffect(() => {
+    fetch(`http://10.58.6.159:8000/carts`, {
+      method: 'GET',
+      headers: {
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1fQ.wJO6SJNZeBgZWe8KLTo2flSDaL0KdDOA_oBpObKiRCw',
+      },
+    })
+      .then(res => res.json())
+      .then(data => setOrderData(data.result));
+  }, []);
+
+  // Function : 합계 계산
+  let sumPrice = 0;
+
+  const sumPriceHandler = () => {
+    for (let i = 0; i < orderData.length; i++) {
+      sumPrice += orderData[i].price;
+    }
+  };
+  sumPriceHandler();
 
   return (
     <section className="Payment">
@@ -29,7 +83,9 @@ const Payment = () => {
       <div className="contentsWrap">
         <div className="orderProductInfoWrap">
           <div className="expectedOrderPrice">
-            <span className="title">주문 예정 금액 (1item | ₩280,000)</span>
+            <span className="title">
+              주문 예정 금액 ({orderData.length}item | ₩{sumPrice})
+            </span>
             <button className="orderListBtn" onClick={orderProductHandler}>
               <img
                 alt="arrow icon"
@@ -52,24 +108,36 @@ const Payment = () => {
               <span className="title">주문상품</span>
             </div>
             <ul className="orderProductListWrap">
-              <li className="orderProductList">
-                <div className="productTumWrap">
-                  <img
-                    alt="shoes thumbnail"
-                    className="productTum"
-                    src="/images/payment/tum-test.jpeg"
-                  />
-                </div>
-                <div className="productInfoWrap">
-                  <h2 className="productInfoTitle">아드리안</h2>
-                  <ul className="productInfoOption">
-                    <li className="optionList">컬러 : 블랙</li>
-                    <li className="optionList">사이즈 : 220</li>
-                    <li className="optionList">수량 : 1</li>
-                  </ul>
-                  <span className="productInfoPrice">280000</span>
-                </div>
-              </li>
+              {orderData?.map(
+                ({
+                  cart_id,
+                  price,
+                  product_name,
+                  product_color,
+                  product_size,
+                  quantity,
+                  product_image,
+                }) => (
+                  <li className="orderProductList" key={cart_id}>
+                    <div className="productTumWrap">
+                      <img
+                        alt="shoes thumbnail"
+                        className="productTum"
+                        src={product_image}
+                      />
+                    </div>
+                    <div className="productInfoWrap">
+                      <h2 className="productInfoTitle">{product_name}</h2>
+                      <ul className="productInfoOption">
+                        <li className="optionList">컬러 : {product_color}</li>
+                        <li className="optionList">사이즈 : {product_size}</li>
+                        <li className="optionList">수량 : {quantity}</li>
+                      </ul>
+                      <span className="productInfoPrice">{price}</span>
+                    </div>
+                  </li>
+                )
+              )}
             </ul>
           </div>
           <fieldset className="ordererWrap">
@@ -86,7 +154,7 @@ const Payment = () => {
                 <label className="ordererKinds">이름</label>
                 <input
                   type="text"
-                  defaultValue="유재민"
+                  defaultValue={userData.name}
                   className="ordererValue"
                 />
               </div>
@@ -94,7 +162,7 @@ const Payment = () => {
                 <label className="ordererKinds">전화번호</label>
                 <input
                   type="text"
-                  defaultValue="01024709454"
+                  defaultValue={userData.phone_number}
                   className="ordererValue"
                 />
               </div>
@@ -102,7 +170,7 @@ const Payment = () => {
                 <label className="ordererKinds">이메일</label>
                 <input
                   type="text"
-                  defaultValue="yoojamer@gmail.com"
+                  defaultValue={userData.email}
                   className="ordererValue"
                 />
               </div>
@@ -110,7 +178,7 @@ const Payment = () => {
                 <label className="ordererKinds">포인트</label>
                 <input
                   type="text"
-                  defaultValue="1000000"
+                  defaultValue={userData.point}
                   className="ordererValue"
                 />
               </div>
@@ -123,7 +191,7 @@ const Payment = () => {
             <ul className="orderPriceListWrap">
               <li className="orderPriceList">
                 <span className="title">총 상품 금액</span>
-                <span className="price">280,000</span>
+                <span className="price">{sumPrice}</span>
               </li>
               <li className="orderPriceList">
                 <span className="title">배송비</span>
@@ -135,7 +203,7 @@ const Payment = () => {
               </li>
               <li className="orderPriceList">
                 <span className="title titleAccent">총 결제 예정 금액</span>
-                <span className="price priceAccent">280,000</span>
+                <span className="price priceAccent">{sumPrice}</span>
               </li>
             </ul>
           </article>
