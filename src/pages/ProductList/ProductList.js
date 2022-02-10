@@ -11,7 +11,6 @@ const ProductList = () => {
   const [filterShow, setFilterShow] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  const [scroll, setScroll] = useState(0);
 
   const decodeuri = decodeURI(location.search);
   const questionMark = decodeuri.substr(1);
@@ -24,7 +23,6 @@ const ProductList = () => {
       top: 400,
       behavior: 'auto',
     });
-    setScroll(0);
 
     navigate(queryString);
   };
