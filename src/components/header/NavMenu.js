@@ -10,6 +10,7 @@ const NavMenu = ({
   listMan,
   listFemale,
   listAll,
+  navDisplayHandler,
 }) => {
   const [btnHandler, setbtnHandler] = useState(false);
 
@@ -38,17 +39,29 @@ const NavMenu = ({
       {id < 12 && (
         <ul className={btnHandler ? 'menuListWrap' : 'menuListWrapHide'}>
           <li className="menuList">
-            <Link to="/ProductList" className="menu">
+            <Link
+              to="/ProductList"
+              className="menu"
+              onClick={navDisplayHandler}
+            >
               {listMan}
             </Link>
           </li>
           <li className="menuList">
-            <Link to="/ProductList" className="menu">
+            <Link
+              to="/ProductList"
+              className="menu"
+              onClick={navDisplayHandler}
+            >
               {listFemale}
             </Link>
           </li>
           <li className="menuList">
-            <Link to="/ProductList" className="menu">
+            <Link
+              to="/ProductList"
+              className="menu"
+              onClick={navDisplayHandler}
+            >
               {listAll}
             </Link>
           </li>

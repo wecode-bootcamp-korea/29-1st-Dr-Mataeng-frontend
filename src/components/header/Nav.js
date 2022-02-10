@@ -60,6 +60,7 @@ const Nav = ({ navDisplayHandler, inputValueRecord }) => {
                 listMan={navMenu.listMan}
                 listFemale={navMenu.listFemale}
                 listAll={navMenu.listAll}
+                navDisplayHandler={navDisplayHandler}
               />
             ))}
           </div>

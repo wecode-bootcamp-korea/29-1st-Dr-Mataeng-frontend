@@ -12,10 +12,17 @@ const ProductList = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const decodeuri = decodeURI(location.search);
+  const questionMark = decodeuri.substr(1);
+
   const updateOffset = buttonIndex => {
     const limit = 6;
     const offset = buttonIndex * limit;
     const queryString = `?limit=${limit}&offset=${offset}`;
+    window.scrollTo({
+      top: 400,
+      behavior: 'auto',
+    });
 
     navigate(queryString);
   };
@@ -26,7 +33,7 @@ const ProductList = () => {
 
   useEffect(() => {
     fetch(
-      `http://172.20.10.5:8000/products?gender=여성&gender=공용${location.search}`,
+      `http://10.58.6.159:8000/products?gender=여성&gender=공용&${questionMark}`,
       {
         method: 'GET',
       }
@@ -40,7 +47,6 @@ const ProductList = () => {
   const goToDetail = productId => {
     navigate(`/productDetail/${productId}`);
   };
-
   return (
     <section className="ProductList">
       <div className="titleWrap">

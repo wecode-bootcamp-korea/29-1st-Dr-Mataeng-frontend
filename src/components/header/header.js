@@ -9,7 +9,6 @@ const Header = () => {
   const [navHandler, setnavHandler] = useState(false);
   const [inputValue, setInputValue] = useState('');
   // const [searchData, setSearchData] = useState([]);
-  const [logOutput, setlogOutput] = useState(['로그인', '로그아웃']);
 
   const isLogin = () => {
     if (!localStorage.getItem('token')) {
@@ -73,7 +72,7 @@ const Header = () => {
       <div className="topMenuListWrap">
         <ul className="topMenuList">
           <li className="login" onClick={isLogin}>
-            {!localStorage.getItem('token') ? logOutput[0] : logOutput[1]}
+            {!localStorage.getItem('token') ? '로그인' : '로그아웃'}
           </li>
           {TOP_BAR_MENU_LIST.map(({ id, url, buttonName }) => (
             <li className="topMenuWrap" key={id}>
