@@ -2,6 +2,7 @@ import React from 'react';
 import './Payment.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import END_POINT from '../../config';
 
 const Payment = () => {
   const [orderProduct, setOrderProduct] = useState(true);
@@ -21,11 +22,10 @@ const Payment = () => {
       .join('&');
 
     // 쿼리스트링 보내기
-    fetch(`http://10.58.6.159:8000/orders?${queryApiAdress}`, {
+    fetch(END_POINT.payment + `?${queryApiAdress}`, {
       method: 'POST',
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1fQ.wJO6SJNZeBgZWe8KLTo2flSDaL0KdDOA_oBpObKiRCw',
+        Authorization: localStorage.getItem('token'),
       },
     });
 
@@ -35,11 +35,10 @@ const Payment = () => {
   };
 
   useEffect(() => {
-    fetch(`http://10.58.6.159:8000/users/user`, {
+    fetch(END_POINT.myPage, {
       method: 'GET',
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1fQ.wJO6SJNZeBgZWe8KLTo2flSDaL0KdDOA_oBpObKiRCw',
+        Authorization: localStorage.getItem('token'),
       },
     })
       .then(res => res.json())
@@ -47,11 +46,10 @@ const Payment = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`http://10.58.6.159:8000/carts`, {
+    fetch(END_POINT.wishList, {
       method: 'GET',
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1fQ.wJO6SJNZeBgZWe8KLTo2flSDaL0KdDOA_oBpObKiRCw',
+        Authorization: localStorage.getItem('token'),
       },
     })
       .then(res => res.json())

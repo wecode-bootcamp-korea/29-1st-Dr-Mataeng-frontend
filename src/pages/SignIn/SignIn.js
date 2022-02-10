@@ -49,11 +49,7 @@ const SignIn = () => {
   };
 
   const loginValidation = () => {
-<<<<<<< HEAD
     fetch(END_POINT.signIn, {
-=======
-    fetch('http://10.58.6.159:8000/users/signin', {
->>>>>>> master
       method: 'POST',
       body: JSON.stringify({
         username: loginInput.id,

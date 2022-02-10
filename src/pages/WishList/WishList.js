@@ -4,6 +4,8 @@ import { useState } from 'react/cjs/react.development';
 import ProductList from './ProductList';
 import WISHLIST_DATA from './wishlistData';
 import Empty from './Empty';
+import END_POINT from '../../config';
+import { useNavigate } from 'react-router-dom';
 
 const WishList = () => {
   const [cart, setCart] = useState([]);
@@ -11,6 +13,11 @@ const WishList = () => {
   let referrer = document.referrer;
   const goToPrevPage = () => {
     window.location.href = referrer;
+  };
+
+  const navigate = useNavigate();
+  const goToPayment = () => {
+    navigate('/payment');
   };
 
   const priceList = () => {
@@ -22,11 +29,10 @@ const WishList = () => {
   };
 
   useEffect(() => {
-    fetch('http://172.20.10.5:8000/carts', {
+    fetch(END_POINT.wishList, {
       method: 'GET',
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1fQ.wJO6SJNZeBgZWe8KLTo2flSDaL0KdDOA_oBpObKiRCw',
+        Authorization: localStorage.getItem('token'),
       },
     })
       .then(response => response.json())
@@ -119,7 +125,7 @@ const WishList = () => {
                 </div>
               </div>
               <div className="buyButton">
-                <button>구매하기</button>
+                <button onClick={goToPayment}>구매하기</button>
               </div>
             </div>
           </div>

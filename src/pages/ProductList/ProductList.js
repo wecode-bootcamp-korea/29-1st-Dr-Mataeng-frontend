@@ -33,12 +33,9 @@ const ProductList = () => {
   };
 
   useEffect(() => {
-    fetch(
-      END_POINT.productList + `?gender=여성&gender=공용${location.search}`,
-      {
-        method: 'GET',
-      }
-    )
+    fetch(END_POINT.productList + `?gender=여성&gender=공용&${questionMark}`, {
+      method: 'GET',
+    })
       .then(res => res.json())
       .then(data => {
         setItemList(data.result);
