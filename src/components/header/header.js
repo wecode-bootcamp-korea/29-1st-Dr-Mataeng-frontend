@@ -30,9 +30,9 @@ const Header = () => {
 
   // Event : 검색어 입력 값 조건에 따른 Link태그 이동 막기
   const preventLinkHandler = ({ id, event }) => {
-    if (id === 1) {
-      if (inputValue.length <= 0) event.preventDefault();
-    } else {
+    if (id === 1 && inputValue.length <= 0) {
+      event.preventDefault();
+    } else if (id === 2 || id === 4) {
       event.preventDefault();
     }
   };
@@ -103,11 +103,7 @@ const Header = () => {
                     state={{
                       inputValue: inputValue,
                     }}
-                    onClick={event => {
-                      if (id === 1 && id === 2 && id === 4) {
-                        preventLinkHandler({ id, event });
-                      }
-                    }}
+                    onClick={event => preventLinkHandler({ id, event })}
                   >
                     <img
                       alt="header menu icon"
