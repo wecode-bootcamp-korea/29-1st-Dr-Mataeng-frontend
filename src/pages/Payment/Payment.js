@@ -1,6 +1,6 @@
 import React from 'react';
 import './Payment.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 const Payment = () => {
@@ -12,12 +12,30 @@ const Payment = () => {
     setOrderProduct(!orderProduct);
   };
 
+  const navigate = useNavigate();
+
   const orderPaymentHandler = () => {
+    // 데이터 받아오기
+    let queryApiAdress = orderData
+      .map(({ cart_id }) => 'cart_id=' + cart_id)
+      .join('&');
+
+    // 쿼리스트링 보내기
+    fetch(`http://10.58.6.159:8000/orders?${queryApiAdress}`, {
+      method: 'POST',
+      headers: {
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1fQ.wJO6SJNZeBgZWe8KLTo2flSDaL0KdDOA_oBpObKiRCw',
+      },
+    });
+
     alert('주문이 완료되었습니다.');
+
+    navigate('/myPage');
   };
 
   useEffect(() => {
-    fetch(`http://172.20.10.5:8000/users/user`, {
+    fetch(`http://10.58.6.159:8000/users/user`, {
       method: 'GET',
       headers: {
         Authorization:
@@ -29,7 +47,7 @@ const Payment = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`http://172.20.10.5:8000/carts`, {
+    fetch(`http://10.58.6.159:8000/carts`, {
       method: 'GET',
       headers: {
         Authorization:
@@ -41,55 +59,14 @@ const Payment = () => {
   }, []);
 
   // Function : 합계 계산
-  let abc = 0;
+  let sumPrice = 0;
 
   const sumPriceHandler = () => {
     for (let i = 0; i < orderData.length; i++) {
-      abc += orderData[i].price;
+      sumPrice += orderData[i].price;
     }
   };
   sumPriceHandler();
-
-  // 결제하기 버튼
-  let testResult = [
-    {
-      cart_id: 13,
-      product_id: 1,
-      product_name: '오드릭 부츠 하드웨어',
-      product_image:
-        'https://media.istockphoto.com/photos/black-army-shoes-picture-id171572967?b=1&k=20&m=171572967&s=170667a&w=0&h=sURzXxdSGGDIx3lGHH0iBim6FZTY_UeHUGx90zbVlgY=',
-      product_like: 121,
-      product_color: '블랙',
-      product_size: '240',
-      quantity: 1,
-      price: 300000,
-    },
-    {
-      cart_id: 14,
-      product_id: 2,
-      product_name: '1460 YOTT',
-      product_image:
-        'https://media.istockphoto.com/photos/boot-on-white-picture-id114380617?b=1&k=20&m=114380617&s=170667a&w=0&h=i7Yl_BUUXOpMBYitMcJvMJ3dSZjsPHfGlg8iXiuMo-M=',
-      product_like: 402,
-      product_color: '블랙',
-      product_size: '220',
-      quantity: 2,
-      price: 540000,
-    },
-  ];
-  let testmap = testResult.map(({ cart_id }) => 'cart_id=' + cart_id).join('&');
-
-  console.log(testmap);
-
-  useEffect(() => {
-    fetch(`http://172.20.10.5:8000/orders?${testmap}`, {
-      method: 'POST',
-      headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1fQ.wJO6SJNZeBgZWe8KLTo2flSDaL0KdDOA_oBpObKiRCw',
-      },
-    });
-  }, []);
 
   return (
     <section className="Payment">
@@ -107,7 +84,7 @@ const Payment = () => {
         <div className="orderProductInfoWrap">
           <div className="expectedOrderPrice">
             <span className="title">
-              주문 예정 금액 ({orderData.length}item | ₩{abc})
+              주문 예정 금액 ({orderData.length}item | ₩{sumPrice})
             </span>
             <button className="orderListBtn" onClick={orderProductHandler}>
               <img
@@ -214,7 +191,7 @@ const Payment = () => {
             <ul className="orderPriceListWrap">
               <li className="orderPriceList">
                 <span className="title">총 상품 금액</span>
-                <span className="price">{abc}</span>
+                <span className="price">{sumPrice}</span>
               </li>
               <li className="orderPriceList">
                 <span className="title">배송비</span>
@@ -226,7 +203,7 @@ const Payment = () => {
               </li>
               <li className="orderPriceList">
                 <span className="title titleAccent">총 결제 예정 금액</span>
-                <span className="price priceAccent">{abc}</span>
+                <span className="price priceAccent">{sumPrice}</span>
               </li>
             </ul>
           </article>
