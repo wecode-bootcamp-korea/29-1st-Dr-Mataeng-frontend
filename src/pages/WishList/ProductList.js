@@ -24,8 +24,7 @@ const ProductList = ({ list, cart, setCart }) => {
     fetch(`http://172.20.10.5:8000/carts?cart_id=${cart_id}`, {
       method: 'DELETE',
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1fQ.wJO6SJNZeBgZWe8KLTo2flSDaL0KdDOA_oBpObKiRCw',
+        Authorization: localStorage.getItem('token'),
       },
     });
   };
