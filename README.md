@@ -15,7 +15,7 @@
 
 ### 클론 영상
 
-
+https://user-images.githubusercontent.com/67303977/153739505-684946cf-6f8c-417f-9512-84b2f793486c.gif
 ----
 ### 담당 구현 사항 및 구현 기능
 
