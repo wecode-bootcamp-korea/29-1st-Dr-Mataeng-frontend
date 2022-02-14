@@ -4,6 +4,7 @@ import INPUT_LIST from './InputList';
 import SignUpInput from './SignUpInput';
 import TopBt from './TopBt';
 import './SignUp.scss';
+import END_POINT from '../../config';
 
 function SignUp() {
   const [inputs, setInputs] = useState({
@@ -54,7 +55,7 @@ function SignUp() {
 
   const checkInputValid = () => {
     if (submitValid) {
-      fetch('http://3.36.97.236:8000/users/user', {
+      fetch(END_POINT.signUp, {
         method: 'POST',
         body: JSON.stringify({
           name: inputs.name,

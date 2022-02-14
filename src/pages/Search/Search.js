@@ -3,6 +3,7 @@ import './Search.scss';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router';
+import END_POINT from '../../config';
 
 const Search = () => {
   const [searchData, setSearchData] = useState([]);
@@ -12,12 +13,9 @@ const Search = () => {
 
   // Connect : 백엔드와 연동하여 필터 로직 받아오기
   useEffect(() => {
-    fetch(
-      `http://3.36.97.236:8000/products/search?text=${location.state.inputValue}`,
-      {
-        method: 'GET',
-      }
-    )
+    fetch(END_POINT.productList + `/search?text=${location.state.inputValue}`, {
+      method: 'GET',
+    })
       .then(res => res.json())
       .then(data => {
         setSearchData(data.result);

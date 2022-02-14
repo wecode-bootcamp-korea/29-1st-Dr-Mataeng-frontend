@@ -3,6 +3,7 @@ import './ProductDetail.scss';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import { useNavigate } from 'react-router';
+import END_POINT from '../../config';
 
 const ProductDetail = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -16,7 +17,7 @@ const ProductDetail = () => {
 
   // Connect : 백엔드와 데이터 연동
   useEffect(() => {
-    fetch(`http://172.20.10.5:8000/products/${params.id}`, {
+    fetch(END_POINT.productDetail + `/${params.id}`, {
       method: 'GET',
     })
       .then(res => res.json())
@@ -94,11 +95,10 @@ const ProductDetail = () => {
 
   // Event : 장바구니 버튼 클릭 시 POST body로 데이터 전송 및 알림창 생성
   const CartBtnClickHandler = () => {
-    fetch('http://172.20.10.5:8000/carts', {
+    fetch(END_POINT.wishList, {
       method: 'POST',
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2fQ.Ya44VVMRIy86Oixk3ngSjD3jiK9eWNlsKjr2akaYkvc',
+        Authorization: localStorage.getItem('token'),
       },
       body: JSON.stringify({
         product_id: params.id, // FIXME : 백엔드 데이터 저장 잘 되는지 여쭤보기
@@ -110,7 +110,7 @@ const ProductDetail = () => {
       .then(alert('장바구니에 담겼습니다.'));
 
     const paymentPageMoveHandler = () => {
-      navigate('/myPage');
+      navigate('/wishList');
     };
     paymentPageMoveHandler();
   };
@@ -177,7 +177,7 @@ const ProductDetail = () => {
                     disabled={stock === 0}
                   >
                     {size}
-                    {stock < 5 && ' - 재고 5개 미만'}
+                    {stock < 5 && stock > 0 && ' - 재고 5개 미만'}
                     {stock <= 0 && ' - 일시품절'}
                   </option>
                 ))}

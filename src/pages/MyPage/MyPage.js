@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import MypagePoints from './MypagePoints';
 import { useEffect } from 'react';
 import './MyPage.scss';
+import END_POINT from '../../config';
 
 const Mypage = () => {
   const [orderProduct, setOrderProduct] = useState(false);
@@ -19,11 +20,10 @@ const Mypage = () => {
   };
 
   useEffect(() => {
-    fetch(`http://10.58.6.159:8000/users/user`, {
+    fetch(END_POINT.myPage, {
       method: 'GET',
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1fQ.wJO6SJNZeBgZWe8KLTo2flSDaL0KdDOA_oBpObKiRCw',
+        Authorization: localStorage.getItem('token'),
       },
     })
       .then(res => res.json())
@@ -31,11 +31,10 @@ const Mypage = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`http://10.58.6.159:8000/orders`, {
+    fetch(END_POINT.payment, {
       method: 'GET',
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1fQ.wJO6SJNZeBgZWe8KLTo2flSDaL0KdDOA_oBpObKiRCw',
+        Authorization: localStorage.getItem('token'),
       },
     })
       .then(res => res.json())

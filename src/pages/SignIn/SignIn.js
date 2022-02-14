@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../SignIn/SignIn.scss';
+import END_POINT from '../../config';
 
 const SignIn = () => {
   const [loginInput, setLoginInput] = useState({
@@ -48,7 +49,7 @@ const SignIn = () => {
   };
 
   const loginValidation = () => {
-    fetch('http://10.58.6.159:8000/users/signin', {
+    fetch(END_POINT.signIn, {
       method: 'POST',
       body: JSON.stringify({
         username: loginInput.id,
