@@ -7,13 +7,17 @@
 - 구성 : Frontend 3명, Backend 2명
 
 
-### 사용한 기술
-<img src="https://img.shields.io/badge/react-61DAFB?style=flat&logo=react&logoColor=white"> <img src="https://img.shields.io/badge/Scss-pink?style=flat&logo=Sass&logoColor=white"/> 
-<img src="https://img.shields.io/badge/Github-black?style=flat&logo=github&logoColor=white"/>
+### Technologies
+- Front-End : HTML, React.js, SASS
+- Back-End : Python, Django, Bcrypt, PyJWT
+- Common : AWS, RESTful API
+- 협업 및 일정관리 : Git, GitHub, Slack, Trello, Notion
 
 
-### 클론 영상
+### Demo Video & Github
 <img width="70%" src="https://user-images.githubusercontent.com/67303977/153739505-684946cf-6f8c-417f-9512-84b2f793486c.gif"/>
+- <a href="https://github.com/wecode-bootcamp-korea/29-1st-Dr-Mataeng-frontend" target='_blank'>Frontend Github Link</a> / <a href="https://github.com/wecode-bootcamp-korea/29-1st-Dr-Mataeng-backend
+" target='_blank'>Backend Github Link</a>
 
 
 ----
