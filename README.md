@@ -15,10 +15,13 @@
 - 협업 및 일정관리 : Git, GitHub, Slack, Trello, Notion
 
 
-### Demo Video
-
+### Demo Video & Github
+- <a href="https://youtu.be/GlK28FnB0Ho" target='_blank'>Demo Video Link</a>
+<p align="center"><img src="https://images.velog.io/images/y_jem/post/1580be5d-6eb2-4e84-9aab-5800b3d298dc/DrMartens.gif" width="100%"></p>
 <img width="70%" src="https://user-images.githubusercontent.com/67303977/153739505-684946cf-6f8c-417f-9512-84b2f793486c.gif"/>
 
+- <a href="https://github.com/wecode-bootcamp-korea/29-1st-Dr-Mataeng-frontend" target='_blank'>Frontend Github Link</a> / <a href="https://github.com/wecode-bootcamp-korea/29-1st-Dr-Mataeng-backend
+" target='_blank'>Backend Github Link</a>
 
 ### Responsibilities (Front-end)
 
