@@ -1,12 +1,11 @@
 # Dr-Mataeng 1차 프로젝트
 
 
-### 기간
-- 개발기간: 2022.01.24 ~ 2022.02.11
+### Introduction
 
-### 팀원
+- 기간 : 2022/1/24 ~ 2022/2/10 (실제 작업 기간 : 9일)
+- 구성 : Frontend 3명, Backend 2명
 
-- Frontend: 유재민, 오수민, 장예지
 
 ### 사용한 기술
 <img src="https://img.shields.io/badge/react-61DAFB?style=flat&logo=react&logoColor=white"> <img src="https://img.shields.io/badge/Scss-pink?style=flat&logo=Sass&logoColor=white"/> 
